@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — HSS Mundur</title>
+  <meta name="description" content="Learn about the history, mission, and vision of Higher Secondary School Mundur, Palakkad.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="about.css">
+</head>
+<body>
+  <div id="loader" style="position: fixed; inset: 0; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #0d1b2a; transition: opacity 0.6s ease;">
+    <div style="width: 70px; height: 70px; border-radius: 50%; background: #c9a84c; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #0d1b2a; margin-bottom: 24px; animation: pulse 1.5s infinite;">
+      <i class="fas fa-graduation-cap"></i>
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <div style="width: 10px; height: 10px; border-radius: 50%; background: #c9a84c; animation: bounce 1.4s infinite ease-in-out both; animation-delay: -0.32s;"></div>
+      <div style="width: 10px; height: 10px; border-radius: 50%; background: #c9a84c; animation: bounce 1.4s infinite ease-in-out both; animation-delay: -0.16s;"></div>
+      <div style="width: 10px; height: 10px; border-radius: 50%; background: #c9a84c; animation: bounce 1.4s infinite ease-in-out both;"></div>
+    </div>
+  </div>
+  <style>
+    @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(201, 168, 76, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(201, 168, 76, 0); } }
+    @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+  </style>
+
+
+  <!-- ── Header ─────────────────────────────────────── -->
+  <header id="mainHeader">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div class="logo-text">
+          <h1>HSS MUNDUR</h1>
+          <p>Higher Secondary School, Palakkad</p>
+        </div>
+      </a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="nav-menu" id="navMenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── Page Hero ──────────────────────────────────── -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fas fa-chevron-right" style="font-size:.65rem;"></i>
+        <span>About Us</span>
+      </div>
+      <div class="section-label" style="margin-bottom:14px;">Our Story</div>
+      <h1>About HSS Mundur</h1>
+      <p>Discover the legacy, mission, and vision that have guided us for over nine decades.</p>
+    </div>
+  </section>
+
+  <!-- ── History ────────────────────────────────────── -->
+  <section class="about-content-section">
+    <div class="container">
+      <div class="about-text-block fade-in" style="max-width:800px;">
+        <h3>Our History</h3>
+        <p>Higher Secondary School Mundur has long been at the forefront of educational excellence in the Palakkad district. The light of knowledge — <em>Aksharadeepam</em> — was first lit by Sri K.V. Sundarawaryar and Sri Kannath Achuthan Master.</p>
+        <p>In 1933, the Mundoor Higher Elementary School was founded by the Mundoor Kizhakkewariyat family, with Sri Sivadasawaryar serving as the first manager. In the 1940s, following the retirement of the previous administrator K.V. Achuthawaryar, the administration passed to Sri Sivadasawaryar, during which Sriman Sundarawaryar took over management and dedicated himself to the school's development.</p>
+
+        <h3>Key Milestones</h3>
+      </div>
+
+      <!-- Timeline -->
+      <div class="timeline fade-in" style="max-width:720px;">
+        <div class="timeline-item">
+          <div class="timeline-dot">1933</div>
+          <div class="timeline-body">
+            <h4>School Founded</h4>
+            <p>Mundoor Higher Elementary School established by the Mundoor Kizhakkewariyat family. Sri Sivadasawaryar becomes the first manager.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">1940s</div>
+          <div class="timeline-body">
+            <h4>New Leadership</h4>
+            <p>Sriman Sundarawaryar takes over management and dedicates himself to expanding facilities and improving education quality.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">1957</div>
+          <div class="timeline-body">
+            <h4>Upgraded to High School</h4>
+            <p>On June 15, 1957, the institution was upgraded to a High School. The inauguration was presided over by Sriman P.S. Kesavan Namboothiri and inaugurated by P.T. Bhaskarapanikar, a key figure in educational reform.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">1960</div>
+          <div class="timeline-body">
+            <h4>A Legacy Continues</h4>
+            <p>Following the passing of Shri Sundara Warrier on October 14, 1960, the school continued its mission of educational excellence under new stewardship.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">2010</div>
+          <div class="timeline-body">
+            <h4>Higher Secondary School</h4>
+            <p>The institution was upgraded to a Higher Secondary School, marking a new era of expanded education and opportunity for students in Palakkad.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-text-block fade-in" style="max-width:800px; margin-top: 24px;">
+        <h3>Our Achievements</h3>
+        <p>Over the decades, we have consistently produced outstanding results in academics, with our students securing top ranks in state board examinations and gaining admission to prestigious institutions across India.</p>
+        <p>Beyond academics, our students have excelled in sports, arts, and cultural activities at state and national levels. Our alumni have become successful professionals in engineering, medicine, arts, civil services, and entrepreneurship.</p>
+        <h3>Our Philosophy</h3>
+        <p>At HSS Mundur, we believe education is not just about imparting knowledge but about shaping character. Our values of integrity, respect, perseverance, and community service are integrated into every aspect of school life.</p>
+        <p>We strive to create an inclusive environment where every student can thrive academically, socially, and emotionally — empowering students to become critical thinkers, lifelong learners, and responsible global citizens.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Mission & Vision ───────────────────────────── -->
+  <section class="mission-vision">
+    <div class="container">
+      <div class="section-title centered fade-in">
+        <div class="section-label">What We Stand For</div>
+        <h2>Mission, Vision & Values</h2>
+      </div>
+      <div class="mv-grid">
+        <div class="mv-card fade-in">
+          <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
+          <h3>Our Mission</h3>
+          <p>To provide quality education that fosters intellectual growth, character development, and social responsibility — preparing students to excel in a dynamic global society.</p>
+        </div>
+        <div class="mv-card fade-in">
+          <div class="mv-icon"><i class="fas fa-eye"></i></div>
+          <h3>Our Vision</h3>
+          <p>To be a center of excellence that nurtures innovative thinkers, compassionate leaders, and responsible citizens who contribute positively to society.</p>
+        </div>
+        <div class="mv-card fade-in">
+          <div class="mv-icon"><i class="fas fa-handshake"></i></div>
+          <h3>Our Values</h3>
+          <p>Integrity, excellence, respect, compassion, and lifelong learning form the foundation of everything we do at HSS Mundur.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="logo-text">
+              <h1>HSS MUNDUR</h1>
+              <p>Higher Secondary School, Palakkad</p>
+            </div>
+          </a>
+          <p class="desc">Dedicated to academic excellence and the holistic development of every student since 1933.</p>
+          <div class="social-row">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>HSS Mundur, Palakkad, Kerala 678592</span></div>
+          <div class="contact-item"><i class="fas fa-phone"></i><span>+91 491 2832454</span></div>
+          <div class="contact-item"><i class="fas fa-envelope"></i><span>hssmundur@gmail.com</span></div>
+          <div class="contact-item"><i class="fas fa-clock"></i><span>Mon – Fri: 8:30 AM – 4:00 PM</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Higher Secondary School Mundur, Palakkad. All Rights Reserved.</span>
+        <span>Designed by Little Kites with <i class="fas fa-heart" style="color:var(--gold)"></i> for HSS Mundur</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const header = document.getElementById('mainHeader');
+      window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
+      const btn = document.getElementById('mobileMenuBtn');
+      const nav = document.getElementById('navMenu');
+      btn.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        const icon = btn.querySelector('i');
+        icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times');
+      });
+      document.querySelectorAll('.nav-menu a').forEach(a => {
+        a.addEventListener('click', () => {
+          nav.classList.remove('active');
+          const i = btn.querySelector('i');
+          i.classList.add('fa-bars'); i.classList.remove('fa-times');
+        });
+      });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    });
+    // ── Loading Screen
+      window.addEventListener('load', () => {
+        const loader = document.getElementById('loader');
+        if (loader) {
+          setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => { loader.style.display = 'none'; }, 600);
+          }, 300); // Small delay to let the animation play
+        }
+      });
+  </script>
+</body>
+</html>

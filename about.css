@@ -1,0 +1,91 @@
+/* =========================================================
+   HSS MUNDUR — about.css
+   About page-specific styles
+   ========================================================= */
+
+/* ── About Content Section ─────────────────────────────── */
+.about-content-section {
+  padding: 88px 0;
+  background: var(--white);
+}
+
+.about-text-block h3 {
+  font-size: 1.6rem;
+  color: var(--navy);
+  margin: 36px 0 16px;
+  padding-left: 16px;
+  border-left: 3px solid var(--gold);
+}
+.about-text-block h3:first-child { margin-top: 0; }
+.about-text-block p {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 16px;
+  color: var(--text-mid);
+}
+
+/* ── Timeline ──────────────────────────────────────────── */
+.timeline {
+  position: relative;
+  padding: 20px 0;
+  margin: 32px 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 24px; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--gold), var(--teal));
+}
+.timeline-item {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 32px;
+  position: relative;
+}
+.timeline-dot {
+  width: 50px; height: 50px; border-radius: 50%;
+  background: var(--navy); border: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .75rem; font-weight: 700;
+  flex-shrink: 0; z-index: 1;
+  text-align: center; line-height: 1.2;
+}
+.timeline-body h4 { font-size: 1.05rem; color: var(--navy); margin-bottom: 6px; padding-top: 12px; }
+.timeline-body p { font-size: .92rem; }
+
+/* ── Mission & Vision ──────────────────────────────────── */
+.mission-vision { padding: 88px 0; background: var(--white); }
+
+.mv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+.mv-card {
+  background: var(--cream); border-radius: var(--radius);
+  padding: 40px 32px; text-align: center;
+  border: 1px solid var(--cream-dark);
+  transition: var(--transition);
+}
+.mv-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+.mv-icon {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; color: var(--gold);
+  margin: 0 auto 20px;
+}
+.mv-card h3 { font-size: 1.3rem; margin-bottom: 14px; }
+.mv-card p { font-size: .92rem; line-height: 1.7; }
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .mv-grid { grid-template-columns: 1fr; }
+  .timeline::before { left: 20px; }
+  .timeline-dot { width: 40px; height: 40px; font-size: .68rem; }
+  .timeline-item { gap: 20px; }
+}

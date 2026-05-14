@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — HSS Mundur</title>
+  <meta name="description" content="Get in touch with Higher Secondary School Mundur, Palakkad.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+  <div id="loader" style="position: fixed; inset: 0; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #0d1b2a; transition: opacity 0.6s ease;">
+    <div style="width: 70px; height: 70px; border-radius: 50%; background: #c9a84c; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #0d1b2a; margin-bottom: 24px; animation: pulse 1.5s infinite;">
+      <i class="fas fa-graduation-cap"></i>
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <div style="width: 10px; height: 10px; border-radius: 50%; background: #c9a84c; animation: bounce 1.4s infinite ease-in-out both; animation-delay: -0.32s;"></div>
+      <div style="width: 10px; height: 10px; border-radius: 50%; background: #c9a84c; animation: bounce 1.4s infinite ease-in-out both; animation-delay: -0.16s;"></div>
+      <div style="width: 10px; height: 10px; border-radius: 50%; background: #c9a84c; animation: bounce 1.4s infinite ease-in-out both;"></div>
+    </div>
+  </div>
+  <style>
+    @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(201, 168, 76, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(201, 168, 76, 0); } }
+    @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+  </style>
+
+
+  <!-- ── Header ─────────────────────────────────────── -->
+  <header id="mainHeader">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div class="logo-text">
+          <h1>HSS MUNDUR</h1>
+          <p>Higher Secondary School, Palakkad</p>
+        </div>
+      </a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="nav-menu" id="navMenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── Page Hero ──────────────────────────────────── -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fas fa-chevron-right" style="font-size:.65rem;"></i>
+        <span>Contact</span>
+      </div>
+      <div class="section-label" style="margin-bottom:14px;">Reach Out</div>
+      <h1>Contact Us</h1>
+      <p>We'd love to hear from you. Get in touch with any questions, enquiries, or feedback.</p>
+    </div>
+  </section>
+
+  <!-- ── Contact Section ────────────────────────────── -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-layout">
+
+        <!-- Info Panel -->
+        <div class="contact-info-panel fade-in">
+          <div class="section-label">Our Details</div>
+          <h3>How to Reach Us</h3>
+          <p>Our staff are available during school hours to assist with any inquiries about admissions, academics, or general information.</p>
+
+          <div class="info-card">
+            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <h4>Our Address</h4>
+              <p>HSS Mundur<br>Mundur, Palakkad<br>Kerala, India — 678592</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+            <div>
+              <h4>Phone</h4>
+              <a href="tel:+914912832454">+91 491 2832454</a>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:hssmundur@gmail.com">hssmundur@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <h4>Office Hours</h4>
+              <p>Monday – Friday<br>8:30 AM – 4:00 PM</p>
+            </div>
+          </div>
+
+          <div class="social-row" style="margin-top:8px;">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Form Panel -->
+        <div class="contact-form-panel fade-in">
+          <div class="section-label">Send a Message</div>
+          <h3>Write to Us</h3>
+          <p>Fill out the form below and we will get back to you within one working day.</p>
+
+          <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="botcheck">
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none">
+            
+            <div id="contactFormWrap">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name *</label>
+                  <input type="text" id="firstName" name="firstName" placeholder="Your first name" required>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" id="lastName" name="lastName" placeholder="Your last name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX">
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject *</label>
+                <select id="subject" name="subject" required>
+                  <option value="">— Select a topic —</option>
+                  <option value="admissions">Admissions Enquiry</option>
+                  <option value="academics">Academic Information</option>
+                  <option value="events">Events & Activities</option>
+                  <option value="alumni">Alumni Connection</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Your Message *</label>
+                <textarea id="message" name="message" placeholder="Write your message here…" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" id="submitBtn" style="width:100%; justify-content:center;">
+                <span id="btnText">Send Message <i class="fas fa-paper-plane"></i></span>
+              </button>
+            </div>
+
+            <div id="form-success" style="display:none; text-align:center; padding:20px; background:#eef9f5; border:1px solid #1b7a78; border-radius:8px; margin-top:20px; color:#1b7a78;">
+                <i class="fas fa-check-circle" style="font-size:2rem; margin-bottom:10px;"></i>
+                <h4 style="margin-bottom:5px;">Message Sent!</h4>
+                <p style="font-size:0.9rem;">Thank you for reaching out. We'll be in touch with you shortly.</p>
+            </div>
+            
+            <div id="form-error" style="display:none; text-align:center; padding:20px; background:#fdf2f2; border:1px solid #d32f2f; border-radius:8px; margin-top:20px; color:#d32f2f;">
+                <i class="fas fa-exclamation-circle" style="font-size:2rem; margin-bottom:10px;"></i>
+                <h4 style="margin-bottom:5px;">Something went wrong</h4>
+                <p style="font-size:0.9rem;">Please try calling us directly.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Map Section ────────────────────────────────── -->
+  <section class="map-section">
+    <div class="container">
+      <div class="section-title fade-in">
+        <div class="section-label">Find Us</div>
+        <h2>Our Location</h2>
+        <p>We are located in Mundur, Palakkad, Kerala.</p>
+      </div>
+      <div class="map-embed fade-in">
+        <iframe
+          src="https://maps.google.com/maps?q=10.836163003212391,76.57416517176333&z=17&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="HSS Mundur Location Map — Mundur, Palakkad, Kerala"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="logo-text">
+              <h1>HSS MUNDUR</h1>
+              <p>Higher Secondary School, Palakkad</p>
+            </div>
+          </a>
+          <p class="desc">Dedicated to academic excellence and the holistic development of every student since 1933.</p>
+          <div class="social-row">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>HSS Mundur, Palakkad, Kerala 678592</span></div>
+          <div class="contact-item"><i class="fas fa-phone"></i><span>+91 491 2832454</span></div>
+          <div class="contact-item"><i class="fas fa-envelope"></i><span>hssmundur@gmail.com</span></div>
+          <div class="contact-item"><i class="fas fa-clock"></i><span>Mon – Fri: 8:30 AM – 4:00 PM</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Higher Secondary School Mundur, Palakkad. All Rights Reserved.</span>
+        <span>Designed by Little Kites with <i class="fas fa-heart" style="color:var(--gold)"></i> for HSS Mundur</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const header = document.getElementById('mainHeader');
+      window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
+      const btn = document.getElementById('mobileMenuBtn');
+      const nav = document.getElementById('navMenu');
+      btn.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        const icon = btn.querySelector('i');
+        icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times');
+      });
+      document.querySelectorAll('.nav-menu a').forEach(a => {
+        a.addEventListener('click', () => {
+          nav.classList.remove('active');
+          const i = btn.querySelector('i');
+          i.classList.add('fa-bars'); i.classList.remove('fa-times');
+        });
+      });
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+    });
+
+    /* ---- Netlify Contact Form AJAX ---- */
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        
+        btnText.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+        submitBtn.disabled = true;
+
+        const formData = new FormData(contactForm);
+        
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(formData).toString()
+        })
+        .then(() => {
+          document.getElementById('contactFormWrap').style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+        })
+        .catch((error) => {
+          document.getElementById('form-error').style.display = 'block';
+          btnText.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+          submitBtn.disabled = false;
+        });
+      });
+    }
+    // ── Loading Screen
+      window.addEventListener('load', () => {
+        const loader = document.getElementById('loader');
+        if (loader) {
+          setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => { loader.style.display = 'none'; }, 600);
+          }, 300); // Small delay to let the animation play
+        }
+      });
+  </script>
+</body>
+</html>
