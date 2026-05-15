@@ -189,36 +189,6 @@
         entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100); });
       }, { threshold: 0.1 });
       document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-      
-      /* ---- Netlify Contact Form AJAX ---- */
-      const contactForm = document.getElementById('contact-form');
-      if (contactForm) {
-          contactForm.addEventListener('submit', (e) => {
-              e.preventDefault(); 
-              const submitBtn = document.getElementById('submitBtn');
-              const btnText = document.getElementById('btnText');
-              
-              btnText.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
-              submitBtn.disabled = true;
-
-              const formData = new FormData(contactForm);
-              
-              fetch("/", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                  body: new URLSearchParams(formData).toString()
-              })
-              .then(() => {
-                  document.getElementById('contactFormWrap').style.display = 'none';
-                  document.getElementById('form-success').style.display = 'block';
-              })
-              .catch((error) => {
-                  document.getElementById('form-error').style.display = 'block';
-                  btnText.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
-                  submitBtn.disabled = false;
-              });
-          });
-      }
     });
   </script>
 </body>
