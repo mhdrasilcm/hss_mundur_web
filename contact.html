@@ -6,27 +6,12 @@
   <title>Contact — HSS Mundur</title>
   <meta name="description" content="Get in touch with Higher Secondary School Mundur, Palakkad.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">  
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="contact.css">
 </head>
 <body>
-  <div id="loader" style="position: fixed; inset: 0; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #0d1b2a; transition: opacity 0.6s ease;">
-    <div style="width: 70px; height: 70px; border-radius: 50%; background: #c9a84c; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #0d1b2a; margin-bottom: 24px; animation: pulse 1.5s infinite;">
-      <i class="fas fa-graduation-cap"></i>
-    </div>
-    <div style="display: flex; gap: 8px;">
-      <div style="width: 10px; height: 10px; border-radius: 50%; background: #c9a84c; animation: bounce 1.4s infinite ease-in-out both; animation-delay: -0.32s;"></div>
-      <div style="width: 10px; height: 10px; border-radius: 50%; background: #c9a84c; animation: bounce 1.4s infinite ease-in-out both; animation-delay: -0.16s;"></div>
-      <div style="width: 10px; height: 10px; border-radius: 50%; background: #c9a84c; animation: bounce 1.4s infinite ease-in-out both;"></div>
-    </div>
-  </div>
-  <style>
-    @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(201, 168, 76, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(201, 168, 76, 0); } }
-    @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
-  </style>
 
-
-  <!-- ── Header ─────────────────────────────────────── -->
   <header id="mainHeader">
     <div class="container header-container">
       <a href="index.html" class="logo">
@@ -50,7 +35,6 @@
     </div>
   </header>
 
-  <!-- ── Page Hero ──────────────────────────────────── -->
   <section class="page-hero">
     <div class="container">
       <div class="breadcrumb">
@@ -64,12 +48,10 @@
     </div>
   </section>
 
-  <!-- ── Contact Section ────────────────────────────── -->
   <section class="contact-section">
     <div class="container">
       <div class="contact-layout">
 
-        <!-- Info Panel -->
         <div class="contact-info-panel fade-in">
           <div class="section-label">Our Details</div>
           <h3>How to Reach Us</h3>
@@ -115,7 +97,6 @@
           </div>
         </div>
 
-        <!-- Form Panel -->
         <div class="contact-form-panel fade-in">
           <div class="section-label">Send a Message</div>
           <h3>Write to Us</h3>
@@ -158,7 +139,7 @@
                 <label for="message">Your Message *</label>
                 <textarea id="message" name="message" placeholder="Write your message here…" required></textarea>
               </div>
-              <button type="submit" class="btn btn-primary" id="submitBtn" style="width:100%; justify-content:center;">
+              <button type="submit" class="btn btn-primary" id="submitBtn" style="width:100%;justify-content:center;">
                 <span id="btnText">Send Message <i class="fas fa-paper-plane"></i></span>
               </button>
             </div>
@@ -175,12 +156,12 @@
                 <p style="font-size:0.9rem;">Please try calling us directly.</p>
             </div>
           </form>
+
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Map Section ────────────────────────────────── -->
   <section class="map-section">
     <div class="container">
       <div class="section-title fade-in">
@@ -190,7 +171,7 @@
       </div>
       <div class="map-embed fade-in">
         <iframe
-          src="https://maps.google.com/maps?q=10.836163003212391,76.57416517176333&z=17&output=embed"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.2!2d76.5!3d10.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1sen!2sin"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           title="HSS Mundur Location Map — Mundur, Palakkad, Kerala"
@@ -200,7 +181,6 @@
     </div>
   </section>
 
-  <!-- ── Footer ─────────────────────────────────────── -->
   <footer>
     <div class="container">
       <div class="footer-grid">
@@ -213,12 +193,6 @@
             </div>
           </a>
           <p class="desc">Dedicated to academic excellence and the holistic development of every student since 1933.</p>
-          <div class="social-row">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-          </div>
         </div>
         <div class="footer-col">
           <h4>Quick Links</h4>
@@ -234,11 +208,10 @@
           <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>HSS Mundur, Palakkad, Kerala 678592</span></div>
           <div class="contact-item"><i class="fas fa-phone"></i><span>+91 491 2832454</span></div>
           <div class="contact-item"><i class="fas fa-envelope"></i><span>hssmundur@gmail.com</span></div>
-          <div class="contact-item"><i class="fas fa-clock"></i><span>Mon – Fri: 8:30 AM – 4:00 PM</span></div>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2026 Higher Secondary School Mundur, Palakkad. All Rights Reserved.</span>
+        <span>© 2026 Higher Secondary School Mundur, Palakkad. All Rights Reserved.</span>
         <span>Designed by Little Kites with <i class="fas fa-heart" style="color:var(--gold)"></i> for HSS Mundur</span>
       </div>
     </div>
@@ -248,6 +221,7 @@
     document.addEventListener('DOMContentLoaded', function () {
       const header = document.getElementById('mainHeader');
       window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
+      
       const btn = document.getElementById('mobileMenuBtn');
       const nav = document.getElementById('navMenu');
       btn.addEventListener('click', () => {
@@ -255,58 +229,42 @@
         const icon = btn.querySelector('i');
         icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times');
       });
-      document.querySelectorAll('.nav-menu a').forEach(a => {
-        a.addEventListener('click', () => {
-          nav.classList.remove('active');
-          const i = btn.querySelector('i');
-          i.classList.add('fa-bars'); i.classList.remove('fa-times');
-        });
-      });
+      
       const obs = new IntersectionObserver((entries) => {
         entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100); });
       }, { threshold: 0.1 });
       document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+      
+      /* ---- Netlify Contact Form AJAX ---- */
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+          contactForm.addEventListener('submit', (e) => {
+              e.preventDefault(); 
+              const submitBtn = document.getElementById('submitBtn');
+              const btnText = document.getElementById('btnText');
+              
+              btnText.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+              submitBtn.disabled = true;
+
+              const formData = new FormData(contactForm);
+              
+              fetch("/", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                  body: new URLSearchParams(formData).toString()
+              })
+              .then(() => {
+                  document.getElementById('contactFormWrap').style.display = 'none';
+                  document.getElementById('form-success').style.display = 'block';
+              })
+              .catch((error) => {
+                  document.getElementById('form-error').style.display = 'block';
+                  btnText.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+                  submitBtn.disabled = false;
+              });
+          });
+      }
     });
-
-    /* ---- Netlify Contact Form AJAX ---- */
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const submitBtn = document.getElementById('submitBtn');
-        const btnText = document.getElementById('btnText');
-        
-        btnText.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
-        submitBtn.disabled = true;
-
-        const formData = new FormData(contactForm);
-        
-        fetch("/", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams(formData).toString()
-        })
-        .then(() => {
-          document.getElementById('contactFormWrap').style.display = 'none';
-          document.getElementById('form-success').style.display = 'block';
-        })
-        .catch((error) => {
-          document.getElementById('form-error').style.display = 'block';
-          btnText.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
-          submitBtn.disabled = false;
-        });
-      });
-    }
-    // ── Loading Screen
-      window.addEventListener('load', () => {
-        const loader = document.getElementById('loader');
-        if (loader) {
-          setTimeout(() => {
-            loader.style.opacity = '0';
-            setTimeout(() => { loader.style.display = 'none'; }, 600);
-          }, 300); // Small delay to let the animation play
-        }
-      });
   </script>
 </body>
 </html>
