@@ -97,66 +97,21 @@
           </div>
         </div>
 
-        <div class="contact-form-panel fade-in">
-          <div class="section-label">Send a Message</div>
-          <h3>Write to Us</h3>
-          <p>Fill out the form below and we will get back to you within one working day.</p>
-
-          <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="botcheck">
-            <input type="checkbox" name="botcheck" class="hidden" style="display:none">
-            
-            <div id="contactFormWrap">
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="firstName">First Name *</label>
-                  <input type="text" id="firstName" name="firstName" placeholder="Your first name" required>
-                </div>
-                <div class="form-group">
-                  <label for="lastName">Last Name</label>
-                  <input type="text" id="lastName" name="lastName" placeholder="Your last name">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="email">Email Address *</label>
-                <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX">
-              </div>
-              <div class="form-group">
-                <label for="subject">Subject *</label>
-                <select id="subject" name="subject" required>
-                  <option value="">— Select a topic —</option>
-                  <option value="admissions">Admissions Enquiry</option>
-                  <option value="academics">Academic Information</option>
-                  <option value="events">Events & Activities</option>
-                  <option value="alumni">Alumni Connection</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="message">Your Message *</label>
-                <textarea id="message" name="message" placeholder="Write your message here…" required></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary" id="submitBtn" style="width:100%;justify-content:center;">
-                <span id="btnText">Send Message <i class="fas fa-paper-plane"></i></span>
-              </button>
-            </div>
-
-            <div id="form-success" style="display:none; text-align:center; padding:20px; background:#eef9f5; border:1px solid #1b7a78; border-radius:8px; margin-top:20px; color:#1b7a78;">
-                <i class="fas fa-check-circle" style="font-size:2rem; margin-bottom:10px;"></i>
-                <h4 style="margin-bottom:5px;">Message Sent!</h4>
-                <p style="font-size:0.9rem;">Thank you for reaching out. We'll be in touch with you shortly.</p>
-            </div>
-            
-            <div id="form-error" style="display:none; text-align:center; padding:20px; background:#fdf2f2; border:1px solid #d32f2f; border-radius:8px; margin-top:20px; color:#d32f2f;">
-                <i class="fas fa-exclamation-circle" style="font-size:2rem; margin-bottom:10px;"></i>
-                <h4 style="margin-bottom:5px;">Something went wrong</h4>
-                <p style="font-size:0.9rem;">Please try calling us directly.</p>
-            </div>
-          </form>
-
+        <div class="contact-form-panel fade-in" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+          <div style="padding: 32px 32px 16px;">
+            <div class="section-label">Coming Next</div>
+            <h3>Little Kites Initiative</h3>
+            <p>Get a sneak peek at our upcoming dedicated portal for the Little Kites IT Club.</p>
+          </div>
+          
+          <div style="flex-grow: 1; padding: 0 32px 32px; height: 100%;">
+            <iframe 
+              src="https://lkmundur.netlify.app" 
+              style="width: 100%; height: 500px; border: 2px solid var(--cream-dark); border-radius: var(--radius-sm); box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);" 
+              title="Little Kites Website Preview"
+              loading="lazy">
+            </iframe>
+          </div>
         </div>
       </div>
     </div>
@@ -212,7 +167,7 @@
       </div>
       <div class="footer-bottom">
         <span>© 2026 Higher Secondary School Mundur, Palakkad. All Rights Reserved.</span>
-        <span>Designed by Little Kites with <i class="fas fa-heart" style="color:var(--gold)"></i> for HSS Mundur</span>
+        <span>Made with <i class="fas fa-heart" style="color: #ff2a2a;"></i> by <strong>Ras Devs</strong></span>
       </div>
     </div>
   </footer>
