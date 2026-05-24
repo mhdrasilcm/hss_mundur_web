@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Official Launch — HSS Mundur</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      background-color: #020617; /* Deep elegant dark */
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 4rem;
+      transition: opacity 0.5s ease;
+    }
+
+    /* THE GIANT BUTTON */
+    .launch-btn {
+      position: relative;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #ef4444, #dc2626);
+      border: 8px solid #7f1d1d;
+      box-shadow: 
+        0 0 50px rgba(239, 68, 68, 0.5),
+        inset 0 10px 20px rgba(255,255,255,0.3),
+        inset 0 -10px 20px rgba(0,0,0,0.3);
+      color: white;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+
+    /* Pulsing radar effect behind the button */
+    .launch-btn::before {
+      content: '';
+      position: absolute;
+      top: -20px; left: -20px; right: -20px; bottom: -20px;
+      border-radius: 50%;
+      border: 2px solid #ef4444;
+      animation: pulse 2s linear infinite;
+      z-index: -1;
+    }
+
+    .launch-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 80px rgba(239, 68, 68, 0.8);
+    }
+
+    .launch-btn:active {
+      transform: scale(0.95);
+      box-shadow: 0 0 30px rgba(239, 68, 68, 0.4);
+      border: 8px solid #450a0a;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.8); opacity: 1; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+
+    /* COUNTDOWN TEXT (Hidden initially) */
+    #countdown {
+      display: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15rem;
+      font-weight: 700;
+      color: #f8fafc;
+      text-shadow: 0 0 30px rgba(255,255,255,0.5);
+    }
+
+    .ras-devs {
+      position: absolute;
+      bottom: 20px;
+      color: #64748b;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="title">HSS Mundur Digital Portal</h1>
+  
+  <button class="launch-btn" id="launchBtn">LAUNCH</button>
+  
+  <div id="countdown">3</div>
+
+  <div class="ras-devs">SYSTEM ENGINEERED BY <strong>RAS DEVS</strong></div>
+
+  <script>
+    const btn = document.getElementById('launchBtn');
+    const title = document.getElementById('title');
+    const countdownEl = document.getElementById('countdown');
+
+    btn.addEventListener('click', () => {
+      // 1. Hide the button and title
+      btn.style.display = 'none';
+      title.style.opacity = '0';
+      
+      // 2. Show the countdown
+      countdownEl.style.display = 'block';
+
+      let count = 3;
+      
+      // 3. Start the timer
+      const timer = setInterval(() => {
+        count--;
+        if (count > 0) {
+          countdownEl.innerText = count;
+        } else if (count === 0) {
+          // Boom! Confetti time
+          countdownEl.innerText = "LAUNCHED!";
+          countdownEl.style.color = "#4ade80"; // Turn green
+          
+          // Fire confetti cannon
+          var duration = 3000;
+          var end = Date.now() + duration;
+
+          (function frame() {
+            confetti({
+              particleCount: 5,
+              angle: 60,
+              spread: 55,
+              origin: { x: 0 },
+              colors: ['#d4af37', '#ffffff', '#ef4444']
+            });
+            confetti({
+              particleCount: 5,
+              angle: 120,
+              spread: 55,
+              origin: { x: 1 },
+              colors: ['#d4af37', '#ffffff', '#ef4444']
+            });
+
+            if (Date.now() < end) {
+              requestAnimationFrame(frame);
+            }
+          }());
+          
+          clearInterval(timer);
+
+          // 4. Redirect to the actual live website after 3.5 seconds
+          setTimeout(() => {
+            // NOTE: Replace this with your actual Netlify domain or 'index.html' when ready!
+            window.location.href = "index.html"; 
+          }, 3500);
+        }
+      }, 1000); // 1 second intervals
+    });
+  </script>
+</body>
+</html>
