@@ -20,6 +20,7 @@
       justify-content: center;
       overflow: hidden;
       position: relative;
+      transition: background-color 1s ease;
     }
 
     body::before {
@@ -32,6 +33,7 @@
       background-size: 48px 48px;
       pointer-events: none;
       z-index: 0;
+      transition: opacity 1s ease;
     }
 
     body::after {
@@ -43,6 +45,7 @@
       transform: translate(-50%, -50%);
       pointer-events: none;
       z-index: 0;
+      transition: opacity 1s ease;
     }
 
     .flash-active {
@@ -328,6 +331,28 @@
       transition: width 1.4s linear;
     }
 
+    /* ── VIDEO STATE ── */
+    #video-state {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 50;
+      align-items: center;
+      justify-content: center;
+      animation: fadeInVideo 1s ease forwards;
+    }
+    #video-state video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: contain; /* Keeps the video aspect ratio perfect */
+      outline: none;
+    }
+    @keyframes fadeInVideo {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
     /* ── FOOTER ── */
     .footer {
       position: fixed;
@@ -339,13 +364,13 @@
       text-transform: uppercase;
       color: #1e293b;
       z-index: 1;
+      transition: opacity 0.5s ease;
     }
     .footer strong { color: #334155; }
   </style>
 </head>
 <body>
 
-  <!-- MAIN STATE -->
   <div id="main-state">
     <div class="badge">
       <div class="badge-dot"></div>
@@ -378,15 +403,12 @@
         <span class="meta-label">Status</span>
       </div>
     </div>
-    </div>
   </div>
 
-  <!-- COUNTDOWN STATE -->
   <div id="countdown-state">
     <div id="countdown-num">3</div>
   </div>
 
-  <!-- LOADING STATE -->
   <div id="loading-state">
     <div class="load-label" id="loadLabel">Initializing portal</div>
     <div class="progress-track">
@@ -395,7 +417,6 @@
     <div class="load-sub" id="loadSub">Establishing secure connection</div>
   </div>
 
-  <!-- SUCCESS STATE -->
   <div id="success-state">
     <div class="success-icon">
       <svg width="42" height="42" viewBox="0 0 24 24" fill="none"
@@ -405,13 +426,19 @@
       </svg>
     </div>
     <div class="success-title">System Online</div>
-    <div class="success-sub">Redirecting to portal…</div>
+    <div class="success-sub">Initiating media sequence…</div>
     <div class="redirect-bar">
       <div class="redirect-fill" id="redirectFill"></div>
     </div>
   </div>
 
-  <div class="footer">System engineered by <strong>Ras Devs</strong></div>
+  <div id="video-state">
+    <video id="promoVideo">
+      <source src="school-video.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="footer" id="footer">System engineered by <strong>Ras Devs</strong></div>
 
   <script>
     const mainState      = document.getElementById('main-state');
@@ -423,6 +450,9 @@
     const loadSub        = document.getElementById('loadSub');
     const successState   = document.getElementById('success-state');
     const redirectFill   = document.getElementById('redirectFill');
+    const videoState     = document.getElementById('video-state');
+    const promoVideo     = document.getElementById('promoVideo');
+    const footer         = document.getElementById('footer');
 
     document.getElementById('launchBtn').addEventListener('click', () => {
       mainState.style.transition = 'opacity 0.4s ease';
@@ -471,9 +501,29 @@
                 loadingState.style.display = 'none';
                 successState.style.display = 'flex';
                 setTimeout(() => { redirectFill.style.width = '100%'; }, 50);
+                
+                // ── THE NEW VIDEO HANDOFF ──
                 setTimeout(() => {
-                  window.location.href = 'https://hssmundur.netlify.app';
-                }, 1500);
+                  // Fade out the background completely
+                  document.body.style.backgroundColor = '#000000';
+                  document.styleSheets[0].insertRule('body::before { opacity: 0 !important; }', 0);
+                  document.styleSheets[0].insertRule('body::after { opacity: 0 !important; }', 0);
+                  
+                  // Hide text elements
+                  successState.style.display = 'none';
+                  footer.style.opacity = '0';
+                  
+                  // Show and play the video
+                  videoState.style.display = 'flex';
+                  promoVideo.play();
+                  
+                  // When the video naturally ends, redirect to the real website
+                  promoVideo.onended = () => {
+                    window.location.href = 'https://hssmundur.netlify.app';
+                  };
+
+                }, 1500); // Waits 1.5 seconds on "SYSTEM ONLINE" before starting the video
+
               }, 3100);
 
             }, 400);
