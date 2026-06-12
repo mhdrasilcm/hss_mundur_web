@@ -25,7 +25,6 @@
       justify-content: center;
       overflow: hidden;
       position: relative;
-      transition: background-color 1s ease;
     }
 
     body::before {
@@ -38,7 +37,6 @@
       background-size: 48px 48px;
       pointer-events: none;
       z-index: 0;
-      transition: opacity 1s ease;
     }
 
     body::after {
@@ -50,16 +48,6 @@
       transform: translate(-50%, -50%);
       pointer-events: none;
       z-index: 0;
-      transition: opacity 1s ease;
-    }
-
-    /* SAFE VIDEO MODE TRANSITION */
-    body.video-mode {
-      background-color: #000000 !important;
-    }
-    body.video-mode::before, 
-    body.video-mode::after {
-      opacity: 0 !important;
     }
 
     .flash-active {
@@ -342,29 +330,56 @@
       width: 0%;
       height: 100%;
       background: #4ade80;
-      transition: width 1.4s linear;
+      transition: width 2.8s linear; /* Synced with the 3 second delay */
     }
 
-    /* ── VIDEO STATE ── */
-    #video-state {
+    /* ── ORIGINAL LOADER SCREEN (Matches Main Website) ── */
+    #loader-screen {
       display: none;
       position: fixed;
       inset: 0;
-      background: #000;
-      z-index: 50;
+      background-color: #0b1120; /* Deep blue to match your screenshot */
+      z-index: 100;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      animation: fadeInVideo 1s ease forwards;
+      opacity: 0;
+      transition: opacity 0.5s ease;
     }
-    #video-state video {
-      width: 100vw;
-      height: 100vh;
-      object-fit: contain;
-      outline: none;
+    .loader-icon {
+      width: 90px;
+      height: 90px;
+      background-color: #d4af37; /* Gold circle */
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+      border: 4px solid rgba(212, 175, 55, 0.3);
     }
-    @keyframes fadeInVideo {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+    .loader-icon svg {
+      width: 45px;
+      height: 45px;
+      fill: #0b1120; /* Dark cap */
+    }
+    .loader-dots {
+      display: flex;
+      gap: 10px;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      background-color: #d4af37;
+      border-radius: 50%;
+      animation: bounce 1.4s infinite ease-in-out both;
+    }
+    .dot:nth-child(1) { animation-delay: -0.32s; }
+    .dot:nth-child(2) { animation-delay: -0.16s; }
+    
+    @keyframes bounce {
+      0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+      40% { transform: scale(1); opacity: 1; }
     }
 
     /* ── FOOTER ── */
@@ -385,6 +400,7 @@
 </head>
 <body>
 
+  <!-- MAIN STATE -->
   <div id="main-state">
     <div class="badge">
       <div class="badge-dot"></div>
@@ -419,10 +435,12 @@
     </div>
   </div>
 
+  <!-- COUNTDOWN STATE -->
   <div id="countdown-state">
     <div id="countdown-num">3</div>
   </div>
 
+  <!-- LOADING STATE -->
   <div id="loading-state">
     <div class="load-label" id="loadLabel">Initializing portal</div>
     <div class="progress-track">
@@ -431,6 +449,7 @@
     <div class="load-sub" id="loadSub">Establishing secure connection</div>
   </div>
 
+  <!-- SUCCESS STATE -->
   <div id="success-state">
     <div class="success-icon">
       <svg width="42" height="42" viewBox="0 0 24 24" fill="none"
@@ -440,16 +459,25 @@
       </svg>
     </div>
     <div class="success-title">System Online</div>
-    <div class="success-sub">Initiating media sequence…</div>
+    <div class="success-sub">Connecting to live servers…</div>
     <div class="redirect-bar">
       <div class="redirect-fill" id="redirectFill"></div>
     </div>
   </div>
 
-  <div id="video-state">
-    <video id="promoVideo">
-      <source src="school-video.mp4" type="video/mp4">
-    </video>
+  <!-- SEAMLESS LOADER SCREEN -->
+  <div id="loader-screen">
+    <div class="loader-icon">
+      <!-- Graduation Cap Icon -->
+      <svg viewBox="0 0 24 24">
+        <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z" />
+      </svg>
+    </div>
+    <div class="loader-dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
   </div>
 
   <div class="footer" id="footer">System engineered by <strong>Ras Devs</strong></div>
@@ -464,8 +492,7 @@
     const loadSub        = document.getElementById('loadSub');
     const successState   = document.getElementById('success-state');
     const redirectFill   = document.getElementById('redirectFill');
-    const videoState     = document.getElementById('video-state');
-    const promoVideo     = document.getElementById('promoVideo');
+    const loaderScreen   = document.getElementById('loader-screen');
     const footer         = document.getElementById('footer');
 
     // The target URL to redirect to when finished
@@ -518,49 +545,35 @@
               }, 2500);
 
               setTimeout(() => {
+                // Flash green
                 document.body.classList.add('flash-active');
                 loadingState.style.display = 'none';
+                
+                // Show "SYSTEM ONLINE"
                 successState.style.display = 'flex';
                 setTimeout(() => { redirectFill.style.width = '100%'; }, 50);
                 
-                // ── THE FAIL-SAFE VIDEO HANDOFF ──
+                // ── 3 SECOND DELAY BEFORE TRANSITION ──
                 setTimeout(() => {
                   
-                  // Safely turn the background black using CSS classes
-                  document.body.classList.add('video-mode');
-                  
-                  // Hide text elements
+                  // Hide System Online elements
                   successState.style.display = 'none';
                   footer.style.opacity = '0';
                   
-                  // Show the video container
-                  videoState.style.display = 'flex';
-                  
-                  // Attempt to play the video with error catching
-                  let playPromise = promoVideo.play();
-                  
-                  if (playPromise !== undefined) {
-                    playPromise.catch(error => {
-                      // EMERGENCY FALLBACK: If the video fails to load, redirect instantly
-                      console.error("Video skipped or failed to load. Redirecting safely.", error);
-                      document.body.classList.remove('hide-cursor');
-                      window.location.href = finalWebsiteURL;
-                    });
-                  }
+                  // Fade in the seamless original loader
+                  loaderScreen.style.display = 'flex';
+                  setTimeout(() => {
+                    loaderScreen.style.opacity = '1';
+                  }, 50);
 
-                  // When the video naturally ends, restore cursor and redirect
-                  promoVideo.onended = () => {
-                    document.body.classList.remove('hide-cursor');
+                  // ── REDIRECT ──
+                  // Give the loader a quick moment to show, then redirect to the real site
+                  // (The mouse cursor will naturally return once the new page loads)
+                  setTimeout(() => {
                     window.location.href = finalWebsiteURL;
-                  };
+                  }, 800);
 
-                  // Extra failsafe just in case the video source is broken
-                  promoVideo.onerror = () => {
-                    document.body.classList.remove('hide-cursor');
-                    window.location.href = finalWebsiteURL;
-                  };
-
-                }, 1500); 
+                }, 3000); // Changed to 3000ms (3 seconds)
 
               }, 3100);
 
