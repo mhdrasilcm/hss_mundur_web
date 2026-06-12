@@ -10,6 +10,11 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    /* HIDDEN CURSOR CLASS */
+    .hide-cursor, .hide-cursor * {
+      cursor: none !important;
+    }
+
     body {
       background: #080c14;
       color: white;
@@ -46,6 +51,15 @@
       pointer-events: none;
       z-index: 0;
       transition: opacity 1s ease;
+    }
+
+    /* SAFE VIDEO MODE TRANSITION */
+    body.video-mode {
+      background-color: #000000 !important;
+    }
+    body.video-mode::before, 
+    body.video-mode::after {
+      opacity: 0 !important;
     }
 
     .flash-active {
@@ -345,7 +359,7 @@
     #video-state video {
       width: 100vw;
       height: 100vh;
-      object-fit: contain; /* Keeps the video aspect ratio perfect */
+      object-fit: contain;
       outline: none;
     }
     @keyframes fadeInVideo {
@@ -434,7 +448,7 @@
 
   <div id="video-state">
     <video id="promoVideo">
-      <source src="video.mp4" type="video/mp4">
+      <source src="school-video.mp4" type="video/mp4">
     </video>
   </div>
 
@@ -454,7 +468,14 @@
     const promoVideo     = document.getElementById('promoVideo');
     const footer         = document.getElementById('footer');
 
+    // The target URL to redirect to when finished
+    const finalWebsiteURL = 'https://hssmundur.netlify.app';
+
     document.getElementById('launchBtn').addEventListener('click', () => {
+      
+      // Immediately hide the mouse cursor
+      document.body.classList.add('hide-cursor');
+
       mainState.style.transition = 'opacity 0.4s ease';
       mainState.style.opacity = '0';
       setTimeout(() => {
@@ -502,27 +523,44 @@
                 successState.style.display = 'flex';
                 setTimeout(() => { redirectFill.style.width = '100%'; }, 50);
                 
-                // ── THE NEW VIDEO HANDOFF ──
+                // ── THE FAIL-SAFE VIDEO HANDOFF ──
                 setTimeout(() => {
-                  // Fade out the background completely
-                  document.body.style.backgroundColor = '#000000';
-                  document.styleSheets[0].insertRule('body::before { opacity: 0 !important; }', 0);
-                  document.styleSheets[0].insertRule('body::after { opacity: 0 !important; }', 0);
+                  
+                  // Safely turn the background black using CSS classes
+                  document.body.classList.add('video-mode');
                   
                   // Hide text elements
                   successState.style.display = 'none';
                   footer.style.opacity = '0';
                   
-                  // Show and play the video
+                  // Show the video container
                   videoState.style.display = 'flex';
-                  promoVideo.play();
                   
-                  // When the video naturally ends, redirect to the real website
+                  // Attempt to play the video with error catching
+                  let playPromise = promoVideo.play();
+                  
+                  if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                      // EMERGENCY FALLBACK: If the video fails to load, redirect instantly
+                      console.error("Video skipped or failed to load. Redirecting safely.", error);
+                      document.body.classList.remove('hide-cursor');
+                      window.location.href = finalWebsiteURL;
+                    });
+                  }
+
+                  // When the video naturally ends, restore cursor and redirect
                   promoVideo.onended = () => {
-                    window.location.href = 'https://hssmundur.netlify.app';
+                    document.body.classList.remove('hide-cursor');
+                    window.location.href = finalWebsiteURL;
                   };
 
-                }, 1500); // Waits 1.5 seconds on "SYSTEM ONLINE" before starting the video
+                  // Extra failsafe just in case the video source is broken
+                  promoVideo.onerror = () => {
+                    document.body.classList.remove('hide-cursor');
+                    window.location.href = finalWebsiteURL;
+                  };
+
+                }, 1500); 
 
               }, 3100);
 
