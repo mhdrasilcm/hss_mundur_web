@@ -6,24 +6,28 @@
   <title>HSS Mundur — Higher Secondary School, Palakkad</title>
   <meta name="description" content="Higher Secondary School Mundur — A century of academic excellence in Palakkad, Kerala.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <div id="loader" style="position: fixed; inset: 0; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #0d1b2a; transition: opacity 0.6s ease;">
-    <div style="width: 70px; height: 70px; border-radius: 50%; background: #c9a84c; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #0d1b2a; margin-bottom: 24px; animation: pulse 1.5s infinite;">
-      <i class="fas fa-graduation-cap"></i>
+
+  <!-- ── Loader ── -->
+  <div id="loader">
+    <div class="loader-glow"></div>
+    <div class="loader-lamp">
+      <div class="loader-flame">
+        <svg viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="fg1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ffe9b0"/><stop offset="45%" stop-color="#ffb870"/><stop offset="100%" stop-color="#ff6b35"/>
+          </linearGradient></defs>
+          <path d="M12 0C12 0 3 11 3 20a9 9 0 0018 0C21 11 12 0 12 0z" fill="url(#fg1)"/>
+        </svg>
+      </div>
+      <div class="loader-stand"></div>
+      <div class="loader-base"></div>
     </div>
-    <div style="display: flex; gap: 8px;">
-      <div style="width: 10px; height: 10px; border-radius: 50%; background: #c9a84c; animation: bounce 1.4s infinite ease-in-out both; animation-delay: -0.32s;"></div>
-      <div style="width: 10px; height: 10px; border-radius: 50%; background: #c9a84c; animation: bounce 1.4s infinite ease-in-out both; animation-delay: -0.16s;"></div>
-      <div style="width: 10px; height: 10px; border-radius: 50%; background: #c9a84c; animation: bounce 1.4s infinite ease-in-out both;"></div>
-    </div>
+    <div class="loader-text">HSS <span>MUNDUR</span></div>
   </div>
-  <style>
-    @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(201, 168, 76, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(201, 168, 76, 0); } }
-    @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
-  </style>
 
   <!-- ── Header ─────────────────────────────────────── -->
   <header id="mainHeader">
@@ -53,10 +57,12 @@
   <!-- ── Hero ───────────────────────────────────────── -->
   <section class="hero">
     <div class="hero-pattern"></div>
+    <div class="hero-orb o1"></div>
+    <div class="hero-orb o2"></div>
     <div class="container">
       <div class="hero-content">
-        <div class="hero-badge"><i class="fas fa-star"></i> Est. 1933 — Palakkad, Kerala</div>
-        <h2>Shaping Minds,<br><em>Building Futures</em></h2>
+        <div class="hero-badge"><i class="fas fa-fire"></i> Est. 1933 — Aksharadeepam, Palakkad</div>
+        <h2>Shaping Minds,<br><em class="text-gradient">Building Futures</em></h2>
         <p>Higher Secondary School Mundur — a century of academic excellence, character, and community in the heart of Palakkad.</p>
         <div class="hero-btns">
           <a href="about.html" class="btn btn-primary"><i class="fas fa-compass"></i> Explore Our School</a>
@@ -64,19 +70,19 @@
         </div>
         <div class="hero-stats">
           <div class="stat-item">
-            <div class="stat-number">90+</div>
+            <div class="stat-number" data-count="90" data-suffix="+">0</div>
             <div class="stat-label">Years of Legacy</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number">1500+</div>
+            <div class="stat-number" data-count="1500" data-suffix="+">0</div>
             <div class="stat-label">Students</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number">80+</div>
+            <div class="stat-number" data-count="80" data-suffix="+">0</div>
             <div class="stat-label">Dedicated Staff</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number">100%</div>
+            <div class="stat-number" data-count="100" data-suffix="%">0</div>
             <div class="stat-label">Pass Rate</div>
           </div>
         </div>
@@ -88,11 +94,20 @@
     </div>
   </section>
 
+  <!-- ── Marquee ────────────────────────────────────── -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>
+        <i class="fas fa-circle"></i> Excellence <i class="fas fa-circle"></i> Integrity <i class="fas fa-circle"></i> Community <i class="fas fa-circle"></i> Aksharadeepam — The Light of Knowledge <i class="fas fa-circle"></i> Since 1933 <i class="fas fa-circle"></i> Palakkad, Kerala
+      </span>
+    </div>
+  </div>
+
   <!-- ── About Preview ──────────────────────────────── -->
   <section class="about-preview" id="about">
     <div class="container">
       <div class="about-layout">
-        <div class="about-visual fade-in">
+        <div class="about-visual reveal" data-reveal="left">
           <div class="about-img-placeholder">
             <i class="fas fa-school"></i>
             <span>HSS Mundur Campus</span>
@@ -106,7 +121,7 @@
             <div class="badge-text">Founded</div>
           </div>
         </div>
-        <div class="about-text fade-in">
+        <div class="about-text reveal" data-reveal="right">
           <div class="section-label">Welcome to HSS Mundur</div>
           <h3>A Legacy of Excellence in Education</h3>
           <p>Higher Secondary School Mundur has been a cornerstone of education in Palakkad, Kerala for over nine decades. We are committed to providing quality education that empowers students to excel academically and develop into responsible, compassionate citizens.</p>
@@ -128,32 +143,32 @@
         <p>From state-of-the-art laboratories to vibrant cultural programmes, we offer every student the tools to thrive.</p>
       </div>
       <div class="features-grid">
-        <div class="feature-card fade-in">
+        <div class="feature-card reveal" data-reveal="up">
           <div class="feature-icon"><i class="fas fa-flask"></i></div>
           <h3>Modern Laboratories</h3>
           <p>Fully equipped science and computer labs enabling hands-on learning and experimentation for every student.</p>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card reveal" data-reveal="up">
           <div class="feature-icon"><i class="fas fa-book-open"></i></div>
           <h3>Rich Library</h3>
           <p>A well-stocked library with thousands of volumes, digital resources, and quiet study spaces for focused learning.</p>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card reveal" data-reveal="up">
           <div class="feature-icon"><i class="fas fa-running"></i></div>
           <h3>Sports & Athletics</h3>
           <p>Extensive sports facilities fostering physical fitness, teamwork, and competitive spirit at district and state levels.</p>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card reveal" data-reveal="up">
           <div class="feature-icon"><i class="fas fa-palette"></i></div>
           <h3>Arts & Culture</h3>
           <p>Vibrant arts, music, and cultural programmes that celebrate creativity and Kerala's rich heritage.</p>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card reveal" data-reveal="up">
           <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
           <h3>IT Education</h3>
           <p>Little Kites IT Club and smart classrooms ensure students are prepared for a digital-first world.</p>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card reveal" data-reveal="up">
           <div class="feature-icon"><i class="fas fa-users"></i></div>
           <h3>Student Clubs</h3>
           <p>Eco Club, Science Club, and various student bodies developing leadership, teamwork, and social responsibility.</p>
@@ -254,60 +269,6 @@
     </div>
   </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // ── Header scroll effect
-      const header = document.getElementById('mainHeader');
-      window.addEventListener('scroll', () => {
-        header.classList.toggle('scrolled', window.scrollY > 40);
-      });
-
-      // ── Mobile menu
-      const btn = document.getElementById('mobileMenuBtn');
-      const nav = document.getElementById('navMenu');
-      btn.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        const icon = btn.querySelector('i');
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-times');
-      });
-      document.querySelectorAll('.nav-menu a').forEach(a => {
-        a.addEventListener('click', () => {
-          nav.classList.remove('active');
-          const icon = btn.querySelector('i');
-          icon.classList.add('fa-bars');
-          icon.classList.remove('fa-times');
-        });
-      });
-
-      // ── Scroll animations
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          }
-        });
-      }, { threshold: 0.12 });
-      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-      // ── Smooth scroll
-      document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', e => {
-          const target = document.querySelector(a.getAttribute('href'));
-          if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-        });
-      });
-    });
-    // ── Loading Screen
-      window.addEventListener('load', () => {
-        const loader = document.getElementById('loader');
-        if (loader) {
-          setTimeout(() => {
-            loader.style.opacity = '0';
-            setTimeout(() => { loader.style.display = 'none'; }, 600);
-          }, 500); // Small delay to let the animation play
-        }
-      });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

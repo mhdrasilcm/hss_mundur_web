@@ -6,10 +6,28 @@
   <title>Contact — HSS Mundur</title>
   <meta name="description" content="Get in touch with Higher Secondary School Mundur, Palakkad.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
+
+  <!-- ── Loader ── -->
+  <div id="loader">
+    <div class="loader-glow"></div>
+    <div class="loader-lamp">
+      <div class="loader-flame">
+        <svg viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="fg1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ffe9b0"/><stop offset="45%" stop-color="#ffb870"/><stop offset="100%" stop-color="#ff6b35"/>
+          </linearGradient></defs>
+          <path d="M12 0C12 0 3 11 3 20a9 9 0 0018 0C21 11 12 0 12 0z" fill="url(#fg1)"/>
+        </svg>
+      </div>
+      <div class="loader-stand"></div>
+      <div class="loader-base"></div>
+    </div>
+    <div class="loader-text">HSS <span>MUNDUR</span></div>
+  </div>
 
   <header id="mainHeader">
     <div class="container header-container">
@@ -52,7 +70,7 @@
     <div class="container">
       <div class="contact-layout">
 
-        <div class="contact-info-panel fade-in">
+        <div class="contact-info-panel reveal" data-reveal="left">
           <div class="section-label">Our Details</div>
           <h3>How to Reach Us</h3>
           <p>Our staff are available during school hours to assist with any inquiries about admissions, academics, or general information.</p>
@@ -97,17 +115,17 @@
           </div>
         </div>
 
-        <div class="contact-form-panel fade-in" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+        <div class="contact-form-panel reveal" data-reveal="right" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
           <div style="padding: 32px 32px 16px;">
             <div class="section-label">Coming Next</div>
             <h3>Little Kites Initiative</h3>
             <p>Get a sneak peek at our upcoming dedicated portal for the Little Kites IT Club.</p>
           </div>
-          
+
           <div style="flex-grow: 1; padding: 0 32px 32px; height: 100%;">
-            <iframe 
-              src="https://lkmundur.netlify.app" 
-              style="width: 100%; height: 500px; border: 2px solid var(--cream-dark); border-radius: var(--radius-sm); box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);" 
+            <iframe
+              src="https://lkmundur.netlify.app"
+              style="width: 100%; height: 500px; border: 2px solid var(--cream-dark); border-radius: var(--radius-sm); box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);"
               title="Little Kites Website Preview"
               loading="lazy">
             </iframe>
@@ -167,24 +185,6 @@
     </div>
   </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const header = document.getElementById('mainHeader');
-      window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
-      
-      const btn = document.getElementById('mobileMenuBtn');
-      const nav = document.getElementById('navMenu');
-      btn.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        const icon = btn.querySelector('i');
-        icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times');
-      });
-      
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100); });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
