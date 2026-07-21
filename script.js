@@ -218,4 +218,269 @@ document.addEventListener('DOMContentLoaded', function () {
       track.innerHTML += track.innerHTML;
     }
   });
+
+  /* ── ENHANCED SCROLL-BASED PARALLAX ── */
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      hero.style.transform = `translate3d(0, ${scrolled * 0.5}px, 0)`;
+    }
+  });
+
+  /* ── ANIMATED STAT COUNTERS WITH GLOW ── */
+  const addStatGlow = () => {
+    const statItems = document.querySelectorAll('.stat-item');
+    statItems.forEach(stat => {
+      stat.classList.add('animate-in');
+    });
+  };
+
+  const statObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        addStatGlow();
+        statObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  const heroStats = document.querySelector('.hero-stats');
+  if (heroStats) statObserver.observe(heroStats);
+
+  /* ── SMOOTH SCROLL VELOCITY ── */
+  let lastScrollTop = 0;
+  let scrollVelocity = 0;
+  const header = document.getElementById('mainHeader');
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    scrollVelocity = currentScroll - lastScrollTop;
+    lastScrollTop = currentScroll;
+
+    if (header && scrollVelocity > 20) {
+      header.style.transform = 'translateY(-100%)';
+    } else if (header) {
+      header.style.transform = 'translateY(0)';
+    }
+  }, false);
+
+  /* ── 3D CARD TILT WITH DEPTH ── */
+  const setupCardTilt = () => {
+    document.querySelectorAll('[data-tilt]').forEach(element => {
+      element.addEventListener('mousemove', e => {
+        const card = e.currentTarget;
+        const rect = card.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const angleX = (e.clientY - centerY) / 10;
+        const angleY = (centerX - e.clientX) / 10;
+
+        card.style.transform = `perspective(1200px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.05) translateZ(40px)`;
+      });
+
+      element.addEventListener('mouseleave', () => {
+        element.style.transform = 'perspective(1200px) rotateX(0) rotateY(0) scale(1) translateZ(0)';
+      });
+    });
+  };
+
+  setupCardTilt();
+
+  /* ── BACKGROUND GRADIENT SHIFT ── */
+  const setupBackgroundShift = () => {
+    const colors = [
+      ['#0a1526', '#16304d'],
+      ['#16304d', '#0a1526'],
+      ['#1a2836', '#0a1526']
+    ];
+
+    let colorIndex = 0;
+    setInterval(() => {
+      const body = document.body;
+      colorIndex = (colorIndex + 1) % colors.length;
+      body.style.transition = 'background 8s ease-in-out';
+      body.style.background = `linear-gradient(135deg, ${colors[colorIndex][0]}, ${colors[colorIndex][1]})`;
+    }, 8000);
+  };
+
+  /* ── TEXT WAVE ANIMATION ── */
+  const setupTextWave = () => {
+    const waveText = document.querySelectorAll('[data-wave]');
+    waveText.forEach(text => {
+      const chars = text.textContent.split('');
+      text.innerHTML = chars.map((char, i) => 
+        `<span style="display:inline-block;animation:wave .6s ease-in-out ${i * 0.05}s infinite;">${char}</span>`
+      ).join('');
+    });
+  };
+
+  if (document.querySelector('[data-wave]')) {
+    const waveStyle = document.createElement('style');
+    waveStyle.textContent = `
+      @keyframes wave {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+    `;
+    document.head.appendChild(waveStyle);
+    setupTextWave();
+  }
+
+  /* ── MOUSE POSITION-BASED LIGHTING ── */
+  const setupDynamicLighting = () => {
+    const lightingLayer = document.createElement('div');
+    lightingLayer.id = 'dynamic-lighting';
+    lightingLayer.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(circle 300px at 50% 50%, rgba(27, 122, 120, 0.05), transparent 80%);
+    `;
+    document.body.insertBefore(lightingLayer, document.body.firstChild);
+
+    document.addEventListener('mousemove', e => {
+      lightingLayer.style.background = `radial-gradient(circle 300px at ${e.clientX}px ${e.clientY}px, rgba(27, 122, 120, 0.1), transparent 80%)`;
+    });
+  };
+
+  setupDynamicLighting();
+
+  /* ── SCROLL PROGRESS BAR ── */
+  const addScrollProgress = () => {
+    const progressBar = document.createElement('div');
+    progressBar.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #1b7a78, #2aada9, #c9a84c, #ff8a3d);
+      background-size: 200% 100%;
+      animation: progressGradient 3s ease infinite;
+      z-index: 9999;
+      box-shadow: 0 0 15px rgba(27, 122, 120, 0.5);
+    `;
+    document.body.appendChild(progressBar);
+
+    const progressStyle = document.createElement('style');
+    progressStyle.textContent = `
+      @keyframes progressGradient {
+        0% { background-position: 0% 0%; }
+        100% { background-position: 100% 0%; }
+      }
+    `;
+    document.head.appendChild(progressStyle);
+
+    window.addEventListener('scroll', () => {
+      const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (window.scrollY / windowHeight) * 100;
+      progressBar.style.width = scrolled + '%';
+    });
+  };
+
+  addScrollProgress();
+
+  /* ── ELEMENT DEPTH FOG EFFECT ── */
+  const addDepthFog = () => {
+    const fogStyle = document.createElement('style');
+    fogStyle.textContent = `
+      .reveal, .fade-in, .feature-card, .g-item {
+        position: relative;
+      }
+
+      .reveal::after, .fade-in::after, .feature-card::after, .g-item::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, transparent 0%, rgba(255, 243, 235, 0.1) 100%);
+        opacity: 0;
+        transition: opacity 0.8s ease;
+        pointer-events: none;
+        border-radius: inherit;
+      }
+
+      .reveal.in-view::after, .fade-in.in-view::after {
+        opacity: 1;
+      }
+    `;
+    document.head.appendChild(fogStyle);
+  };
+
+  addDepthFog();
+
+  /* ── INTERACTIVE CLICK WAVES ── */
+  document.addEventListener('click', e => {
+    if (e.target.closest('.btn') || e.target.closest('a')) {
+      const wave = document.createElement('div');
+      wave.style.cssText = `
+        position: fixed;
+        pointer-events: none;
+        width: 20px;
+        height: 20px;
+        left: ${e.clientX - 10}px;
+        top: ${e.clientY - 10}px;
+        border: 2px solid rgba(27, 122, 120, 0.6);
+        border-radius: 50%;
+        animation: clickWave 0.8s ease-out forwards;
+        z-index: 9998;
+      `;
+      document.body.appendChild(wave);
+
+      const clickWaveStyle = document.createElement('style');
+      clickWaveStyle.textContent = `
+        @keyframes clickWave {
+          0% {
+            width: 20px;
+            height: 20px;
+            opacity: 1;
+            left: ${e.clientX - 10}px;
+            top: ${e.clientY - 10}px;
+          }
+          100% {
+            width: 100px;
+            height: 100px;
+            opacity: 0;
+            left: ${e.clientX - 50}px;
+            top: ${e.clientY - 50}px;
+          }
+        }
+      `;
+      document.head.appendChild(clickWaveStyle);
+
+      setTimeout(() => wave.remove(), 800);
+    }
+  });
+
+  /* ── ENHANCED LOADER WITH ROTATION ── */
+  const loader = document.getElementById('loader');
+  if (loader) {
+    const loaderStyle = document.createElement('style');
+    loaderStyle.textContent = `
+      .loader-lamp {
+        animation: lampSpin 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+      }
+
+      @keyframes lampSpin {
+        0%, 100% { transform: perspective(1200px) rotateX(0) rotateY(0) rotateZ(0); }
+        25% { transform: perspective(1200px) rotateX(20deg) rotateY(30deg) rotateZ(0); }
+        50% { transform: perspective(1200px) rotateX(-20deg) rotateY(-30deg) rotateZ(0); }
+        75% { transform: perspective(1200px) rotateX(10deg) rotateY(20deg) rotateZ(0); }
+      }
+
+      #loader {
+        animation: loaderGradientShift 3s ease-in-out infinite;
+      }
+
+      @keyframes loaderGradientShift {
+        0%, 100% { background: radial-gradient(ellipse at 50% 40%, var(--navy-mid) 0%, var(--navy-deep) 75%); }
+        50% { background: radial-gradient(ellipse at 50% 60%, var(--navy-deep) 0%, var(--navy-mid) 75%); }
+      }
+    `;
+    document.head.appendChild(loaderStyle);
+  }
+
 });
