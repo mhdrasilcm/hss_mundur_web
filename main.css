@@ -156,7 +156,7 @@ body::before {
 
 /* ── Header ── */
 header {
-  position: fixed; top: 0; width: 100%; z-index: 1000;
+  position: fixed; top: 0; width: 100%; z-index: 9000 !important;
   background: rgba(10,21,38,.72); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
   height: var(--header-h); display: flex;
   align-items: center; transition: var(--transition);
