@@ -36,15 +36,19 @@ document.addEventListener('DOMContentLoaded', function () {
     btn.addEventListener('click', () => {
       nav.classList.toggle('active');
       const icon = btn.querySelector('i');
-      icon.classList.toggle('fa-bars');
-      icon.classList.toggle('fa-times');
+      if (icon) {
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      }
     });
     nav.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         nav.classList.remove('active');
         const icon = btn.querySelector('i');
-        icon.classList.add('fa-bars');
-        icon.classList.remove('fa-times');
+        if (icon) {
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
       });
     });
   }
@@ -95,7 +99,9 @@ document.addEventListener('DOMContentLoaded', function () {
       const y = e.clientY - r.top - r.height / 2;
       el.style.transform = `translate(${x * 0.14}px, ${y * 0.28 - 3}px)`;
     });
-    el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+    el.addEventListener('mouseleave', () => { 
+      if (el) el.style.transform = ''; 
+    });
   });
 
   /* ── Animated stat counters ── */
@@ -182,8 +188,11 @@ document.addEventListener('DOMContentLoaded', function () {
       currentIdx = idx;
       const item = visibleItems[currentIdx];
       if (!item) return;
-      lbImg.src = item.querySelector('img').src;
-      lbCap.textContent = item.querySelector('.overlay').textContent.trim();
+      const imgEl = item.querySelector('img');
+      const overlayEl = item.querySelector('.overlay');
+      if (!imgEl || !overlayEl) return;
+      lbImg.src = imgEl.src;
+      lbCap.textContent = overlayEl.textContent.trim();
       modal.style.display = 'flex';
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -202,13 +211,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     if (lbClose) lbClose.addEventListener('click', closeLightbox);
     if (modal) modal.addEventListener('click', e => { if (e.target === modal) closeLightbox(); });
-    if (lbPrev) lbPrev.addEventListener('click', () => openLightbox((currentIdx - 1 + visibleItems.length) % visibleItems.length));
-    if (lbNext) lbNext.addEventListener('click', () => openLightbox((currentIdx + 1) % visibleItems.length));
+    if (lbPrev) lbPrev.addEventListener('click', () => {
+      if (visibleItems.length > 0) openLightbox((currentIdx - 1 + visibleItems.length) % visibleItems.length);
+    });
+    if (lbNext) lbNext.addEventListener('click', () => {
+      if (visibleItems.length > 0) openLightbox((currentIdx + 1) % visibleItems.length);
+    });
     document.addEventListener('keydown', e => {
       if (!modal || modal.style.display !== 'flex') return;
       if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') lbPrev.click();
-      if (e.key === 'ArrowRight') lbNext.click();
+      if (e.key === 'ArrowLeft' && lbPrev) lbPrev.click();
+      if (e.key === 'ArrowRight' && lbNext) lbNext.click();
     });
   }
 

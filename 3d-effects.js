@@ -149,11 +149,13 @@ class HSS3DEffects {
 
         // Parallax effect on mouse move
         const orbs = document.querySelectorAll('.hero-orb');
-        orbs.forEach((orb, idx) => {
-          const x = (window.innerWidth / 2 - mouseX) / 100;
-          const y = (window.innerHeight / 2 - mouseY) / 100;
-          orb.style.transform = `translate3d(${x * (idx + 1) * 10}px, ${y * (idx + 1) * 10}px, -${50 + idx * 50}px)`;
-        });
+        if (orbs.length > 0) {
+          orbs.forEach((orb, idx) => {
+            const x = (window.innerWidth / 2 - mouseX) / 100;
+            const y = (window.innerHeight / 2 - mouseY) / 100;
+            orb.style.transform = `translate3d(${x * (idx + 1) * 10}px, ${y * (idx + 1) * 10}px, -${50 + idx * 50}px)`;
+          });
+        }
       });
     } catch (e) {
       console.warn('Mouse follower setup failed:', e);
