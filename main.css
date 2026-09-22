@@ -156,7 +156,7 @@ body::before {
 
 /* ── Header ── */
 header {
-  position: fixed; top: 0; width: 100%; z-index: 9000 !important;
+  position: fixed; top: 0; width: 100%; z-index: 1000;
   background: rgba(10,21,38,.72); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
   height: var(--header-h); display: flex;
   align-items: center; transition: var(--transition);
@@ -295,7 +295,7 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
 .hero-orb.o2 { width: 180px; height: 180px; background: radial-gradient(circle, rgba(42,173,169,.35), transparent 70%); bottom: 10%; left: 6%; animation-delay: -4s; }
 @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-22px); } }
 
-.hero-content { position: relative; z-index: 0; max-width: 780px; }
+.hero-content { position: relative; z-index: 1; max-width: 780px; }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 10px;
   background: rgba(201,168,76,.15); border: 1px solid rgba(201,168,76,.3);
