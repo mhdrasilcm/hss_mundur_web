@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
       requestAnimationFrame(animateRing);
     }
     animateRing();
-    const hoverables = 'a, button, .btn, .gallery-item, .g-item, .feature-card, .mv-card, .filter-btn';
+    const hoverables = 'a, button, .btn, .g-item, .feature-card, .mv-card';
     document.querySelectorAll(hoverables).forEach(el => {
       el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
       el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
@@ -150,80 +150,6 @@ document.addEventListener('DOMContentLoaded', function () {
       setTimeout(() => { window.location.href = href; }, 480);
     });
   });
-
-  /* ── Gallery filtering + lightbox (gallery.html only) ── */
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  if (filterBtns.length && galleryItems.length) {
-    filterBtns.forEach(fbtn => {
-      fbtn.addEventListener('click', function () {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        const filter = this.dataset.filter;
-        galleryItems.forEach(item => {
-          const show = filter === 'all' || item.dataset.category === filter;
-          item.style.opacity = show ? '1' : '0';
-          item.style.transform = show ? 'scale(1)' : 'scale(0.9)';
-          item.style.pointerEvents = show ? 'auto' : 'none';
-          setTimeout(() => { item.style.display = show ? 'block' : 'none'; }, show ? 0 : 300);
-          if (show) setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 10);
-        });
-      });
-    });
-
-    const modal = document.getElementById('lightboxModal');
-    const lbImg = document.getElementById('lightboxImg');
-    const lbCap = document.getElementById('lightboxCaption');
-    const lbClose = document.getElementById('lightboxClose');
-    const lbPrev = document.getElementById('lightboxPrev');
-    const lbNext = document.getElementById('lightboxNext');
-    let currentIdx = 0;
-    let visibleItems = [];
-
-    function updateVisibleItems() {
-      visibleItems = Array.from(document.querySelectorAll('.gallery-item')).filter(el => el.style.display !== 'none');
-    }
-    function openLightbox(idx) {
-      updateVisibleItems();
-      currentIdx = idx;
-      const item = visibleItems[currentIdx];
-      if (!item) return;
-      const imgEl = item.querySelector('img');
-      const overlayEl = item.querySelector('.overlay');
-      if (!imgEl || !overlayEl) return;
-      lbImg.src = imgEl.src;
-      lbCap.textContent = overlayEl.textContent.trim();
-      modal.style.display = 'flex';
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeLightbox() {
-      modal.style.display = 'none';
-      modal.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-    galleryItems.forEach((item) => {
-      item.addEventListener('click', () => {
-        updateVisibleItems();
-        const visIdx = visibleItems.indexOf(item);
-        openLightbox(visIdx >= 0 ? visIdx : 0);
-      });
-    });
-    if (lbClose) lbClose.addEventListener('click', closeLightbox);
-    if (modal) modal.addEventListener('click', e => { if (e.target === modal) closeLightbox(); });
-    if (lbPrev) lbPrev.addEventListener('click', () => {
-      if (visibleItems.length > 0) openLightbox((currentIdx - 1 + visibleItems.length) % visibleItems.length);
-    });
-    if (lbNext) lbNext.addEventListener('click', () => {
-      if (visibleItems.length > 0) openLightbox((currentIdx + 1) % visibleItems.length);
-    });
-    document.addEventListener('keydown', e => {
-      if (!modal || modal.style.display !== 'flex') return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft' && lbPrev) lbPrev.click();
-      if (e.key === 'ArrowRight' && lbNext) lbNext.click();
-    });
-  }
 
   /* ── Marquee: duplicate content for seamless loop ── */
   document.querySelectorAll('.marquee-track').forEach(track => {

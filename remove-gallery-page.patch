@@ -1,0 +1,467 @@
+diff --git a/about.html b/about.html
+index 43c2982..0a8240b 100644
+--- a/about.html
++++ b/about.html
+@@ -47,7 +47,6 @@
+         <ul>
+           <li><a href="index.html">Home</a></li>
+           <li><a href="about.html" class="active">About</a></li>
+-          <li><a href="gallery.html">Gallery</a></li>
+           <li><a href="contact.html">Contact</a></li>
+           <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog <i class="fas fa-external-link-alt" style="font-size: 0.7em; margin-left: 3px;"></i></a></li>
+         </ul>
+@@ -192,7 +191,6 @@
+           <ul>
+             <li><a href="index.html">Home</a></li>
+             <li><a href="about.html">About Us</a></li>
+-            <li><a href="gallery.html">Gallery</a></li>
+             <li><a href="contact.html">Contact</a></li>
+             <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
+           </ul>
+diff --git a/contact.html b/contact.html
+index 2c20923..8464442 100644
+--- a/contact.html
++++ b/contact.html
+@@ -46,7 +46,6 @@
+         <ul>
+           <li><a href="index.html">Home</a></li>
+           <li><a href="about.html">About</a></li>
+-          <li><a href="gallery.html">Gallery</a></li>
+           <li><a href="contact.html" class="active">Contact</a></li>
+           <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog <i class="fas fa-external-link-alt" style="font-size: 0.7em; margin-left: 3px;"></i></a></li>
+         </ul>
+@@ -167,7 +166,6 @@
+           <ul>
+             <li><a href="index.html">Home</a></li>
+             <li><a href="about.html">About Us</a></li>
+-            <li><a href="gallery.html">Gallery</a></li>
+             <li><a href="contact.html">Contact</a></li>
+             <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
+           </ul>
+diff --git a/gallery.html b/gallery.html
+deleted file mode 100644
+index f5a04c8..0000000
+--- a/gallery.html
++++ /dev/null
+@@ -1,217 +0,0 @@
+-<!DOCTYPE html>
+-<html lang="en">
+-<head>
+-  <meta charset="UTF-8">
+-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-  <title>Gallery — HSS Mundur</title>
+-  <meta name="description" content="Photo gallery of Higher Secondary School Mundur — classrooms, labs, sports, and events.">
+-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+-  <link rel="stylesheet" href="main.css">
+-  <link rel="stylesheet" href="3d-effects.css">
+-</head>
+-<body>
+-
+-  <!-- ── Loader ── -->
+-  <div id="loader">
+-    <div class="loader-glow"></div>
+-    <div class="loader-lamp">
+-      <div class="loader-flame">
+-        <svg viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg">
+-          <defs><linearGradient id="fg1" x1="0" y1="0" x2="0" y2="1">
+-            <stop offset="0%" stop-color="#ffe9b0"/><stop offset="45%" stop-color="#ffb870"/><stop offset="100%" stop-color="#ff6b35"/>
+-          </linearGradient></defs>
+-          <path d="M12 0C12 0 3 11 3 20a9 9 0 0018 0C21 11 12 0 12 0z" fill="url(#fg1)"/>
+-        </svg>
+-      </div>
+-      <div class="loader-stand"></div>
+-      <div class="loader-base"></div>
+-    </div>
+-    <div class="loader-text">HSS <span>MUNDUR</span></div>
+-  </div>
+-
+-  <!-- ── Header ─────────────────────────────────────── -->
+-  <header id="mainHeader">
+-    <div class="container header-container">
+-      <a href="index.html" class="logo">
+-        <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+-        <div class="logo-text">
+-          <h1>HSS MUNDUR</h1>
+-          <p>Higher Secondary School, Palakkad</p>
+-        </div>
+-      </a>
+-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+-        <i class="fas fa-bars"></i>
+-      </button>
+-      <nav class="nav-menu" id="navMenu">
+-        <ul>
+-          <li><a href="index.html">Home</a></li>
+-          <li><a href="about.html">About</a></li>
+-          <li><a href="gallery.html" class="active">Gallery</a></li>
+-          <li><a href="contact.html">Contact</a></li>
+-          <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog <i class="fas fa-external-link-alt" style="font-size: 0.7em; margin-left: 3px;"></i></a></li>
+-        </ul>
+-      </nav>
+-    </div>
+-  </header>
+-
+-  <!-- ── Page Hero ──────────────────────────────────── -->
+-  <section class="page-hero">
+-    <div class="container">
+-      <div class="breadcrumb">
+-        <a href="index.html">Home</a>
+-        <i class="fas fa-chevron-right" style="font-size:.65rem;"></i>
+-        <span>Gallery</span>
+-      </div>
+-      <div class="section-label" style="margin-bottom:14px;">Campus Life</div>
+-      <h1>School Gallery</h1>
+-      <p>Explore photos of school life, facilities, and activities at HSS Mundur.</p>
+-    </div>
+-  </section>
+-
+-  <!-- ── Gallery Section ────────────────────────────── -->
+-  <section class="gallery-section">
+-    <div class="container">
+-
+-      <div class="gallery-filters fade-in">
+-        <button class="filter-btn active" data-filter="all">All Photos</button>
+-        <button class="filter-btn" data-filter="classroom">Classrooms</button>
+-        <button class="filter-btn" data-filter="lab">Laboratories</button>
+-        <button class="filter-btn" data-filter="sports">Sports</button>
+-        <button class="filter-btn" data-filter="lk">Little Kites</button>
+-        <button class="filter-btn" data-filter="clubs">Clubs</button>
+-        <button class="filter-btn" data-filter="event">Events</button>
+-      </div>
+-
+-      <div class="gallery-grid fade-in" id="galleryContainer">
+-        <div class="gallery-item" data-category="classroom" data-label="Main Building">
+-          <img src="images/c1.jpg" alt="Main School Building" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+-          <div class="overlay">Main School Building</div>
+-        </div>
+-        <div class="gallery-item" data-category="classroom" data-label="HS Building">
+-          <img src="images/c2.jpg" alt="HS Building And Ground" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+-          <div class="overlay">HS Building &amp; Ground</div>
+-        </div>
+-        <div class="gallery-item" data-category="classroom" data-label="Smart Classroom">
+-          <img src="images/c3.jpg" alt="Smart Classroom" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+-          <div class="overlay">Smart Classroom</div>
+-        </div>
+-        <div class="gallery-item" data-category="lab" data-label="HS Computer Lab 1">
+-          <img src="images/lb1.jpg" alt="HS Computer Lab 1" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+-          <div class="overlay">HS Computer Lab 1</div>
+-        </div>
+-        <div class="gallery-item" data-category="lab" data-label="HS Computer Lab 2">
+-          <img src="images/lb2.jpg" alt="HS Computer Lab 2" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+-          <div class="overlay">HS Computer Lab 2</div>
+-        </div>
+-        <div class="gallery-item" data-category="lab" data-label="UP Computer Lab">
+-          <img src="images/lb3.jpg" alt="UP Computer Lab" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+-          <div class="overlay">UP Computer Lab</div>
+-        </div>
+-        <div class="gallery-item" data-category="lab" data-label="Science Lab">
+-          <img src="images/sb.jpg" alt="Science Laboratory" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+-          <div class="overlay">Science Laboratory</div>
+-        </div>
+-        <div class="gallery-item" data-category="classroom" data-label="School Library">
+-          <img src="images/lib.jpg" alt="School Library" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+-          <div class="overlay">School Library</div>
+-        </div>
+-        <div class="gallery-item" data-category="sports" data-label="Sports Day">
+-          <img src="images/sd.jpg" alt="Annual Sports Day" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+-          <div class="overlay">Annual Sports Day</div>
+-        </div>
+-        <div class="gallery-item" data-category="event" data-label="Annual Day">
+-          <img src="images/gallery8.jpg" alt="Annual Day Celebration" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+-          <div class="overlay">Annual Day Celebration</div>
+-        </div>
+-        <div class="gallery-item" data-category="event" data-label="Cultural Event">
+-          <img src="images/gallery9.jpg" alt="Cultural Event" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+-          <div class="overlay">Cultural Event</div>
+-        </div>
+-        <div class="gallery-item" data-category="sports" data-label="Basketball Court">
+-          <img src="images/gallery10.jpg" alt="Basketball Court" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+-          <div class="overlay">Basketball Court</div>
+-        </div>
+-        <div class="gallery-item" data-category="clubs" data-label="School Garden">
+-          <img src="images/gallery11.jpg" alt="School Garden" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+-          <div class="overlay">School Garden</div>
+-        </div>
+-        <div class="gallery-item" data-category="classroom" data-label="Art &amp; Craft Room">
+-          <img src="images/gallery12.jpg" alt="Art and Craft Room" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+-          <div class="overlay">Art &amp; Craft Room</div>
+-        </div>
+-        <div class="gallery-item" data-category="lk" data-label="Little Kites">
+-          <img src="images/lk1.jpg" alt="Little Kites IT Club" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+-          <div class="overlay">Little Kites IT Club</div>
+-        </div>
+-      </div>
+-
+-      <div style="text-align:center;margin-top:36px;" class="fade-in">
+-        <p style="font-size:.88rem;color:var(--text-light);display:inline-flex;align-items:center;gap:8px;">
+-          <i class="fas fa-hand-pointer" style="color:var(--teal);"></i>
+-          Click any photo to view full size &nbsp;·&nbsp; Use arrow keys to navigate
+-        </p>
+-      </div>
+-    </div>
+-  </section>
+-
+-  <!-- ── Lightbox ───────────────────────────────────── -->
+-  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true">
+-    <div class="lightbox-content">
+-      <button class="lightbox-close" id="lightboxClose" aria-label="Close"><i class="fas fa-times"></i></button>
+-      <button class="lightbox-nav-btn" id="lightboxPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+-      <button class="lightbox-nav-btn" id="lightboxNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+-      <img class="lightbox-img" id="lightboxImg" src="" alt="">
+-      <div class="lightbox-caption" id="lightboxCaption"></div>
+-    </div>
+-  </div>
+-
+-  <!-- ── Footer ─────────────────────────────────────── -->
+-  <footer>
+-    <div class="container">
+-      <div class="footer-grid">
+-        <div class="footer-brand">
+-          <a href="index.html" class="logo">
+-            <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+-            <div class="logo-text">
+-              <h1>HSS MUNDUR</h1>
+-              <p>Higher Secondary School, Palakkad</p>
+-            </div>
+-          </a>
+-          <p class="desc">Dedicated to academic excellence and the holistic development of every student since 1933.</p>
+-          <div class="social-row">
+-            <a href="#"><i class="fab fa-facebook-f"></i></a>
+-            <a href="#"><i class="fab fa-twitter"></i></a>
+-            <a href="#"><i class="fab fa-instagram"></i></a>
+-            <a href="#"><i class="fab fa-youtube"></i></a>
+-          </div>
+-        </div>
+-        <div class="footer-col">
+-          <h4>Quick Links</h4>
+-          <ul>
+-            <li><a href="index.html">Home</a></li>
+-            <li><a href="about.html">About Us</a></li>
+-            <li><a href="gallery.html">Gallery</a></li>
+-            <li><a href="contact.html">Contact</a></li>
+-            <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
+-          </ul>
+-        </div>
+-        <div class="footer-col">
+-          <h4>Contact</h4>
+-          <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>HSS Mundur, Palakkad, Kerala 678592</span></div>
+-          <div class="contact-item"><i class="fas fa-phone"></i><span>+91 491 2832454</span></div>
+-          <div class="contact-item"><i class="fas fa-envelope"></i><span>hssmundur@gmail.com</span></div>
+-          <div class="contact-item"><i class="fas fa-clock"></i><span>Mon – Fri: 8:30 AM – 4:00 PM</span></div>
+-        </div>
+-      </div>
+-      <div class="footer-bottom">
+-        <span>© 2026 Higher Secondary School Mundur, Palakkad. All Rights Reserved.</span>
+-        <span>Made with <i class="fas fa-heart" style="color: #ff2a2a;"></i> by <strong>Ras Devs</strong></span>
+-      </div>
+-    </div>
+-  </footer>
+-
+-  <script src="script.js"></script>
+-  <script src="3d-effects.js"></script>
+-</body>
+-</html>
+diff --git a/index.html b/index.html
+index 1e2f666..a527cc2 100644
+--- a/index.html
++++ b/index.html
+@@ -47,7 +47,6 @@
+         <ul>
+           <li><a href="index.html" class="active">Home</a></li>
+           <li><a href="about.html">About</a></li>
+-          <li><a href="gallery.html">Gallery</a></li>
+           <li><a href="contact.html">Contact</a></li>
+           <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog <i class="fas fa-external-link-alt" style="font-size: 0.7em; margin-left: 3px;"></i></a></li>
+         </ul>
+@@ -67,7 +66,6 @@
+         <p>Higher Secondary School Mundur — a century of academic excellence, character, and community in the heart of Palakkad.</p>
+         <div class="hero-btns">
+           <a href="about.html" class="btn btn-primary"><i class="fas fa-compass"></i> Explore Our School</a>
+-          <a href="gallery.html" class="btn btn-outline"><i class="fas fa-images"></i> View Gallery</a>
+         </div>
+         <div class="hero-stats">
+           <div class="stat-item">
+@@ -186,7 +184,6 @@
+           <div class="section-label">Campus Life</div>
+           <h2 style="color:white;">A Glimpse of<br>School Life</h2>
+         </div>
+-        <a href="gallery.html" class="btn btn-outline" style="flex-shrink:0;">View All Photos</a>
+       </div>
+       <div class="gallery-masonry fade-in">
+         <div class="g-item">
+@@ -250,7 +247,6 @@
+           <ul>
+             <li><a href="index.html">Home</a></li>
+             <li><a href="about.html">About Us</a></li>
+-            <li><a href="gallery.html">Gallery</a></li>
+             <li><a href="contact.html">Contact</a></li>
+             <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
+           </ul>
+diff --git a/main.css b/main.css
+index dbf38fd..898c469 100644
+--- a/main.css
++++ b/main.css
+@@ -429,52 +429,6 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
+ .mv-card h3 { font-size: 1.32rem; margin-bottom: 14px; }
+ .mv-card p { font-size: .92rem; line-height: 1.7; }
+ 
+-/* ══════════════ GALLERY PAGE ══════════════ */
+-.gallery-section { padding: 80px 0; background: var(--cream); }
+-.gallery-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 44px; }
+-.filter-btn {
+-  background: var(--white); border: 1.5px solid #ddd; color: var(--text-mid); padding: 9px 24px;
+-  border-radius: 100px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: .85rem; font-weight: 500; transition: var(--transition);
+-}
+-.filter-btn.active, .filter-btn:hover { background: var(--navy); border-color: var(--navy); color: var(--white); transform: translateY(-2px); }
+-
+-.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 22px; }
+-.gallery-item { border-radius: var(--radius-sm); overflow: hidden; position: relative; height: 240px; background: var(--cream-dark); cursor: pointer; transition: transform .45s var(--ease), box-shadow .45s var(--ease), opacity .4s ease; }
+-.gallery-item:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+-.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+-.gallery-item:hover img { transform: scale(1.08); }
+-.gallery-item .overlay {
+-  position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(10,21,38,.86));
+-  color: white; padding: 26px 16px 14px; font-size: .85rem; font-weight: 500; transform: translateY(100%); transition: var(--transition);
+-}
+-.gallery-item:hover .overlay { transform: translateY(0); }
+-.gallery-item::before {
+-  content: attr(data-label); position: absolute; inset: 0; display: flex; align-items: center;
+-  justify-content: center; color: var(--text-light); font-size: .85rem; background: var(--cream-dark); text-align: center; padding: 12px;
+-}
+-.gallery-item img.loaded { position: relative; z-index: 1; }
+-
+-.lightbox-modal { display: none; position: fixed; inset: 0; background: rgba(6,13,24,.94); z-index: 2000; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(6px); }
+-.lightbox-modal.open { animation: fadeInModal .3s ease; }
+-@keyframes fadeInModal { from { opacity: 0; } to { opacity: 1; } }
+-.lightbox-content { max-width: 90vw; max-height: 90vh; position: relative; text-align: center; animation: zoomInModal .35s var(--ease); }
+-@keyframes zoomInModal { from { transform: scale(.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+-.lightbox-img { max-width: 100%; max-height: 78vh; border-radius: 10px; display: block; margin: 0 auto; box-shadow: var(--shadow-lg); }
+-.lightbox-close {
+-  position: absolute; top: -48px; right: 0; background: rgba(255,255,255,.15); color: white;
+-  border: 1px solid rgba(255,255,255,.3); width: 40px; height: 40px; border-radius: 50%;
+-  font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition);
+-}
+-.lightbox-close:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); transform: rotate(90deg); }
+-.lightbox-nav-btn {
+-  position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+-  color: white; width: 48px; height: 48px; border-radius: 50%; font-size: 1.1rem; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center;
+-}
+-.lightbox-nav-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+-#lightboxPrev { left: -64px; }
+-#lightboxNext { right: -64px; }
+-.lightbox-caption { color: rgba(255,255,255,.7); margin-top: 16px; font-size: .9rem; letter-spacing: .03em; }
+-
+ /* ══════════════ CONTACT PAGE ══════════════ */
+ .contact-section { padding: 96px 0; background: var(--white); }
+ .contact-layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px; }
+@@ -547,16 +501,12 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
+   .contact-form-panel { padding: 28px 20px; }
+   .map-embed iframe { height: 300px; }
+ 
+-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+-  #lightboxPrev { left: -8px; }
+-  #lightboxNext { right: -8px; }
+ }
+ 
+ @media (max-width: 480px) {
+   .about-badge-float { width: 92px; height: 92px; }
+   .about-badge-float .badge-year { font-size: 1.6rem; }
+   .hero-stats { grid-template-columns: 1fr 1fr; gap: 20px; }
+-  .gallery-grid { grid-template-columns: 1fr; }
+ }
+ 
+ /* ── Reduced Motion ── */
+diff --git a/script.js b/script.js
+index aa33e50..e6545d0 100644
+--- a/script.js
++++ b/script.js
+@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
+       requestAnimationFrame(animateRing);
+     }
+     animateRing();
+-    const hoverables = 'a, button, .btn, .gallery-item, .g-item, .feature-card, .mv-card, .filter-btn';
++    const hoverables = 'a, button, .btn, .g-item, .feature-card, .mv-card';
+     document.querySelectorAll(hoverables).forEach(el => {
+       el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+       el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+@@ -151,80 +151,6 @@ document.addEventListener('DOMContentLoaded', function () {
+     });
+   });
+ 
+-  /* ── Gallery filtering + lightbox (gallery.html only) ── */
+-  const filterBtns = document.querySelectorAll('.filter-btn');
+-  const galleryItems = document.querySelectorAll('.gallery-item');
+-  if (filterBtns.length && galleryItems.length) {
+-    filterBtns.forEach(fbtn => {
+-      fbtn.addEventListener('click', function () {
+-        filterBtns.forEach(b => b.classList.remove('active'));
+-        this.classList.add('active');
+-        const filter = this.dataset.filter;
+-        galleryItems.forEach(item => {
+-          const show = filter === 'all' || item.dataset.category === filter;
+-          item.style.opacity = show ? '1' : '0';
+-          item.style.transform = show ? 'scale(1)' : 'scale(0.9)';
+-          item.style.pointerEvents = show ? 'auto' : 'none';
+-          setTimeout(() => { item.style.display = show ? 'block' : 'none'; }, show ? 0 : 300);
+-          if (show) setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 10);
+-        });
+-      });
+-    });
+-
+-    const modal = document.getElementById('lightboxModal');
+-    const lbImg = document.getElementById('lightboxImg');
+-    const lbCap = document.getElementById('lightboxCaption');
+-    const lbClose = document.getElementById('lightboxClose');
+-    const lbPrev = document.getElementById('lightboxPrev');
+-    const lbNext = document.getElementById('lightboxNext');
+-    let currentIdx = 0;
+-    let visibleItems = [];
+-
+-    function updateVisibleItems() {
+-      visibleItems = Array.from(document.querySelectorAll('.gallery-item')).filter(el => el.style.display !== 'none');
+-    }
+-    function openLightbox(idx) {
+-      updateVisibleItems();
+-      currentIdx = idx;
+-      const item = visibleItems[currentIdx];
+-      if (!item) return;
+-      const imgEl = item.querySelector('img');
+-      const overlayEl = item.querySelector('.overlay');
+-      if (!imgEl || !overlayEl) return;
+-      lbImg.src = imgEl.src;
+-      lbCap.textContent = overlayEl.textContent.trim();
+-      modal.style.display = 'flex';
+-      modal.classList.add('open');
+-      document.body.style.overflow = 'hidden';
+-    }
+-    function closeLightbox() {
+-      modal.style.display = 'none';
+-      modal.classList.remove('open');
+-      document.body.style.overflow = '';
+-    }
+-    galleryItems.forEach((item) => {
+-      item.addEventListener('click', () => {
+-        updateVisibleItems();
+-        const visIdx = visibleItems.indexOf(item);
+-        openLightbox(visIdx >= 0 ? visIdx : 0);
+-      });
+-    });
+-    if (lbClose) lbClose.addEventListener('click', closeLightbox);
+-    if (modal) modal.addEventListener('click', e => { if (e.target === modal) closeLightbox(); });
+-    if (lbPrev) lbPrev.addEventListener('click', () => {
+-      if (visibleItems.length > 0) openLightbox((currentIdx - 1 + visibleItems.length) % visibleItems.length);
+-    });
+-    if (lbNext) lbNext.addEventListener('click', () => {
+-      if (visibleItems.length > 0) openLightbox((currentIdx + 1) % visibleItems.length);
+-    });
+-    document.addEventListener('keydown', e => {
+-      if (!modal || modal.style.display !== 'flex') return;
+-      if (e.key === 'Escape') closeLightbox();
+-      if (e.key === 'ArrowLeft' && lbPrev) lbPrev.click();
+-      if (e.key === 'ArrowRight' && lbNext) lbNext.click();
+-    });
+-  }
+-
+   /* ── Marquee: duplicate content for seamless loop ── */
+   document.querySelectorAll('.marquee-track').forEach(track => {
+     if (track.children.length === 1) {
