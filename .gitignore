@@ -1,1 +1,21 @@
-Nothing should be ignored since the changes only include source files (.js, .html) without any build artifacts, dependencies, or temporary files.
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo

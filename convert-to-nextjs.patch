@@ -1,0 +1,4517 @@
+diff --git a/.gitignore b/.gitignore
+index b39e3dc..24d92dc 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1 +1,21 @@
+-Nothing should be ignored since the changes only include source files (.js, .html) without any build artifacts, dependencies, or temporary files.
+\ No newline at end of file
++# dependencies
++/node_modules
++
++# next.js
++/.next/
++/out/
++
++# misc
++.DS_Store
++*.pem
++
++# debug
++npm-debug.log*
++yarn-debug.log*
++yarn-error.log*
++
++# local env files
++.env*.local
++
++# typescript
++*.tsbuildinfo
+diff --git a/3D-EFFECTS-GUIDE.md b/3D-EFFECTS-GUIDE.md
+deleted file mode 100644
+index 5dbd86a..0000000
+--- a/3D-EFFECTS-GUIDE.md
++++ /dev/null
+@@ -1,351 +0,0 @@
+-# 🎨 HSS Mundur Website - 3D Effects & Animations Guide
+-
+-## 🚀 What's New
+-
+-Your HSS Mundur website has been dramatically enhanced with **premium 3D effects, advanced animations, and interactive visual elements**. Here's everything that's been added:
+-
+----
+-
+-## 📦 New Files Added
+-
+-### 1. **3d-effects.css** (13.2 KB)
+-Advanced CSS3 animations and 3D transformations including:
+-- 3D perspective transforms on cards
+-- Parallax animations
+-- Keyframe animations for depth effects
+-- Transform stagger sequences
+-
+-### 2. **3d-effects.js** (9.4 KB)
+-JavaScript engine with:
+-- Particle system with connections
+-- Mouse follower effects
+-- Scroll-triggered animations
+-- Interactive element handlers
+-- Glitch effects
+-- Lighting system
+-
+----
+-
+-## ✨ Key Features
+-
+-### 🎭 3D Card Animations
+-**Feature Cards:**
+-- Hover to see dramatic 3D rotation (rotateX, rotateY, rotateZ)
+-- Depth scaling with perspective shift
+-- Icon performs 360° rotation with glow
+-- Enhanced shadow effects on hover
+-- Smooth magnetic cursor effects
+-
+-**Gallery Items:**
+-- 3D flip effect on hover
+-- Image scale and rotation transform
+-- Overlay gradient with backdrop blur
+-- Smooth transitions
+-
+-### 🌊 Parallax & Scroll Effects
+-- Hero section parallax with depth layers
+-- Scroll-triggered element reveals
+-- Staggered animations for element groups
+-- Parallax background patterns (8s animation cycle)
+-- Orb elements with floating animations
+-
+-### 💫 Advanced Animations
+-- **Particle System**: Floating particles with color connections
+-- **Gradient Shifts**: Text gradients that animate through colors
+-- **Stagger Sequences**: Elements appear with cascading delays
+-- **Hero Content**: Content slides up with 3D rotation
+-- **Stat Counters**: Numbers count up with glow pulses
+-
+-### 🎯 Interactive Effects
+-- **3D Card Tilt**: Rotate based on mouse position
+-- **Button Ripple**: Click creates expanding ripple wave
+-- **Click Waves**: Interactive circles expand on link clicks
+-- **Glitch Text**: Headers shimmer with color glitch
+-- **Scroll Progress Bar**: Animated gradient bar at top
+-- **Dynamic Lighting**: Mouse-following lighting effect
+-
+-### 🎬 Page Transitions
+-- Wipe transition effects between pages
+-- Smooth scroll behavior
+-- Page load animations
+-- Enhanced loader with 3D rotation
+-
+----
+-
+-## 🎨 Animation Types
+-
+-### Keyframe Animations
+-- `slideUpContent` - Content slides from bottom with rotation
+-- `revealFromLeft/Right/Up` - Elements reveal with 3D rotation
+-- `fadeInScale` - Elements fade and scale in
+-- `orbFloat` - Floating animation for background orbs
+-- `orbRotate` - 360° rotation for depth effect
+-- `orbPulse` - Pulsing scale animation
+-- `patternShift` - Background pattern movement
+-- `counterGlow` - Glow pulse for stat counters
+-- `gradientShift` - Text gradient color cycling
+-- `glitch` - Text shimmer effect
+-- `wave` - Character wave motion
+-- `ripple` - Button click ripple
+-- `clickWave` - Link click wave expansion
+-
+-### 3D Transforms
+-- `perspective()` - Creates 3D depth
+-- `rotateX()`, `rotateY()`, `rotateZ()` - 3D rotations
+-- `translateZ()` - Depth positioning
+-- `scale()` - Size transformation
+-- `skew()` - Skew effects
+-
+----
+-
+-## 🎯 How to Use
+-
+-### For Developers
+-
+-**Add 3D Tilt to New Elements:**
+-```html
+-<div class="feature-card" data-tilt>
+-  <!-- Card content -->
+-</div>
+-```
+-
+-**Add Parallax to Elements:**
+-```html
+-<div class="section" data-parallax="0.5">
+-  <!-- Content that moves slower than scroll -->
+-</div>
+-```
+-
+-**Add Wave Text Animation:**
+-```html
+-<h1 data-wave>Your Text Here</h1>
+-```
+-
+-### Customize Colors
+-Edit CSS variables in `main.css`:
+-```css
+-:root {
+-  --teal: #1b7a78;
+-  --gold: #c9a84c;
+-  --flame: #ff8a3d;
+-  /* etc. */
+-}
+-```
+-
+-### Adjust Animation Speed
+-Modify transition timings:
+-```css
+-.feature-card {
+-  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+-  /* Change 0.8s to make faster/slower */
+-}
+-```
+-
+----
+-
+-## 🎬 Animation Breakdown by Page Section
+-
+-### Hero Section
+-- ✅ Parallax background with depth layers
+-- ✅ Floating orbs with rotation and pulse
+-- ✅ Staggered content reveal (0.1s delays)
+-- ✅ Badge slides up with fade
+-- ✅ Gradient text animation
+-- ✅ Stat counters with glow
+-- ✅ Buttons with 3D hover effects
+-
+-### Feature Cards
+-- ✅ Scroll reveal with 3D rotation
+-- ✅ Card tilt on mouse move
+-- ✅ Icon 360° rotation on hover
+-- ✅ Enhanced shadow system
+-- ✅ Staggered animation (100ms increments)
+-- ✅ Glow effect on hover
+-
+-### Gallery Section
+-- ✅ 3D flip effect on hover
+-- ✅ Image zoom and rotation
+-- ✅ Overlay blur transition
+-- ✅ Lightbox with smooth animations
+-
+-### Marquee
+-- ✅ Seamless scroll loop (20s cycle)
+-- ✅ Depth animation (8s cycle)
+-- ✅ Smooth infinite scroll
+-
+-### CTA Section
+-- ✅ Gradient shift animation
+-- ✅ Pattern rotation
+-- ✅ Animated background
+-
+-### Footer & Header
+-- ✅ Scroll detection
+-- ✅ Header floating on scroll
+-- ✅ Smooth blur backdrop filter
+-- ✅ Depth shadow on scroll
+-
+----
+-
+-## 🎨 Color Scheme
+-
+-The website uses a sophisticated color palette:
+-- **Primary Navy**: #0a1526 - Deep background
+-- **Teal**: #1b7a78 - Primary accent
+-- **Gold**: #c9a84c - Secondary accent
+-- **Flame Orange**: #ff8a3d - Highlights
+-- **Cream**: #f7f3eb - Light background
+-
+-All animations use these colors with opacity variations for layered effects.
+-
+----
+-
+-## 🚀 Performance Tips
+-
+-1. **Particles**: Adjust count in `3d-effects.js` (currently 50)
+-2. **Animation Durations**: Reduce for faster animations
+-3. **Browser Compatibility**: 
+-   - Chrome/Edge: Full support
+-   - Firefox: Full support
+-   - Safari: Full support (with -webkit- prefixes)
+-   - Mobile: Optimized with reduced 3D effects
+-
+-### Will-Change Performance
+-Elements with animations have `will-change` property for optimization:
+-```css
+-will-change: transform, opacity;
+-```
+-
+----
+-
+-## 🔧 Customization Guide
+-
+-### Change Animation Timing
+-Edit `--ease` variable in `main.css`:
+-```css
+---ease: cubic-bezier(.16,1,.3,1); /* Spring ease */
+-```
+-
+-### Modify 3D Intensity
+-Adjust perspective values:
+-```css
+-perspective: 1200px; /* Increase for stronger effect */
+-```
+-
+-### Change Particle Colors
+-In `3d-effects.js`:
+-```javascript
+-this.color = ['#1b7a78', '#2aada9', '#c9a84c', '#ff8a3d'][...]
+-```
+-
+-### Disable Specific Effects
+-Comment out initialization in `3d-effects.js`:
+-```javascript
+-// this.setupParticles();
+-// this.setupGlitchEffect();
+-```
+-
+----
+-
+-## 📱 Mobile Optimization
+-
+-- Reduced 3D rotation angles on touch devices
+-- Simplified animations for lower-end devices
+-- Touch-friendly hover states
+-- Optimized particle count
+-- Responsive timing adjustments
+-
+----
+-
+-## 🎯 Browser Support
+-
+-| Feature | Chrome | Firefox | Safari | Edge | Mobile |
+-|---------|--------|---------|--------|------|--------|
+-| 3D Transforms | ✅ | ✅ | ✅ | ✅ | ✅ |
+-| CSS Animations | ✅ | ✅ | ✅ | ✅ | ✅ |
+-| Canvas Particles | ✅ | ✅ | ✅ | ✅ | ✅ |
+-| Backdrop Filter | ✅ | ✅ | ✅ | ✅ | ⚠️ |
+-| Scroll Behavior | ✅ | ✅ | ✅ | ✅ | ✅ |
+-
+----
+-
+-## 🎬 Animation Statistics
+-
+-- **Total Keyframe Animations**: 25+
+-- **3D Transform Effects**: 15+
+-- **Interactive Triggers**: 12+
+-- **Particle Count**: 50
+-- **CSS Lines Added**: 600+
+-- **JavaScript Lines Added**: 400+
+-
+----
+-
+-## 📊 Performance Metrics
+-
+-- **Initial Load Impact**: ~5MB CSS + JS (gzipped: ~50KB)
+-- **Animation FPS**: 60fps on modern devices
+-- **Mobile FPS**: 30-60fps (optimized)
+-- **Particle System**: Uses RequestAnimationFrame for smooth performance
+-
+----
+-
+-## 🎁 Bonus Features
+-
+-1. **Dynamic Lighting**: Follows mouse cursor
+-2. **Scroll Progress Bar**: Shows page scroll progress
+-3. **Text Glitch Effect**: On header hover
+-4. **Click Waves**: Visual feedback for all interactions
+-5. **Film Grain Texture**: Subtle ambient texture overlay
+-6. **Enhanced Cursor**: Custom cursor with hover states
+-
+----
+-
+-## 📝 File Structure
+-
+-```
+-hss_mundur_web/
+-├── index.html (updated)
+-├── about.html (updated)
+-├── contact.html (updated)
+-├── gallery.html (updated)
+-├── 404.html (updated)
+-├── main.css (original - untouched)
+-├── script.js (enhanced - 100+ lines added)
+-├── 3d-effects.css (NEW - 600+ lines)
+-├── 3d-effects.js (NEW - 400+ lines)
+-└── images/
+-```
+-
+----
+-
+-## 🚀 Next Steps
+-
+-1. **Test** on various devices and browsers
+-2. **Customize** colors and timing to match your brand
+-3. **Add** `data-tilt` attribute to new cards
+-4. **Optimize** particle count for your target devices
+-5. **Share** and enjoy the enhanced website!
+-
+----
+-
+-## 💡 Tips & Tricks
+-
+-- **Disable Animations**: Add `prefers-reduced-motion` support
+-- **Test Performance**: Use Chrome DevTools Performance tab
+-- **Debug Issues**: Check Console for any JavaScript errors
+-- **Mobile Testing**: Use Chrome DevTools device emulation
+-
+----
+-
+-## 📞 Support
+-
+-If animations are too intense or causing issues:
+-
+-1. Reduce animation duration in CSS
+-2. Disable particles: Comment out `setupParticles()` in 3d-effects.js
+-3. Reduce 3D rotation angles
+-4. Use `will-change` sparingly
+-
+----
+-
+-**Made with 💜 for HSS Mundur**
+-*Aksharadeepam — The Light of Knowledge*
+diff --git a/3d-effects.js b/3d-effects.js
+deleted file mode 100644
+index d248804..0000000
+--- a/3d-effects.js
++++ /dev/null
+@@ -1,359 +0,0 @@
+-/* =========================================================
+-   HSS MUNDUR — ADVANCED ANIMATIONS & 3D EFFECTS ENGINE
+-   Premium Interactive Features
+-   ========================================================= */
+-
+-class HSS3DEffects {
+-  constructor() {
+-    // Wait for page to load before initializing
+-    if (document.readyState === 'loading') {
+-      document.addEventListener('DOMContentLoaded', () => this.init());
+-    } else {
+-      this.init();
+-    }
+-  }
+-
+-  init() {
+-    try {
+-      this.setupParticles();
+-      this.setupMouseFollower();
+-      this.setupScrollAnimations();
+-      this.setupInteractiveElements();
+-      this.setupGlitchEffect();
+-      this.setupLightingEffects();
+-    } catch (e) {
+-      console.error('3D Effects initialization error:', e);
+-    }
+-  }
+-
+-  /* ── PARTICLE SYSTEM ── */
+-  setupParticles() {
+-    try {
+-      const canvas = document.createElement('canvas');
+-      canvas.id = 'particle-canvas';
+-      canvas.style.cssText = `
+-        position: fixed;
+-        top: 0;
+-        left: 0;
+-        width: 100%;
+-        height: 100%;
+-        pointer-events: none;
+-        z-index: 0;
+-        opacity: 0.35;
+-      `;
+-      
+-      document.body.insertBefore(canvas, document.body.firstChild);
+-      
+-      const ctx = canvas.getContext('2d');
+-      if (!ctx) return;
+-      
+-      canvas.width = window.innerWidth;
+-      canvas.height = window.innerHeight;
+-
+-      const particles = [];
+-      const particleCount = 40;
+-
+-      class Particle {
+-        constructor() {
+-          this.x = Math.random() * canvas.width;
+-          this.y = Math.random() * canvas.height;
+-          this.vx = (Math.random() - 0.5) * 0.3;
+-          this.vy = (Math.random() - 0.5) * 0.3;
+-          this.radius = Math.random() * 1.5 + 0.5;
+-          this.opacity = Math.random() * 0.4 + 0.1;
+-          this.color = ['#1b7a78', '#2aada9', '#c9a84c', '#ff8a3d'][Math.floor(Math.random() * 4)];
+-        }
+-
+-        update() {
+-          this.x += this.vx;
+-          this.y += this.vy;
+-          this.opacity += (Math.random() - 0.5) * 0.02;
+-          this.opacity = Math.max(0.1, Math.min(0.5, this.opacity));
+-
+-          if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+-          if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+-        }
+-
+-        draw() {
+-          ctx.fillStyle = this.color;
+-          ctx.globalAlpha = this.opacity;
+-          ctx.beginPath();
+-          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+-          ctx.fill();
+-        }
+-      }
+-
+-      for (let i = 0; i < particleCount; i++) {
+-        particles.push(new Particle());
+-      }
+-
+-      let animationFrameId;
+-      const animate = () => {
+-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+-        ctx.globalAlpha = 1;
+-
+-        particles.forEach(p => {
+-          p.update();
+-          p.draw();
+-        });
+-
+-        // Draw connections between nearby particles
+-        for (let i = 0; i < particles.length; i++) {
+-          for (let j = i + 1; j < particles.length; j++) {
+-            const dx = particles[i].x - particles[j].x;
+-            const dy = particles[i].y - particles[j].y;
+-            const dist = Math.sqrt(dx * dx + dy * dy);
+-
+-            if (dist < 120) {
+-              ctx.strokeStyle = particles[i].color;
+-              ctx.globalAlpha = (1 - dist / 120) * 0.15;
+-              ctx.lineWidth = 0.5;
+-              ctx.beginPath();
+-              ctx.moveTo(particles[i].x, particles[i].y);
+-              ctx.lineTo(particles[j].x, particles[j].y);
+-              ctx.stroke();
+-            }
+-          }
+-        }
+-
+-        ctx.globalAlpha = 1;
+-        animationFrameId = requestAnimationFrame(animate);
+-      };
+-
+-      animate();
+-
+-      window.addEventListener('resize', () => {
+-        canvas.width = window.innerWidth;
+-        canvas.height = window.innerHeight;
+-      });
+-    } catch (e) {
+-      console.warn('Particle system setup failed:', e);
+-    }
+-  }
+-
+-  /* ── ADVANCED MOUSE FOLLOWER ── */
+-  setupMouseFollower() {
+-    try {
+-      let mouseX = 0;
+-      let mouseY = 0;
+-
+-      document.addEventListener('mousemove', e => {
+-        mouseX = e.clientX;
+-        mouseY = e.clientY;
+-
+-        const dot = document.querySelector('.cursor-dot');
+-        if (dot) {
+-          dot.style.left = mouseX + 'px';
+-          dot.style.top = mouseY + 'px';
+-        }
+-
+-        // Parallax effect on mouse move
+-        const orbs = document.querySelectorAll('.hero-orb');
+-        if (orbs.length > 0) {
+-          orbs.forEach((orb, idx) => {
+-            const x = (window.innerWidth / 2 - mouseX) / 100;
+-            const y = (window.innerHeight / 2 - mouseY) / 100;
+-            orb.style.transform = `translate3d(${x * (idx + 1) * 10}px, ${y * (idx + 1) * 10}px, -${50 + idx * 50}px)`;
+-          });
+-        }
+-      });
+-    } catch (e) {
+-      console.warn('Mouse follower setup failed:', e);
+-    }
+-  }
+-
+-  /* ── SCROLL ANIMATIONS ── */
+-  setupScrollAnimations() {
+-    try {
+-      const observerOptions = {
+-        threshold: 0.1,
+-        rootMargin: '0px 0px -100px 0px'
+-      };
+-
+-      const scrollObserver = new IntersectionObserver((entries) => {
+-        entries.forEach((entry, idx) => {
+-          if (entry.isIntersecting) {
+-            setTimeout(() => {
+-              entry.target.classList.add('visible', 'in-view');
+-            }, idx * 50);
+-            scrollObserver.unobserve(entry.target);
+-          }
+-        });
+-      }, observerOptions);
+-
+-      document.querySelectorAll('.fade-in, .reveal, .feature-card, .g-item, .timeline-item').forEach(el => {
+-        scrollObserver.observe(el);
+-      });
+-
+-      // Parallax scroll effect
+-      const parallaxElements = document.querySelectorAll('[data-parallax]');
+-      if (parallaxElements.length > 0) {
+-        window.addEventListener('scroll', () => {
+-          const scrollY = window.scrollY;
+-          parallaxElements.forEach(el => {
+-            const speed = parseFloat(el.dataset.parallax) || 0.5;
+-            el.style.transform = `translate3d(0, ${scrollY * speed}px, 0)`;
+-          });
+-        }, { passive: true });
+-      }
+-    } catch (e) {
+-      console.warn('Scroll animations setup failed:', e);
+-    }
+-  }
+-
+-  /* ── INTERACTIVE ELEMENT ANIMATIONS ── */
+-  setupInteractiveElements() {
+-    try {
+-      // Card tilt on hover
+-      document.querySelectorAll('.feature-card[data-tilt]').forEach(card => {
+-        card.addEventListener('mousemove', e => {
+-          const rect = card.getBoundingClientRect();
+-          const x = e.clientX - rect.left - rect.width / 2;
+-          const y = e.clientY - rect.top - rect.height / 2;
+-
+-          const rotX = (y / rect.height) * 15 - 7.5;
+-          const rotY = (x / rect.width) * 15 - 7.5;
+-
+-          card.style.transform = `perspective(1200px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.05)`;
+-        });
+-
+-        card.addEventListener('mouseleave', () => {
+-          card.style.transform = 'perspective(1200px) rotateX(0) rotateY(0) scale(1)';
+-        });
+-      });
+-
+-      // Button ripple effect
+-      document.querySelectorAll('.btn').forEach(btn => {
+-        btn.addEventListener('click', e => {
+-          const ripple = document.createElement('span');
+-          const rect = btn.getBoundingClientRect();
+-          const size = Math.max(rect.width, rect.height);
+-          const x = e.clientX - rect.left - size / 2;
+-          const y = e.clientY - rect.top - size / 2;
+-
+-          ripple.style.cssText = `
+-            position: absolute;
+-            width: ${size}px;
+-            height: ${size}px;
+-            left: ${x}px;
+-            top: ${y}px;
+-            background: rgba(255, 255, 255, 0.6);
+-            border-radius: 50%;
+-            pointer-events: none;
+-            transform: scale(0);
+-            animation: ripple 0.6s ease-out;
+-          `;
+-
+-          btn.appendChild(ripple);
+-          setTimeout(() => ripple.remove(), 600);
+-        });
+-      });
+-
+-      // Gallery item 3D tilt
+-      document.querySelectorAll('.g-item').forEach(item => {
+-        item.addEventListener('mousemove', e => {
+-          const rect = item.getBoundingClientRect();
+-          const x = e.clientX - rect.left - rect.width / 2;
+-          const y = e.clientY - rect.top - rect.height / 2;
+-
+-          const rotX = (y / rect.height) * 12 - 6;
+-          const rotY = (x / rect.width) * 12 - 6;
+-
+-          item.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.03)`;
+-        });
+-
+-        item.addEventListener('mouseleave', () => {
+-          item.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+-        });
+-      });
+-    } catch (e) {
+-      console.warn('Interactive elements setup failed:', e);
+-    }
+-  }
+-
+-  /* ── GLITCH EFFECT ── */
+-  setupGlitchEffect() {
+-    try {
+-      const glitchHeaders = document.querySelectorAll('h1, h2, h3');
+-      
+-      glitchHeaders.forEach(header => {
+-        header.addEventListener('mouseenter', () => {
+-          header.style.animation = 'glitch 0.4s ease-in-out';
+-          setTimeout(() => {
+-            header.style.animation = 'none';
+-          }, 400);
+-        });
+-      });
+-    } catch (e) {
+-      console.warn('Glitch effect setup failed:', e);
+-    }
+-  }
+-
+-  /* ── LIGHTING EFFECTS ── */
+-  setupLightingEffects() {
+-    try {
+-      const createGlowEffect = (element, intensity = 0.3) => {
+-        element.style.boxShadow = `
+-          0 0 20px rgba(27, 122, 120, ${intensity}),
+-          0 0 40px rgba(255, 138, 61, ${intensity * 0.5}),
+-          inset 0 0 20px rgba(255, 255, 255, ${intensity * 0.2})
+-        `;
+-      };
+-
+-      document.querySelectorAll('.feature-card').forEach(card => {
+-        card.addEventListener('mouseenter', () => {
+-          createGlowEffect(card, 0.4);
+-        });
+-
+-        card.addEventListener('mouseleave', () => {
+-          createGlowEffect(card, 0.15);
+-        });
+-      });
+-    } catch (e) {
+-      console.warn('Lighting effects setup failed:', e);
+-    }
+-  }
+-}
+-
+-/* ── INITIALIZE AFTER PAGE LOAD ── */
+-if (document.readyState === 'complete') {
+-  new HSS3DEffects();
+-} else {
+-  window.addEventListener('load', () => {
+-    new HSS3DEffects();
+-  });
+-}
+-
+-// Add ripple animation to CSS
+-const style = document.createElement('style');
+-style.textContent = `
+-  @keyframes ripple {
+-    to {
+-      transform: scale(4);
+-      opacity: 0;
+-    }
+-  }
+-
+-  @keyframes glitch {
+-    0% {
+-      text-shadow: 
+-        2px 0 #ff8a3d,
+-        -2px 0 #1b7a78;
+-    }
+-    50% {
+-      text-shadow: 
+-        -2px 0 #ff8a3d,
+-        2px 0 #1b7a78;
+-    }
+-    100% {
+-      text-shadow: 
+-        0 0 rgba(0,0,0,0);
+-    }
+-  }
+-
+-  .btn {
+-    position: relative;
+-    overflow: hidden;
+-  }
+-`;
+-document.head.appendChild(style);
+diff --git a/404.html b/404.html
+deleted file mode 100644
+index 99f658e..0000000
+--- a/404.html
++++ /dev/null
+@@ -1,44 +0,0 @@
+-<!DOCTYPE html>
+-<html lang="en">
+-<head>
+-  <meta charset="UTF-8">
+-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-  <title>Page Not Found — HSS Mundur</title>
+-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+-  <link rel="stylesheet" href="main.css">
+-  <link rel="stylesheet" href="3d-effects.css">
+-</head>
+-<body class="error-page">
+-
+-  <header style="position: relative; background: transparent; height: 80px; display: flex; align-items: center; backdrop-filter: none;">
+-    <div class="container" style="display: flex; justify-content: center;">
+-      <a href="index.html" class="logo">
+-        <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+-        <div class="logo-text">
+-          <h1>HSS MUNDUR</h1>
+-          <p>Higher Secondary School, Palakkad</p>
+-        </div>
+-      </a>
+-    </div>
+-  </header>
+-
+-  <main class="error-content fade-in visible">
+-    <div class="error-lamp">
+-      <div class="out-flame">
+-        <svg viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg">
+-          <path d="M12 0C12 0 3 11 3 20a9 9 0 0018 0C21 11 12 0 12 0z" fill="#8a93a3"/>
+-        </svg>
+-      </div>
+-      <div class="smoke"></div>
+-    </div>
+-    <h1>404</h1>
+-    <h2>Class Dismissed!</h2>
+-    <p>The page you are looking for has been moved, removed, or doesn't exist. Let's get you back to the main campus.</p>
+-    <a href="index.html" class="btn btn-primary"><i class="fas fa-home"></i> Return to Homepage</a>
+-  </main>
+-
+-  <script src="script.js"></script>
+-  <script src="3d-effects.js"></script>
+-</body>
+-</html>
+diff --git a/LICENSE b/LICENSE
+new file mode 100644
+index 0000000..7acf579
+--- /dev/null
++++ b/LICENSE
+@@ -0,0 +1,21 @@
++MIT License
++
++Copyright (c) 2026 HSS Mundur
++
++Permission is hereby granted, free of charge, to any person obtaining a copy
++of this software and associated documentation files (the "Software"), to deal
++in the Software without restriction, including without limitation the rights
++to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++copies of the Software, and to permit persons to whom the Software is
++furnished to do so, subject to the following conditions:
++
++The above copyright notice and this permission notice shall be included in all
++copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++OUT OF OR IN CONNECTION WITH THE SOFTWARE OR USE OR OTHER DEALINGS IN THE
++SOFTWARE.
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..1bcc7b8
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1,35 @@
++# HSS Mundur — Website
++
++The official website of Higher Secondary School Mundur, Palakkad. Built with
++[Next.js](https://nextjs.org) (App Router) and statically exported.
++
++## Development
++
++```bash
++npm install
++npm run dev
++```
++
++Open http://localhost:3000.
++
++## Build
++
++```bash
++npm run build
++```
++
++This produces a fully static site in `out/` (via `output: 'export'` in
++`next.config.mjs`) — no Node.js server is required at runtime.
++
++## Deploying (Cloudflare Pages)
++
++- **Framework preset:** Next.js (Static HTML Export)
++- **Build command:** `npm run build`
++- **Build output directory:** `out`
++
++See the pull request / patch notes for the exact settings to change if you're
++migrating an existing Pages project from the old plain-HTML deploy.
++
++## License
++
++MIT — see [LICENSE](./LICENSE).
+diff --git a/about.html b/about.html
+deleted file mode 100644
+index 0a8240b..0000000
+--- a/about.html
++++ /dev/null
+@@ -1,216 +0,0 @@
+-<!DOCTYPE html>
+-<html lang="en">
+-<head>
+-  <meta charset="UTF-8">
+-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-  <title>About — HSS Mundur</title>
+-  <meta name="description" content="Learn about the history, mission, and vision of Higher Secondary School Mundur, Palakkad.">
+-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+-  <link rel="stylesheet" href="main.css">
+-  <link rel="stylesheet" href="3d-effects.css">
+-</head>
+-<body>
+-
+-  <!-- ── Loader ── -->
+-  <div id="loader">
+-    <div class="loader-glow"></div>
+-    <div class="loader-lamp">
+-      <div class="loader-flame">
+-        <svg viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg">
+-          <defs><linearGradient id="fg1" x1="0" y1="0" x2="0" y2="1">
+-            <stop offset="0%" stop-color="#ffe9b0"/><stop offset="45%" stop-color="#ffb870"/><stop offset="100%" stop-color="#ff6b35"/>
+-          </linearGradient></defs>
+-          <path d="M12 0C12 0 3 11 3 20a9 9 0 0018 0C21 11 12 0 12 0z" fill="url(#fg1)"/>
+-        </svg>
+-      </div>
+-      <div class="loader-stand"></div>
+-      <div class="loader-base"></div>
+-    </div>
+-    <div class="loader-text">HSS <span>MUNDUR</span></div>
+-  </div>
+-
+-  <!-- ── Header ─────────────────────────────────────── -->
+-  <header id="mainHeader">
+-    <div class="container header-container">
+-      <a href="index.html" class="logo">
+-        <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+-        <div class="logo-text">
+-          <h1>HSS MUNDUR</h1>
+-          <p>Higher Secondary School, Palakkad</p>
+-        </div>
+-      </a>
+-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+-        <i class="fas fa-bars"></i>
+-      </button>
+-      <nav class="nav-menu" id="navMenu">
+-        <ul>
+-          <li><a href="index.html">Home</a></li>
+-          <li><a href="about.html" class="active">About</a></li>
+-          <li><a href="contact.html">Contact</a></li>
+-          <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog <i class="fas fa-external-link-alt" style="font-size: 0.7em; margin-left: 3px;"></i></a></li>
+-        </ul>
+-      </nav>
+-    </div>
+-  </header>
+-
+-  <!-- ── Page Hero ──────────────────────────────────── -->
+-  <section class="page-hero">
+-    <div class="container">
+-      <div class="breadcrumb">
+-        <a href="index.html">Home</a>
+-        <i class="fas fa-chevron-right" style="font-size:.65rem;"></i>
+-        <span>About Us</span>
+-      </div>
+-      <div class="section-label" style="margin-bottom:14px;">Our Story</div>
+-      <h1>About HSS Mundur</h1>
+-      <p>Discover the legacy, mission, and vision that have guided us for over nine decades.</p>
+-    </div>
+-  </section>
+-
+-  <!-- ── History ────────────────────────────────────── -->
+-  <section class="about-content-section">
+-    <div class="container">
+-      <div class="about-text-block fade-in" style="max-width:800px;">
+-        <h3>Our History</h3>
+-        <p>Higher Secondary School Mundur has long been at the forefront of educational excellence in the Palakkad district. The light of knowledge — <em>Aksharadeepam</em> — was first lit by Sri K.V. Sundarawaryar and Sri Kannath Achuthan Master.</p>
+-        <p>In 1933, the Mundoor Higher Elementary School was founded by the Mundoor Kizhakkewariyat family, with Sri Sivadasawaryar serving as the first manager. In the 1940s, following the retirement of the previous administrator K.V. Achuthawaryar, the administration passed to Sri Sivadasawaryar, during which Sriman Sundarawaryar took over management and dedicated himself to the school's development.</p>
+-
+-        <h3>Key Milestones</h3>
+-      </div>
+-
+-      <!-- Timeline -->
+-      <div class="timeline fade-in" style="max-width:720px;">
+-        <div class="timeline-item">
+-          <div class="timeline-dot">1933</div>
+-          <div class="timeline-body">
+-            <h4>School Founded</h4>
+-            <p>Mundoor Higher Elementary School established by the Mundoor Kizhakkewariyat family. Sri Sivadasawaryar becomes the first manager.</p>
+-          </div>
+-        </div>
+-        <div class="timeline-item">
+-          <div class="timeline-dot">1940s</div>
+-          <div class="timeline-body">
+-            <h4>New Leadership</h4>
+-            <p>Sriman Sundarawaryar takes over management and dedicates himself to expanding facilities and improving education quality.</p>
+-          </div>
+-        </div>
+-        <div class="timeline-item">
+-          <div class="timeline-dot">1957</div>
+-          <div class="timeline-body">
+-            <h4>Upgraded to High School</h4>
+-            <p>On June 15, 1957, the institution was upgraded to a High School. The inauguration was presided over by Sriman P.S. Kesavan Namboothiri and inaugurated by P.T. Bhaskarapanikar, a key figure in educational reform.</p>
+-          </div>
+-        </div>
+-        <div class="timeline-item">
+-          <div class="timeline-dot">1960</div>
+-          <div class="timeline-body">
+-            <h4>A Legacy Continues</h4>
+-            <p>Following the passing of Shri Sundara Warrier on October 14, 1960, the school continued its mission of educational excellence under new stewardship.</p>
+-          </div>
+-        </div>
+-        <div class="timeline-item">
+-          <div class="timeline-dot">2010</div>
+-          <div class="timeline-body">
+-            <h4>Higher Secondary School</h4>
+-            <p>The institution was upgraded to a Higher Secondary School, marking a new era of expanded education and opportunity for students in Palakkad.</p>
+-          </div>
+-        </div>
+-      </div>
+-
+-      <div class="about-text-block fade-in" style="max-width:800px; margin-top: 24px;">
+-        <h3>Our Achievements</h3>
+-        <p>Over the decades, we have consistently produced outstanding results in academics, with our students securing top ranks in state board examinations and gaining admission to prestigious institutions across India.</p>
+-        <p>Beyond academics, our students have excelled in sports, arts, and cultural activities at state and national levels. Our alumni have become successful professionals in engineering, medicine, arts, civil services, and entrepreneurship.</p>
+-        <h3>Our Philosophy</h3>
+-        <p>At HSS Mundur, we believe education is not just about imparting knowledge but about shaping character. Our values of integrity, respect, perseverance, and community service are integrated into every aspect of school life.</p>
+-        <p>We strive to create an inclusive environment where every student can thrive academically, socially, and emotionally — empowering students to become critical thinkers, lifelong learners, and responsible global citizens.</p>
+-      </div>
+-    </div>
+-  </section>
+-
+-  <!-- ── Flame Divider ──────────────────────────────── -->
+-  <div class="flame-divider" style="padding-bottom:8px;">
+-    <span class="line"></span>
+-    <svg viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg">
+-      <defs><linearGradient id="fgd" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffe9b0"/><stop offset="45%" stop-color="#ffb870"/><stop offset="100%" stop-color="#ff6b35"/></linearGradient></defs>
+-      <path d="M12 0C12 0 3 11 3 20a9 9 0 0018 0C21 11 12 0 12 0z" fill="url(#fgd)"/>
+-    </svg>
+-    <span class="line right"></span>
+-  </div>
+-
+-  <!-- ── Mission & Vision ───────────────────────────── -->
+-  <section class="mission-vision">
+-    <div class="container">
+-      <div class="section-title centered fade-in">
+-        <div class="section-label">What We Stand For</div>
+-        <h2>Mission, Vision & Values</h2>
+-      </div>
+-      <div class="mv-grid">
+-        <div class="mv-card reveal" data-reveal="up">
+-          <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
+-          <h3>Our Mission</h3>
+-          <p>To provide quality education that fosters intellectual growth, character development, and social responsibility — preparing students to excel in a dynamic global society.</p>
+-        </div>
+-        <div class="mv-card reveal" data-reveal="up">
+-          <div class="mv-icon"><i class="fas fa-eye"></i></div>
+-          <h3>Our Vision</h3>
+-          <p>To be a center of excellence that nurtures innovative thinkers, compassionate leaders, and responsible citizens who contribute positively to society.</p>
+-        </div>
+-        <div class="mv-card reveal" data-reveal="up">
+-          <div class="mv-icon"><i class="fas fa-handshake"></i></div>
+-          <h3>Our Values</h3>
+-          <p>Integrity, excellence, respect, compassion, and lifelong learning form the foundation of everything we do at HSS Mundur.</p>
+-        </div>
+-      </div>
+-    </div>
+-  </section>
+-
+-  <!-- ── Footer ─────────────────────────────────────── -->
+-  <footer>
+-    <div class="container">
+-      <div class="footer-grid">
+-        <div class="footer-brand">
+-          <a href="index.html" class="logo">
+-            <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+-            <div class="logo-text">
+-              <h1>HSS MUNDUR</h1>
+-              <p>Higher Secondary School, Palakkad</p>
+-            </div>
+-          </a>
+-          <p class="desc">Dedicated to academic excellence and the holistic development of every student since 1933.</p>
+-          <div class="social-row">
+-            <a href="#"><i class="fab fa-facebook-f"></i></a>
+-            <a href="#"><i class="fab fa-twitter"></i></a>
+-            <a href="#"><i class="fab fa-instagram"></i></a>
+-            <a href="#"><i class="fab fa-youtube"></i></a>
+-          </div>
+-        </div>
+-        <div class="footer-col">
+-          <h4>Quick Links</h4>
+-          <ul>
+-            <li><a href="index.html">Home</a></li>
+-            <li><a href="about.html">About Us</a></li>
+-            <li><a href="contact.html">Contact</a></li>
+-            <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
+-          </ul>
+-        </div>
+-        <div class="footer-col">
+-          <h4>Contact</h4>
+-          <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>HSS Mundur, Palakkad, Kerala 678592</span></div>
+-          <div class="contact-item"><i class="fas fa-phone"></i><span>+91 491 2832454</span></div>
+-          <div class="contact-item"><i class="fas fa-envelope"></i><span>hssmundur@gmail.com</span></div>
+-          <div class="contact-item"><i class="fas fa-clock"></i><span>Mon – Fri: 8:30 AM – 4:00 PM</span></div>
+-        </div>
+-      </div>
+-      <div class="footer-bottom">
+-        <span>© 2026 Higher Secondary School Mundur, Palakkad. All Rights Reserved.</span>
+-        <span>Made with <i class="fas fa-heart" style="color: #ff2a2a;"></i> by <strong>Ras Devs</strong></span>
+-      </div>
+-    </div>
+-  </footer>
+-
+-  <script src="script.js"></script>
+-  <script src="3d-effects.js"></script>
+-</body>
+-</html>
+diff --git a/app/about/page.js b/app/about/page.js
+new file mode 100644
+index 0000000..d8a912a
+--- /dev/null
++++ b/app/about/page.js
+@@ -0,0 +1,168 @@
++import Link from 'next/link';
++
++export const metadata = {
++  title: 'About — HSS Mundur',
++  description:
++    'Learn about the history, mission, and vision of Higher Secondary School Mundur, Palakkad.',
++};
++
++const TIMELINE = [
++  {
++    year: '1933',
++    title: 'School Founded',
++    text: 'Mundoor Higher Elementary School established by the Mundoor Kizhakkewariyat family. Sri Sivadasawaryar becomes the first manager.',
++  },
++  {
++    year: '1940s',
++    title: 'New Leadership',
++    text: 'Sriman Sundarawaryar takes over management and dedicates himself to expanding facilities and improving education quality.',
++  },
++  {
++    year: '1957',
++    title: 'Upgraded to High School',
++    text: 'On June 15, 1957, the institution was upgraded to a High School. The inauguration was presided over by Sriman P.S. Kesavan Namboothiri and inaugurated by P.T. Bhaskarapanikar, a key figure in educational reform.',
++  },
++  {
++    year: '1960',
++    title: 'A Legacy Continues',
++    text: 'Following the passing of Shri Sundara Warrier on October 14, 1960, the school continued its mission of educational excellence under new stewardship.',
++  },
++  {
++    year: '2010',
++    title: 'Higher Secondary School',
++    text: 'The institution was upgraded to a Higher Secondary School, marking a new era of expanded education and opportunity for students in Palakkad.',
++  },
++];
++
++const MISSION_VISION = [
++  {
++    icon: 'fa-bullseye',
++    title: 'Our Mission',
++    text: 'To provide quality education that fosters intellectual growth, character development, and social responsibility — preparing students to excel in a dynamic global society.',
++  },
++  {
++    icon: 'fa-eye',
++    title: 'Our Vision',
++    text: 'To be a center of excellence that nurtures innovative thinkers, compassionate leaders, and responsible citizens who contribute positively to society.',
++  },
++  {
++    icon: 'fa-handshake',
++    title: 'Our Values',
++    text: 'Integrity, excellence, respect, compassion, and lifelong learning form the foundation of everything we do at HSS Mundur.',
++  },
++];
++
++export default function About() {
++  return (
++    <>
++      <section className="page-hero">
++        <div className="container">
++          <div className="breadcrumb">
++            <Link href="/">Home</Link>
++            <i className="fas fa-chevron-right" style={{ fontSize: '.65rem' }}></i>
++            <span>About Us</span>
++          </div>
++          <div className="section-label" style={{ marginBottom: 14 }}>
++            Our Story
++          </div>
++          <h1>About HSS Mundur</h1>
++          <p>Discover the legacy, mission, and vision that have guided us for over nine decades.</p>
++        </div>
++      </section>
++
++      <section className="about-content-section">
++        <div className="container">
++          <div className="about-text-block fade-in" style={{ maxWidth: 800 }}>
++            <h3>Our History</h3>
++            <p>
++              Higher Secondary School Mundur has long been at the forefront of educational
++              excellence in the Palakkad district. The light of knowledge — <em>Aksharadeepam</em>{' '}
++              — was first lit by Sri K.V. Sundarawaryar and Sri Kannath Achuthan Master.
++            </p>
++            <p>
++              In 1933, the Mundoor Higher Elementary School was founded by the Mundoor
++              Kizhakkewariyat family, with Sri Sivadasawaryar serving as the first manager. In
++              the 1940s, following the retirement of the previous administrator K.V.
++              Achuthawaryar, the administration passed to Sri Sivadasawaryar, during which
++              Sriman Sundarawaryar took over management and dedicated himself to the school's
++              development.
++            </p>
++            <h3>Key Milestones</h3>
++          </div>
++
++          <div className="timeline fade-in" style={{ maxWidth: 720 }}>
++            {TIMELINE.map((t) => (
++              <div className="timeline-item" key={t.year}>
++                <div className="timeline-dot">{t.year}</div>
++                <div className="timeline-body">
++                  <h4>{t.title}</h4>
++                  <p>{t.text}</p>
++                </div>
++              </div>
++            ))}
++          </div>
++
++          <div className="about-text-block fade-in" style={{ maxWidth: 800, marginTop: 24 }}>
++            <h3>Our Achievements</h3>
++            <p>
++              Over the decades, we have consistently produced outstanding results in academics,
++              with our students securing top ranks in state board examinations and gaining
++              admission to prestigious institutions across India.
++            </p>
++            <p>
++              Beyond academics, our students have excelled in sports, arts, and cultural
++              activities at state and national levels. Our alumni have become successful
++              professionals in engineering, medicine, arts, civil services, and entrepreneurship.
++            </p>
++            <h3>Our Philosophy</h3>
++            <p>
++              At HSS Mundur, we believe education is not just about imparting knowledge but about
++              shaping character. Our values of integrity, respect, perseverance, and community
++              service are integrated into every aspect of school life.
++            </p>
++            <p>
++              We strive to create an inclusive environment where every student can thrive
++              academically, socially, and emotionally — empowering students to become critical
++              thinkers, lifelong learners, and responsible global citizens.
++            </p>
++          </div>
++        </div>
++      </section>
++
++      <div className="flame-divider" style={{ paddingBottom: 8 }}>
++        <span className="line"></span>
++        <svg viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg">
++          <defs>
++            <linearGradient id="fgd" x1="0" y1="0" x2="0" y2="1">
++              <stop offset="0%" stopColor="#ffe9b0" />
++              <stop offset="45%" stopColor="#ffb870" />
++              <stop offset="100%" stopColor="#ff6b35" />
++            </linearGradient>
++          </defs>
++          <path d="M12 0C12 0 3 11 3 20a9 9 0 0018 0C21 11 12 0 12 0z" fill="url(#fgd)" />
++        </svg>
++        <span className="line right"></span>
++      </div>
++
++      <section className="mission-vision">
++        <div className="container">
++          <div className="section-title centered fade-in">
++            <div className="section-label">What We Stand For</div>
++            <h2>Mission, Vision &amp; Values</h2>
++          </div>
++          <div className="mv-grid">
++            {MISSION_VISION.map((m) => (
++              <div className="mv-card reveal" data-reveal="up" key={m.title}>
++                <div className="mv-icon">
++                  <i className={`fas ${m.icon}`}></i>
++                </div>
++                <h3>{m.title}</h3>
++                <p>{m.text}</p>
++              </div>
++            ))}
++          </div>
++        </div>
++      </section>
++    </>
++  );
++}
+diff --git a/app/contact/page.js b/app/contact/page.js
+new file mode 100644
+index 0000000..43553cb
+--- /dev/null
++++ b/app/contact/page.js
+@@ -0,0 +1,155 @@
++import Link from 'next/link';
++
++export const metadata = {
++  title: 'Contact — HSS Mundur',
++  description: 'Get in touch with Higher Secondary School Mundur, Palakkad.',
++};
++
++export default function Contact() {
++  return (
++    <>
++      <section className="page-hero">
++        <div className="container">
++          <div className="breadcrumb">
++            <Link href="/">Home</Link>
++            <i className="fas fa-chevron-right" style={{ fontSize: '.65rem' }}></i>
++            <span>Contact</span>
++          </div>
++          <div className="section-label" style={{ marginBottom: 14 }}>
++            Reach Out
++          </div>
++          <h1>Contact Us</h1>
++          <p>We'd love to hear from you. Get in touch with any questions, enquiries, or feedback.</p>
++        </div>
++      </section>
++
++      <section className="contact-section">
++        <div className="container">
++          <div className="contact-layout">
++            <div className="contact-info-panel reveal" data-reveal="left">
++              <div className="section-label">Our Details</div>
++              <h3>How to Reach Us</h3>
++              <p>
++                Our staff are available during school hours to assist with any inquiries about
++                admissions, academics, or general information.
++              </p>
++
++              <div className="info-card">
++                <div className="info-icon">
++                  <i className="fas fa-map-marker-alt"></i>
++                </div>
++                <div>
++                  <h4>Our Address</h4>
++                  <p>
++                    HSS Mundur
++                    <br />
++                    Mundur, Palakkad
++                    <br />
++                    Kerala, India — 678592
++                  </p>
++                </div>
++              </div>
++
++              <div className="info-card">
++                <div className="info-icon">
++                  <i className="fas fa-phone-alt"></i>
++                </div>
++                <div>
++                  <h4>Phone</h4>
++                  <a href="tel:+914912832454">+91 491 2832454</a>
++                </div>
++              </div>
++
++              <div className="info-card">
++                <div className="info-icon">
++                  <i className="fas fa-envelope"></i>
++                </div>
++                <div>
++                  <h4>Email</h4>
++                  <a href="mailto:hssmundur@gmail.com">hssmundur@gmail.com</a>
++                </div>
++              </div>
++
++              <div className="info-card">
++                <div className="info-icon">
++                  <i className="fas fa-clock"></i>
++                </div>
++                <div>
++                  <h4>Office Hours</h4>
++                  <p>
++                    Monday – Friday
++                    <br />
++                    8:30 AM – 4:00 PM
++                  </p>
++                </div>
++              </div>
++
++              <div className="social-row" style={{ marginTop: 8 }}>
++                <a href="#" aria-label="Facebook">
++                  <i className="fab fa-facebook-f"></i>
++                </a>
++                <a href="#" aria-label="Twitter">
++                  <i className="fab fa-twitter"></i>
++                </a>
++                <a href="#" aria-label="Instagram">
++                  <i className="fab fa-instagram"></i>
++                </a>
++                <a href="#" aria-label="YouTube">
++                  <i className="fab fa-youtube"></i>
++                </a>
++              </div>
++            </div>
++
++            <div
++              className="contact-form-panel reveal"
++              data-reveal="right"
++              style={{ padding: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}
++            >
++              <div style={{ padding: '32px 32px 16px' }}>
++                <div className="section-label">Coming Next</div>
++                <h3>Little Kites Initiative</h3>
++                <p>Get a sneak peek at our upcoming dedicated portal for the Little Kites IT Club.</p>
++              </div>
++
++              <div style={{ flexGrow: 1, padding: '0 32px 32px', height: '100%' }}>
++                <iframe
++                  src="https://lkmundur.pages.dev"
++                  style={{
++                    width: '100%',
++                    height: 500,
++                    border: '2px solid var(--cream-dark)',
++                    borderRadius: 'var(--radius-sm)',
++                    boxShadow: 'inset 0 2px 10px rgba(0,0,0,0.05)',
++                  }}
++                  title="Little Kites Website Preview"
++                  loading="lazy"
++                ></iframe>
++              </div>
++            </div>
++          </div>
++        </div>
++      </section>
++
++      <section className="map-section">
++        <div className="container">
++          <div className="section-title fade-in">
++            <div className="section-label">Find Us</div>
++            <h2>Our Location</h2>
++            <p>We are located in Mundur, Palakkad, Kerala.</p>
++          </div>
++          <div className="map-embed fade-in">
++            <iframe
++              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3347.201652911937!2d76.5741568!3d10.8361564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba870e97582c9d3%3A0xd3947f3f01836644!2sHigh%20School%20Mundur!5e1!3m2!1sen!2sin!4v1781250498411!5m2!1sen!2sin"
++              width="600"
++              height="450"
++              style={{ border: 0 }}
++              allowFullScreen
++              loading="lazy"
++              referrerPolicy="no-referrer-when-downgrade"
++            ></iframe>
++          </div>
++        </div>
++      </section>
++    </>
++  );
++}
+diff --git a/app/globals.css b/app/globals.css
+new file mode 100644
+index 0000000..fd266eb
+--- /dev/null
++++ b/app/globals.css
+@@ -0,0 +1,4 @@
++/* Base styles are loaded from /public/main.css and /public/3d-effects.css
++   via <link> tags in app/layout.js so their raw CSS (custom properties,
++   @import for fonts, etc.) works unmodified. This file only needs to
++   exist so Next's App Router has a global stylesheet entry point. */
+diff --git a/app/layout.js b/app/layout.js
+new file mode 100644
+index 0000000..2b76ee8
+--- /dev/null
++++ b/app/layout.js
+@@ -0,0 +1,37 @@
++import './globals.css';
++import Loader from '../components/Loader';
++import Header from '../components/Header';
++import Footer from '../components/Footer';
++import SiteEffects from '../components/SiteEffects';
++
++export const metadata = {
++  title: 'HSS Mundur — Higher Secondary School, Palakkad',
++  description:
++    'Higher Secondary School Mundur — A century of academic excellence in Palakkad, Kerala.',
++};
++
++export default function RootLayout({ children }) {
++  return (
++    <html lang="en">
++      <head>
++        <link
++          rel="stylesheet"
++          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
++        />
++        <link
++          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap"
++          rel="stylesheet"
++        />
++        <link rel="stylesheet" href="/main.css" />
++        <link rel="stylesheet" href="/3d-effects.css" />
++      </head>
++      <body>
++        <Loader />
++        <Header />
++        {children}
++        <Footer />
++        <SiteEffects />
++      </body>
++    </html>
++  );
++}
+diff --git a/app/not-found.js b/app/not-found.js
+new file mode 100644
+index 0000000..42901bf
+--- /dev/null
++++ b/app/not-found.js
+@@ -0,0 +1,29 @@
++import Link from 'next/link';
++
++export const metadata = {
++  title: 'Page Not Found — HSS Mundur',
++};
++
++export default function NotFound() {
++  return (
++    <main className="error-content fade-in visible">
++      <div className="error-lamp">
++        <div className="out-flame">
++          <svg viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg">
++            <path d="M12 0C12 0 3 11 3 20a9 9 0 0018 0C21 11 12 0 12 0z" fill="#8a93a3" />
++          </svg>
++        </div>
++        <div className="smoke"></div>
++      </div>
++      <h1>404</h1>
++      <h2>Class Dismissed!</h2>
++      <p>
++        The page you are looking for has been moved, removed, or doesn't exist. Let's get you
++        back to the main campus.
++      </p>
++      <Link href="/" className="btn btn-primary">
++        <i className="fas fa-home"></i> Return to Homepage
++      </Link>
++    </main>
++  );
++}
+diff --git a/app/page.js b/app/page.js
+new file mode 100644
+index 0000000..9261af8
+--- /dev/null
++++ b/app/page.js
+@@ -0,0 +1,250 @@
++'use client';
++
++import Link from 'next/link';
++
++const STATS = [
++  { count: 90, suffix: '+', label: 'Years of Legacy' },
++  { count: 1500, suffix: '+', label: 'Students' },
++  { count: 80, suffix: '+', label: 'Dedicated Staff' },
++  { count: 100, suffix: '%', label: 'Pass Rate' },
++];
++
++const FEATURES = [
++  {
++    icon: 'fa-flask',
++    title: 'Modern Laboratories',
++    text: 'Fully equipped science and computer labs enabling hands-on learning and experimentation for every student.',
++  },
++  {
++    icon: 'fa-book-open',
++    title: 'Rich Library',
++    text: 'A well-stocked library with thousands of volumes, digital resources, and quiet study spaces for focused learning.',
++  },
++  {
++    icon: 'fa-running',
++    title: 'Sports & Athletics',
++    text: 'Extensive sports facilities fostering physical fitness, teamwork, and competitive spirit at district and state levels.',
++  },
++  {
++    icon: 'fa-palette',
++    title: 'Arts & Culture',
++    text: "Vibrant arts, music, and cultural programmes that celebrate creativity and Kerala's rich heritage.",
++  },
++  {
++    icon: 'fa-laptop-code',
++    title: 'IT Education',
++    text: 'Little Kites IT Club and smart classrooms ensure students are prepared for a digital-first world.',
++  },
++  {
++    icon: 'fa-users',
++    title: 'Student Clubs',
++    text: 'Eco Club, Science Club, and various student bodies developing leadership, teamwork, and social responsibility.',
++  },
++];
++
++// The original site referenced five gallery images but only ever shipped
++// two of them (c1.jpg, lb1.jpg) — the other three (sb.jpg, sd.jpg, lib.jpg)
++// don't exist in the repo and rendered as broken images. This swaps in the
++// two extra photos that *were* in the repo but unused (c2.jpg, lb2.jpg,
++// about-hero.jpg) so every tile shows a real photo.
++const GALLERY = [
++  { src: '/images/c1.jpg', alt: 'School Building', caption: 'Main Building' },
++  { src: '/images/lb1.jpg', alt: 'Computer Lab', caption: 'Computer Lab' },
++  { src: '/images/c2.jpg', alt: 'Campus', caption: 'Campus' },
++  { src: '/images/lb2.jpg', alt: 'Classroom', caption: 'Classroom' },
++  { src: '/images/about-hero.jpg', alt: 'School Grounds', caption: 'School Grounds' },
++];
++
++export default function Home() {
++  return (
++    <>
++      <section className="hero">
++        <div className="hero-pattern"></div>
++        <div className="hero-orb o1"></div>
++        <div className="hero-orb o2"></div>
++        <div className="container">
++          <div className="hero-content">
++            <div className="hero-badge">
++              <i className="fas fa-fire"></i> Est. 1933 — Aksharadeepam, Palakkad
++            </div>
++            <h2>
++              Shaping Minds,
++              <br />
++              <em className="text-gradient">Building Futures</em>
++            </h2>
++            <p>
++              Higher Secondary School Mundur — a century of academic excellence, character, and
++              community in the heart of Palakkad.
++            </p>
++            <div className="hero-btns">
++              <Link href="/about/" className="btn btn-primary">
++                <i className="fas fa-compass"></i> Explore Our School
++              </Link>
++            </div>
++            <div className="hero-stats">
++              {STATS.map((s) => (
++                <div className="stat-item" key={s.label}>
++                  <div className="stat-number" data-count={s.count} data-suffix={s.suffix}>
++                    0
++                  </div>
++                  <div className="stat-label">{s.label}</div>
++                </div>
++              ))}
++            </div>
++          </div>
++        </div>
++        <div className="hero-scroll">
++          <span>Scroll</span>
++          <i className="fas fa-chevron-down"></i>
++        </div>
++      </section>
++
++      <div className="marquee">
++        <div className="marquee-track">
++          <span>
++            <i className="fas fa-circle"></i> Excellence <i className="fas fa-circle"></i>{' '}
++            Integrity <i className="fas fa-circle"></i> Community{' '}
++            <i className="fas fa-circle"></i> Aksharadeepam — The Light of Knowledge{' '}
++            <i className="fas fa-circle"></i> Since 1933 <i className="fas fa-circle"></i>{' '}
++            Palakkad, Kerala
++          </span>
++          <span aria-hidden="true">
++            <i className="fas fa-circle"></i> Excellence <i className="fas fa-circle"></i>{' '}
++            Integrity <i className="fas fa-circle"></i> Community{' '}
++            <i className="fas fa-circle"></i> Aksharadeepam — The Light of Knowledge{' '}
++            <i className="fas fa-circle"></i> Since 1933 <i className="fas fa-circle"></i>{' '}
++            Palakkad, Kerala
++          </span>
++        </div>
++      </div>
++
++      <section className="about-preview" id="about">
++        <div className="container">
++          <div className="about-layout">
++            <div className="about-visual reveal" data-reveal="left">
++              <div className="about-img-placeholder">
++                <i className="fas fa-school"></i>
++                <span>HSS Mundur Campus</span>
++              </div>
++              {/* eslint-disable-next-line @next/next/no-img-element */}
++              <img
++                src="/images/c1.jpg"
++                alt="HSS Mundur School Building"
++                className="about-img-main"
++                style={{ position: 'absolute', top: 0, left: 0 }}
++                onLoad={(e) => {
++                  e.currentTarget.style.position = 'relative';
++                  const placeholder = e.currentTarget.previousElementSibling;
++                  if (placeholder) placeholder.style.display = 'none';
++                }}
++                onError={(e) => {
++                  e.currentTarget.style.display = 'none';
++                }}
++              />
++              <div className="about-badge-float">
++                <div className="badge-year">1933</div>
++                <div className="badge-text">Founded</div>
++              </div>
++            </div>
++            <div className="about-text reveal" data-reveal="right">
++              <div className="section-label">Welcome to HSS Mundur</div>
++              <h3>A Legacy of Excellence in Education</h3>
++              <p>
++                Higher Secondary School Mundur has been a cornerstone of education in Palakkad,
++                Kerala for over nine decades. We are committed to providing quality education
++                that empowers students to excel academically and develop into responsible,
++                compassionate citizens.
++              </p>
++              <p>
++                Our curriculum nurtures critical thinking, creativity, and character development
++                — preparing students for the challenges of higher education and the opportunities
++                of tomorrow.
++              </p>
++              <Link href="/about/" className="btn btn-outline-dark" style={{ marginTop: 8 }}>
++                <i className="fas fa-arrow-right"></i> Read Our Story
++              </Link>
++            </div>
++          </div>
++        </div>
++      </section>
++
++      <section className="features-section">
++        <div className="container">
++          <div className="section-title centered fade-in">
++            <div className="section-label">What Sets Us Apart</div>
++            <h2>A Complete Learning Environment</h2>
++            <p>
++              From state-of-the-art laboratories to vibrant cultural programmes, we offer every
++              student the tools to thrive.
++            </p>
++          </div>
++          <div className="features-grid">
++            {FEATURES.map((f) => (
++              <div className="feature-card reveal" data-tilt="true" data-reveal="up" key={f.title}>
++                <div className="feature-icon">
++                  <i className={`fas ${f.icon}`}></i>
++                </div>
++                <h3>{f.title}</h3>
++                <p>{f.text}</p>
++              </div>
++            ))}
++          </div>
++        </div>
++      </section>
++
++      <section className="gallery-preview">
++        <div className="container">
++          <div
++            className="section-title fade-in"
++            style={{
++              display: 'flex',
++              justifyContent: 'space-between',
++              alignItems: 'flex-end',
++              marginBottom: 40,
++            }}
++          >
++            <div>
++              <div className="section-label">Campus Life</div>
++              <h2 style={{ color: 'white' }}>
++                A Glimpse of
++                <br />
++                School Life
++              </h2>
++            </div>
++          </div>
++          <div className="gallery-masonry fade-in">
++            {GALLERY.map((g) => (
++              <div className="g-item" key={g.src}>
++                {/* eslint-disable-next-line @next/next/no-img-element */}
++                <img
++                  src={g.src}
++                  alt={g.alt}
++                  onError={(e) => {
++                    e.currentTarget.style.display = 'none';
++                  }}
++                />
++                <div className="g-overlay">{g.caption}</div>
++              </div>
++            ))}
++          </div>
++        </div>
++      </section>
++
++      <section className="cta-section">
++        <div className="container fade-in">
++          <div
++            className="section-label"
++            style={{ justifyContent: 'center', color: 'rgba(255,255,255,.8)' }}
++          >
++            <span style={{ background: 'rgba(255,255,255,.3)', height: 2 }}></span>Get In Touch
++          </div>
++          <h2>Ready to Be Part of Our Story?</h2>
++          <p>Have questions about admissions, programmes, or events? We'd love to hear from you.</p>
++          <Link href="/contact/" className="btn btn-primary">
++            Contact Us <i className="fas fa-arrow-right"></i>
++          </Link>
++        </div>
++      </section>
++    </>
++  );
++}
+diff --git a/components/Footer.js b/components/Footer.js
+new file mode 100644
+index 0000000..8a06934
+--- /dev/null
++++ b/components/Footer.js
+@@ -0,0 +1,86 @@
++import Link from 'next/link';
++
++export default function Footer() {
++  return (
++    <footer>
++      <div className="container">
++        <div className="footer-grid">
++          <div className="footer-brand">
++            <Link href="/" className="logo" style={{ marginBottom: 0 }}>
++              <div className="logo-icon">
++                <i className="fas fa-graduation-cap"></i>
++              </div>
++              <div className="logo-text">
++                <h1>HSS MUNDUR</h1>
++                <p>Higher Secondary School, Palakkad</p>
++              </div>
++            </Link>
++            <p className="desc">
++              Dedicated to academic excellence and the holistic development of every student
++              since 1933. Shaping the future of Mundur, one student at a time.
++            </p>
++            <div className="social-row">
++              <a href="#" aria-label="Facebook">
++                <i className="fab fa-facebook-f"></i>
++              </a>
++              <a href="#" aria-label="Twitter">
++                <i className="fab fa-twitter"></i>
++              </a>
++              <a href="#" aria-label="Instagram">
++                <i className="fab fa-instagram"></i>
++              </a>
++              <a href="#" aria-label="YouTube">
++                <i className="fab fa-youtube"></i>
++              </a>
++            </div>
++          </div>
++          <div className="footer-col">
++            <h4>Quick Links</h4>
++            <ul>
++              <li>
++                <Link href="/">Home</Link>
++              </li>
++              <li>
++                <Link href="/about/">About Us</Link>
++              </li>
++              <li>
++                <Link href="/contact/">Contact</Link>
++              </li>
++              <li>
++                <a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">
++                  Blog
++                </a>
++              </li>
++            </ul>
++          </div>
++          <div className="footer-col">
++            <h4>Contact</h4>
++            <div className="contact-item">
++              <i className="fas fa-map-marker-alt"></i>
++              <span>HSS Mundur, Palakkad, Kerala 678592</span>
++            </div>
++            <div className="contact-item">
++              <i className="fas fa-phone"></i>
++              <span>+91 491 2832454</span>
++            </div>
++            <div className="contact-item">
++              <i className="fas fa-envelope"></i>
++              <span>hssmundur@gmail.com</span>
++            </div>
++            <div className="contact-item">
++              <i className="fas fa-clock"></i>
++              <span>Mon – Fri: 8:30 AM – 4:00 PM</span>
++            </div>
++          </div>
++        </div>
++        <div className="footer-bottom">
++          <span>© 2026 Higher Secondary School Mundur, Palakkad. All Rights Reserved.</span>
++          <span>
++            Made with <i className="fas fa-heart" style={{ color: '#ff2a2a' }}></i> by{' '}
++            <strong>Ras Devs</strong>
++          </span>
++        </div>
++      </div>
++    </footer>
++  );
++}
+diff --git a/components/Header.js b/components/Header.js
+new file mode 100644
+index 0000000..481b213
+--- /dev/null
++++ b/components/Header.js
+@@ -0,0 +1,72 @@
++'use client';
++
++import Link from 'next/link';
++import { usePathname } from 'next/navigation';
++import { useEffect, useState } from 'react';
++
++const NAV_LINKS = [
++  { href: '/', label: 'Home' },
++  { href: '/about/', label: 'About' },
++  { href: '/contact/', label: 'Contact' },
++];
++
++export default function Header() {
++  const pathname = usePathname();
++  const [scrolled, setScrolled] = useState(false);
++  const [menuOpen, setMenuOpen] = useState(false);
++
++  useEffect(() => {
++    const onScroll = () => setScrolled(window.scrollY > 40);
++    onScroll();
++    window.addEventListener('scroll', onScroll, { passive: true });
++    return () => window.removeEventListener('scroll', onScroll);
++  }, []);
++
++  // Close the mobile menu on route change so it doesn't stay open
++  // after navigating — the original site reloaded the page on every
++  // link click, which reset this for free; a client-side router does not.
++  useEffect(() => {
++    setMenuOpen(false);
++  }, [pathname]);
++
++  return (
++    <header id="mainHeader" className={scrolled ? 'scrolled' : ''}>
++      <div className="container header-container">
++        <Link href="/" className="logo">
++          <div className="logo-icon">
++            <i className="fas fa-graduation-cap"></i>
++          </div>
++          <div className="logo-text">
++            <h1>HSS MUNDUR</h1>
++            <p>Higher Secondary School, Palakkad</p>
++          </div>
++        </Link>
++        <button
++          className="mobile-menu-btn"
++          id="mobileMenuBtn"
++          aria-label="Toggle menu"
++          aria-expanded={menuOpen}
++          onClick={() => setMenuOpen((v) => !v)}
++        >
++          <i className={menuOpen ? 'fas fa-times' : 'fas fa-bars'}></i>
++        </button>
++        <nav className={`nav-menu${menuOpen ? ' active' : ''}`} id="navMenu">
++          <ul>
++            {NAV_LINKS.map((link) => (
++              <li key={link.href}>
++                <Link href={link.href} className={pathname === link.href ? 'active' : ''}>
++                  {link.label}
++                </Link>
++              </li>
++            ))}
++            <li>
++              <a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">
++                Blog <i className="fas fa-external-link-alt" style={{ fontSize: '0.7em', marginLeft: '3px' }}></i>
++              </a>
++            </li>
++          </ul>
++        </nav>
++      </div>
++    </header>
++  );
++}
+diff --git a/components/Loader.js b/components/Loader.js
+new file mode 100644
+index 0000000..fe58d07
+--- /dev/null
++++ b/components/Loader.js
+@@ -0,0 +1,26 @@
++export default function Loader() {
++  return (
++    <div id="loader">
++      <div className="loader-glow"></div>
++      <div className="loader-lamp">
++        <div className="loader-flame">
++          <svg viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg">
++            <defs>
++              <linearGradient id="fg1" x1="0" y1="0" x2="0" y2="1">
++                <stop offset="0%" stopColor="#ffe9b0" />
++                <stop offset="45%" stopColor="#ffb870" />
++                <stop offset="100%" stopColor="#ff6b35" />
++              </linearGradient>
++            </defs>
++            <path d="M12 0C12 0 3 11 3 20a9 9 0 0018 0C21 11 12 0 12 0z" fill="url(#fg1)" />
++          </svg>
++        </div>
++        <div className="loader-stand"></div>
++        <div className="loader-base"></div>
++      </div>
++      <div className="loader-text">
++        HSS <span>MUNDUR</span>
++      </div>
++    </div>
++  );
++}
+diff --git a/components/SiteEffects.js b/components/SiteEffects.js
+new file mode 100644
+index 0000000..1718660
+--- /dev/null
++++ b/components/SiteEffects.js
+@@ -0,0 +1,367 @@
++'use client';
++
++import { useEffect } from 'react';
++import { usePathname } from 'next/navigation';
++
++const REVEAL_SELECTOR =
++  '.fade-in, .reveal, .timeline, .timeline-item, .feature-card, .g-item';
++const HOVER_CURSOR_SELECTOR = 'a, button, .btn, .g-item, .feature-card, .mv-card';
++const TILT_SELECTOR = '.feature-card[data-tilt], .g-item';
++
++export default function SiteEffects() {
++  const pathname = usePathname();
++
++  /* ── One-time setup: loader, cursor, particle field, progress bar,
++     ripple/tilt/glitch/magnetic (all event-delegated so they keep
++     working for elements added by later client-side navigations) ── */
++  useEffect(() => {
++    // Loader
++    const loader = document.getElementById('loader');
++    const hideLoader = () => {
++      if (loader) loader.classList.add('hidden');
++    };
++    if (document.readyState === 'complete') {
++      setTimeout(hideLoader, 400);
++    } else {
++      window.addEventListener('load', () => setTimeout(hideLoader, 400), { once: true });
++    }
++
++    const cleanups = [];
++
++    // Custom cursor (fine pointer only)
++    if (window.matchMedia('(pointer: fine)').matches) {
++      const dot = document.createElement('div');
++      dot.className = 'cursor-dot';
++      const ring = document.createElement('div');
++      ring.className = 'cursor-ring';
++      document.body.appendChild(dot);
++      document.body.appendChild(ring);
++
++      let mx = 0,
++        my = 0,
++        rx = 0,
++        ry = 0;
++      let raf;
++      const onMove = (e) => {
++        mx = e.clientX;
++        my = e.clientY;
++        dot.style.left = mx + 'px';
++        dot.style.top = my + 'px';
++      };
++      const animateRing = () => {
++        rx += (mx - rx) * 0.18;
++        ry += (my - ry) * 0.18;
++        ring.style.left = rx + 'px';
++        ring.style.top = ry + 'px';
++        raf = requestAnimationFrame(animateRing);
++      };
++      window.addEventListener('mousemove', onMove);
++      raf = requestAnimationFrame(animateRing);
++
++      const onOver = (e) => {
++        if (e.target.closest && e.target.closest(HOVER_CURSOR_SELECTOR)) {
++          ring.classList.add('hovering');
++        }
++      };
++      const onOut = (e) => {
++        if (e.target.closest && e.target.closest(HOVER_CURSOR_SELECTOR)) {
++          ring.classList.remove('hovering');
++        }
++      };
++      document.addEventListener('mouseover', onOver);
++      document.addEventListener('mouseout', onOut);
++
++      cleanups.push(() => {
++        cancelAnimationFrame(raf);
++        window.removeEventListener('mousemove', onMove);
++        document.removeEventListener('mouseover', onOver);
++        document.removeEventListener('mouseout', onOut);
++        dot.remove();
++        ring.remove();
++      });
++    }
++
++    // Particle field
++    const canvas = document.createElement('canvas');
++    canvas.id = 'particle-canvas';
++    canvas.style.cssText = `
++      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
++      pointer-events: none; z-index: 0; opacity: 0.35;
++    `;
++    document.body.insertBefore(canvas, document.body.firstChild);
++    const ctx = canvas.getContext('2d');
++    if (ctx) {
++      canvas.width = window.innerWidth;
++      canvas.height = window.innerHeight;
++      const colors = ['#1b7a78', '#2aada9', '#c9a84c', '#ff8a3d'];
++      const particles = Array.from({ length: 40 }, () => ({
++        x: Math.random() * canvas.width,
++        y: Math.random() * canvas.height,
++        vx: (Math.random() - 0.5) * 0.3,
++        vy: (Math.random() - 0.5) * 0.3,
++        radius: Math.random() * 1.5 + 0.5,
++        opacity: Math.random() * 0.4 + 0.1,
++        color: colors[Math.floor(Math.random() * colors.length)],
++      }));
++
++      let particleRaf;
++      const animate = () => {
++        ctx.clearRect(0, 0, canvas.width, canvas.height);
++        ctx.globalAlpha = 1;
++        particles.forEach((p) => {
++          p.x += p.vx;
++          p.y += p.vy;
++          p.opacity = Math.max(0.1, Math.min(0.5, p.opacity + (Math.random() - 0.5) * 0.02));
++          if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
++          if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
++          ctx.fillStyle = p.color;
++          ctx.globalAlpha = p.opacity;
++          ctx.beginPath();
++          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
++          ctx.fill();
++        });
++        for (let i = 0; i < particles.length; i++) {
++          for (let j = i + 1; j < particles.length; j++) {
++            const dx = particles[i].x - particles[j].x;
++            const dy = particles[i].y - particles[j].y;
++            const dist = Math.sqrt(dx * dx + dy * dy);
++            if (dist < 120) {
++              ctx.strokeStyle = particles[i].color;
++              ctx.globalAlpha = (1 - dist / 120) * 0.15;
++              ctx.lineWidth = 0.5;
++              ctx.beginPath();
++              ctx.moveTo(particles[i].x, particles[i].y);
++              ctx.lineTo(particles[j].x, particles[j].y);
++              ctx.stroke();
++            }
++          }
++        }
++        ctx.globalAlpha = 1;
++        particleRaf = requestAnimationFrame(animate);
++      };
++      animate();
++
++      const onResize = () => {
++        canvas.width = window.innerWidth;
++        canvas.height = window.innerHeight;
++      };
++      window.addEventListener('resize', onResize);
++      cleanups.push(() => {
++        cancelAnimationFrame(particleRaf);
++        window.removeEventListener('resize', onResize);
++        canvas.remove();
++      });
++    }
++
++    // Scroll progress bar (guarded against divide-by-zero on short pages)
++    const progressBar = document.createElement('div');
++    progressBar.style.cssText = `
++      position: fixed; top: 0; left: 0; height: 3px;
++      background: linear-gradient(90deg, #1b7a78, #2aada9, #c9a84c, #ff8a3d);
++      background-size: 200% 100%; animation: progressGradient 3s ease infinite;
++      z-index: 9999; box-shadow: 0 0 15px rgba(27, 122, 120, 0.5);
++      width: 0%; transition: width 0.1s linear;
++    `;
++    document.body.appendChild(progressBar);
++    const progressStyle = document.createElement('style');
++    progressStyle.textContent = `
++      @keyframes progressGradient { 0% { background-position: 0% 0%; } 100% { background-position: 100% 0%; } }
++      @keyframes ripple { to { transform: scale(4); opacity: 0; } }
++      @keyframes glitch {
++        0% { text-shadow: 2px 0 #ff8a3d, -2px 0 #1b7a78; }
++        50% { text-shadow: -2px 0 #ff8a3d, 2px 0 #1b7a78; }
++        100% { text-shadow: 0 0 rgba(0,0,0,0); }
++      }
++      .btn { position: relative; overflow: hidden; }
++    `;
++    document.head.appendChild(progressStyle);
++    const onScrollProgress = () => {
++      const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
++      progressBar.style.width = (windowHeight > 0 ? (window.scrollY / windowHeight) * 100 : 0) + '%';
++    };
++    window.addEventListener('scroll', onScrollProgress, { passive: true });
++    onScrollProgress();
++    cleanups.push(() => {
++      window.removeEventListener('scroll', onScrollProgress);
++      progressBar.remove();
++      progressStyle.remove();
++    });
++
++    // Magnetic buttons (delegated)
++    const onBtnMove = (e) => {
++      const el = e.target.closest && e.target.closest('.btn');
++      if (!el) return;
++      const r = el.getBoundingClientRect();
++      const x = e.clientX - r.left - r.width / 2;
++      const y = e.clientY - r.top - r.height / 2;
++      el.style.transform = `translate(${x * 0.14}px, ${y * 0.28 - 3}px)`;
++    };
++    const onBtnOut = (e) => {
++      const el = e.target.closest && e.target.closest('.btn');
++      if (!el) return;
++      if (el.contains(e.relatedTarget)) return;
++      el.style.transform = '';
++    };
++    document.addEventListener('mousemove', onBtnMove);
++    document.addEventListener('mouseout', onBtnOut);
++    cleanups.push(() => {
++      document.removeEventListener('mousemove', onBtnMove);
++      document.removeEventListener('mouseout', onBtnOut);
++    });
++
++    // Card / gallery-item tilt (delegated)
++    const onTiltMove = (e) => {
++      const el = e.target.closest && e.target.closest(TILT_SELECTOR);
++      if (!el) return;
++      const rect = el.getBoundingClientRect();
++      const x = e.clientX - rect.left - rect.width / 2;
++      const y = e.clientY - rect.top - rect.height / 2;
++      const max = el.classList.contains('g-item') ? 12 : 15;
++      const half = max / 2;
++      const rotX = (y / rect.height) * max - half;
++      const rotY = (x / rect.width) * max - half;
++      const perspective = el.classList.contains('g-item') ? 1000 : 1200;
++      const scale = el.classList.contains('g-item') ? 1.03 : 1.05;
++      el.style.transform = `perspective(${perspective}px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${scale})`;
++    };
++    const onTiltOut = (e) => {
++      const el = e.target.closest && e.target.closest(TILT_SELECTOR);
++      if (!el) return;
++      if (el.contains(e.relatedTarget)) return;
++      el.style.transform = 'perspective(1200px) rotateX(0) rotateY(0) scale(1)';
++    };
++    document.addEventListener('mousemove', onTiltMove);
++    document.addEventListener('mouseout', onTiltOut);
++    cleanups.push(() => {
++      document.removeEventListener('mousemove', onTiltMove);
++      document.removeEventListener('mouseout', onTiltOut);
++    });
++
++    // Feature-card glow (delegated)
++    const onGlowOver = (e) => {
++      const el = e.target.closest && e.target.closest('.feature-card');
++      if (!el) return;
++      el.style.boxShadow =
++        '0 0 20px rgba(27, 122, 120, 0.4), 0 0 40px rgba(255, 138, 61, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.08)';
++    };
++    const onGlowOut = (e) => {
++      const el = e.target.closest && e.target.closest('.feature-card');
++      if (!el) return;
++      if (el.contains(e.relatedTarget)) return;
++      el.style.boxShadow =
++        '0 0 20px rgba(27, 122, 120, 0.15), 0 0 40px rgba(255, 138, 61, 0.075), inset 0 0 20px rgba(255, 255, 255, 0.03)';
++    };
++    document.addEventListener('mouseover', onGlowOver);
++    document.addEventListener('mouseout', onGlowOut);
++    cleanups.push(() => {
++      document.removeEventListener('mouseover', onGlowOver);
++      document.removeEventListener('mouseout', onGlowOut);
++    });
++
++    // Glitch on heading hover (delegated)
++    const onGlitchOver = (e) => {
++      const el = e.target.closest && e.target.closest('h1, h2, h3');
++      if (!el) return;
++      el.style.animation = 'glitch 0.4s ease-in-out';
++      setTimeout(() => {
++        el.style.animation = 'none';
++      }, 400);
++    };
++    document.addEventListener('mouseover', onGlitchOver);
++    cleanups.push(() => document.removeEventListener('mouseover', onGlitchOver));
++
++    // Ripple on .btn click (delegated)
++    const onBtnClick = (e) => {
++      const btn = e.target.closest && e.target.closest('.btn');
++      if (!btn) return;
++      const ripple = document.createElement('span');
++      const rect = btn.getBoundingClientRect();
++      const size = Math.max(rect.width, rect.height);
++      const x = e.clientX - rect.left - size / 2;
++      const y = e.clientY - rect.top - size / 2;
++      ripple.style.cssText = `
++        position: absolute; width: ${size}px; height: ${size}px; left: ${x}px; top: ${y}px;
++        background: rgba(255, 255, 255, 0.6); border-radius: 50%; pointer-events: none;
++        transform: scale(0); animation: ripple 0.6s ease-out;
++      `;
++      btn.appendChild(ripple);
++      setTimeout(() => ripple.remove(), 600);
++    };
++    document.addEventListener('click', onBtnClick);
++    cleanups.push(() => document.removeEventListener('click', onBtnClick));
++
++    // Hero-orb parallax (delegated, only matters where .hero-orb exists)
++    const onOrbMove = (e) => {
++      const orbs = document.querySelectorAll('.hero-orb');
++      if (!orbs.length) return;
++      orbs.forEach((orb, idx) => {
++        const x = (window.innerWidth / 2 - e.clientX) / 100;
++        const y = (window.innerHeight / 2 - e.clientY) / 100;
++        orb.style.transform = `translate3d(${x * (idx + 1) * 10}px, ${y * (idx + 1) * 10}px, -${50 + idx * 50}px)`;
++      });
++    };
++    document.addEventListener('mousemove', onOrbMove);
++    cleanups.push(() => document.removeEventListener('mousemove', onOrbMove));
++
++    return () => cleanups.forEach((fn) => fn());
++    // eslint-disable-next-line react-hooks/exhaustive-deps
++  }, []);
++
++  /* ── Per-navigation setup: (re)observe reveal-on-scroll targets and
++     animated stat counters for whatever page is currently mounted,
++     and animate stat counters ── */
++  useEffect(() => {
++    // Scroll reveal
++    const revealObserver = new IntersectionObserver(
++      (entries) => {
++        entries.forEach((entry, i) => {
++          if (entry.isIntersecting) {
++            setTimeout(() => entry.target.classList.add('visible', 'in-view'), i * 70);
++            revealObserver.unobserve(entry.target);
++          }
++        });
++      },
++      { threshold: 0.12 }
++    );
++    document.querySelectorAll(REVEAL_SELECTOR).forEach((el) => revealObserver.observe(el));
++
++    // Animated stat counters
++    const counterObserver = new IntersectionObserver(
++      (entries) => {
++        entries.forEach((entry) => {
++          if (!entry.isIntersecting) return;
++          const el = entry.target;
++          const target = parseInt(el.dataset.count, 10);
++          const suffix = el.dataset.suffix || '';
++          const duration = 1600;
++          const start = performance.now();
++          const tick = (now) => {
++            const p = Math.min((now - start) / duration, 1);
++            const eased = 1 - Math.pow(1 - p, 3);
++            el.textContent = Math.round(eased * target) + suffix;
++            if (p < 1) requestAnimationFrame(tick);
++          };
++          requestAnimationFrame(tick);
++          counterObserver.unobserve(el);
++        });
++      },
++      { threshold: 0.5 }
++    );
++    document.querySelectorAll('.stat-number[data-count]').forEach((el) => counterObserver.observe(el));
++
++    // Page-load wipe reveal (brief, on every route change too)
++    const wipe = document.createElement('div');
++    wipe.className = 'page-wipe out';
++    document.body.appendChild(wipe);
++    const t = setTimeout(() => wipe.remove(), 700);
++
++    return () => {
++      revealObserver.disconnect();
++      counterObserver.disconnect();
++      clearTimeout(t);
++      wipe.remove();
++    };
++  }, [pathname]);
++
++  return null;
++}
+diff --git a/contact.html b/contact.html
+deleted file mode 100644
+index 8464442..0000000
+--- a/contact.html
++++ /dev/null
+@@ -1,190 +0,0 @@
+-<!DOCTYPE html>
+-<html lang="en">
+-<head>
+-  <meta charset="UTF-8">
+-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-  <title>Contact — HSS Mundur</title>
+-  <meta name="description" content="Get in touch with Higher Secondary School Mundur, Palakkad.">
+-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+-  <link rel="stylesheet" href="main.css">
+-  <link rel="stylesheet" href="3d-effects.css">
+-</head>
+-<body>
+-
+-  <!-- ── Loader ── -->
+-  <div id="loader">
+-    <div class="loader-glow"></div>
+-    <div class="loader-lamp">
+-      <div class="loader-flame">
+-        <svg viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg">
+-          <defs><linearGradient id="fg1" x1="0" y1="0" x2="0" y2="1">
+-            <stop offset="0%" stop-color="#ffe9b0"/><stop offset="45%" stop-color="#ffb870"/><stop offset="100%" stop-color="#ff6b35"/>
+-          </linearGradient></defs>
+-          <path d="M12 0C12 0 3 11 3 20a9 9 0 0018 0C21 11 12 0 12 0z" fill="url(#fg1)"/>
+-        </svg>
+-      </div>
+-      <div class="loader-stand"></div>
+-      <div class="loader-base"></div>
+-    </div>
+-    <div class="loader-text">HSS <span>MUNDUR</span></div>
+-  </div>
+-
+-  <header id="mainHeader">
+-    <div class="container header-container">
+-      <a href="index.html" class="logo">
+-        <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+-        <div class="logo-text">
+-          <h1>HSS MUNDUR</h1>
+-          <p>Higher Secondary School, Palakkad</p>
+-        </div>
+-      </a>
+-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+-        <i class="fas fa-bars"></i>
+-      </button>
+-      <nav class="nav-menu" id="navMenu">
+-        <ul>
+-          <li><a href="index.html">Home</a></li>
+-          <li><a href="about.html">About</a></li>
+-          <li><a href="contact.html" class="active">Contact</a></li>
+-          <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog <i class="fas fa-external-link-alt" style="font-size: 0.7em; margin-left: 3px;"></i></a></li>
+-        </ul>
+-      </nav>
+-    </div>
+-  </header>
+-
+-  <section class="page-hero">
+-    <div class="container">
+-      <div class="breadcrumb">
+-        <a href="index.html">Home</a>
+-        <i class="fas fa-chevron-right" style="font-size:.65rem;"></i>
+-        <span>Contact</span>
+-      </div>
+-      <div class="section-label" style="margin-bottom:14px;">Reach Out</div>
+-      <h1>Contact Us</h1>
+-      <p>We'd love to hear from you. Get in touch with any questions, enquiries, or feedback.</p>
+-    </div>
+-  </section>
+-
+-  <section class="contact-section">
+-    <div class="container">
+-      <div class="contact-layout">
+-
+-        <div class="contact-info-panel reveal" data-reveal="left">
+-          <div class="section-label">Our Details</div>
+-          <h3>How to Reach Us</h3>
+-          <p>Our staff are available during school hours to assist with any inquiries about admissions, academics, or general information.</p>
+-
+-          <div class="info-card">
+-            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+-            <div>
+-              <h4>Our Address</h4>
+-              <p>HSS Mundur<br>Mundur, Palakkad<br>Kerala, India — 678592</p>
+-            </div>
+-          </div>
+-
+-          <div class="info-card">
+-            <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+-            <div>
+-              <h4>Phone</h4>
+-              <a href="tel:+914912832454">+91 491 2832454</a>
+-            </div>
+-          </div>
+-
+-          <div class="info-card">
+-            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+-            <div>
+-              <h4>Email</h4>
+-              <a href="mailto:hssmundur@gmail.com">hssmundur@gmail.com</a>
+-            </div>
+-          </div>
+-
+-          <div class="info-card">
+-            <div class="info-icon"><i class="fas fa-clock"></i></div>
+-            <div>
+-              <h4>Office Hours</h4>
+-              <p>Monday – Friday<br>8:30 AM – 4:00 PM</p>
+-            </div>
+-          </div>
+-
+-          <div class="social-row" style="margin-top:8px;">
+-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+-            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+-          </div>
+-        </div>
+-
+-        <div class="contact-form-panel reveal" data-reveal="right" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+-          <div style="padding: 32px 32px 16px;">
+-            <div class="section-label">Coming Next</div>
+-            <h3>Little Kites Initiative</h3>
+-            <p>Get a sneak peek at our upcoming dedicated portal for the Little Kites IT Club.</p>
+-          </div>
+-
+-          <div style="flex-grow: 1; padding: 0 32px 32px; height: 100%;">
+-            <iframe
+-              src="https://lkmundur.pages.dev"
+-              style="width: 100%; height: 500px; border: 2px solid var(--cream-dark); border-radius: var(--radius-sm); box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);"
+-              title="Little Kites Website Preview"
+-              loading="lazy">
+-            </iframe>
+-          </div>
+-        </div>
+-      </div>
+-    </div>
+-  </section>
+-
+-  <section class="map-section">
+-    <div class="container">
+-      <div class="section-title fade-in">
+-        <div class="section-label">Find Us</div>
+-        <h2>Our Location</h2>
+-        <p>We are located in Mundur, Palakkad, Kerala.</p>
+-      </div>
+-      <div class="map-embed fade-in">
+-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3347.201652911937!2d76.5741568!3d10.8361564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba870e97582c9d3%3A0xd3947f3f01836644!2sHigh%20School%20Mundur!5e1!3m2!1sen!2sin!4v1781250498411!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+-      </div>
+-    </div>
+-  </section>
+-
+-  <footer>
+-    <div class="container">
+-      <div class="footer-grid">
+-        <div class="footer-brand">
+-          <a href="index.html" class="logo">
+-            <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+-            <div class="logo-text">
+-              <h1>HSS MUNDUR</h1>
+-              <p>Higher Secondary School, Palakkad</p>
+-            </div>
+-          </a>
+-          <p class="desc">Dedicated to academic excellence and the holistic development of every student since 1933.</p>
+-        </div>
+-        <div class="footer-col">
+-          <h4>Quick Links</h4>
+-          <ul>
+-            <li><a href="index.html">Home</a></li>
+-            <li><a href="about.html">About Us</a></li>
+-            <li><a href="contact.html">Contact</a></li>
+-            <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
+-          </ul>
+-        </div>
+-        <div class="footer-col">
+-          <h4>Contact</h4>
+-          <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>HSS Mundur, Palakkad, Kerala 678592</span></div>
+-          <div class="contact-item"><i class="fas fa-phone"></i><span>+91 491 2832454</span></div>
+-          <div class="contact-item"><i class="fas fa-envelope"></i><span>hssmundur@gmail.com</span></div>
+-        </div>
+-      </div>
+-      <div class="footer-bottom">
+-        <span>© 2026 Higher Secondary School Mundur, Palakkad. All Rights Reserved.</span>
+-        <span>Made with <i class="fas fa-heart" style="color: #ff2a2a;"></i> by <strong>Ras Devs</strong></span>
+-      </div>
+-    </div>
+-  </footer>
+-
+-  <script src="script.js"></script>
+-  <script src="3d-effects.js"></script>
+-</body>
+-</html>
+diff --git a/index.html b/index.html
+deleted file mode 100644
+index a527cc2..0000000
+--- a/index.html
++++ /dev/null
+@@ -1,272 +0,0 @@
+-<!DOCTYPE html>
+-<html lang="en">
+-<head>
+-  <meta charset="UTF-8">
+-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-  <title>HSS Mundur — Higher Secondary School, Palakkad</title>
+-  <meta name="description" content="Higher Secondary School Mundur — A century of academic excellence in Palakkad, Kerala.">
+-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+-  <link rel="stylesheet" href="main.css">
+-  <link rel="stylesheet" href="3d-effects.css">
+-</head>
+-<body>
+-
+-  <!-- ── Loader ── -->
+-  <div id="loader">
+-    <div class="loader-glow"></div>
+-    <div class="loader-lamp">
+-      <div class="loader-flame">
+-        <svg viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg">
+-          <defs><linearGradient id="fg1" x1="0" y1="0" x2="0" y2="1">
+-            <stop offset="0%" stop-color="#ffe9b0"/><stop offset="45%" stop-color="#ffb870"/><stop offset="100%" stop-color="#ff6b35"/>
+-          </linearGradient></defs>
+-          <path d="M12 0C12 0 3 11 3 20a9 9 0 0018 0C21 11 12 0 12 0z" fill="url(#fg1)"/>
+-        </svg>
+-      </div>
+-      <div class="loader-stand"></div>
+-      <div class="loader-base"></div>
+-    </div>
+-    <div class="loader-text">HSS <span>MUNDUR</span></div>
+-  </div>
+-
+-  <!-- ── Header ─────────────────────────────────────── -->
+-  <header id="mainHeader">
+-    <div class="container header-container">
+-      <a href="index.html" class="logo">
+-        <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+-        <div class="logo-text">
+-          <h1>HSS MUNDUR</h1>
+-          <p>Higher Secondary School, Palakkad</p>
+-        </div>
+-      </a>
+-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+-        <i class="fas fa-bars"></i>
+-      </button>
+-      <nav class="nav-menu" id="navMenu">
+-        <ul>
+-          <li><a href="index.html" class="active">Home</a></li>
+-          <li><a href="about.html">About</a></li>
+-          <li><a href="contact.html">Contact</a></li>
+-          <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog <i class="fas fa-external-link-alt" style="font-size: 0.7em; margin-left: 3px;"></i></a></li>
+-        </ul>
+-      </nav>
+-    </div>
+-  </header>
+-
+-  <!-- ── Hero ───────────────────────────────────────── -->
+-  <section class="hero">
+-    <div class="hero-pattern"></div>
+-    <div class="hero-orb o1"></div>
+-    <div class="hero-orb o2"></div>
+-    <div class="container">
+-      <div class="hero-content">
+-        <div class="hero-badge"><i class="fas fa-fire"></i> Est. 1933 — Aksharadeepam, Palakkad</div>
+-        <h2>Shaping Minds,<br><em class="text-gradient">Building Futures</em></h2>
+-        <p>Higher Secondary School Mundur — a century of academic excellence, character, and community in the heart of Palakkad.</p>
+-        <div class="hero-btns">
+-          <a href="about.html" class="btn btn-primary"><i class="fas fa-compass"></i> Explore Our School</a>
+-        </div>
+-        <div class="hero-stats">
+-          <div class="stat-item">
+-            <div class="stat-number" data-count="90" data-suffix="+">0</div>
+-            <div class="stat-label">Years of Legacy</div>
+-          </div>
+-          <div class="stat-item">
+-            <div class="stat-number" data-count="1500" data-suffix="+">0</div>
+-            <div class="stat-label">Students</div>
+-          </div>
+-          <div class="stat-item">
+-            <div class="stat-number" data-count="80" data-suffix="+">0</div>
+-            <div class="stat-label">Dedicated Staff</div>
+-          </div>
+-          <div class="stat-item">
+-            <div class="stat-number" data-count="100" data-suffix="%">0</div>
+-            <div class="stat-label">Pass Rate</div>
+-          </div>
+-        </div>
+-      </div>
+-    </div>
+-    <div class="hero-scroll">
+-      <span>Scroll</span>
+-      <i class="fas fa-chevron-down"></i>
+-    </div>
+-  </section>
+-
+-  <!-- ── Marquee ────────────────────────────────────── -->
+-  <div class="marquee">
+-    <div class="marquee-track">
+-      <span>
+-        <i class="fas fa-circle"></i> Excellence <i class="fas fa-circle"></i> Integrity <i class="fas fa-circle"></i> Community <i class="fas fa-circle"></i> Aksharadeepam — The Light of Knowledge <i class="fas fa-circle"></i> Since 1933 <i class="fas fa-circle"></i> Palakkad, Kerala
+-      </span>
+-    </div>
+-  </div>
+-
+-  <!-- ── About Preview ──────────────────────────────── -->
+-  <section class="about-preview" id="about">
+-    <div class="container">
+-      <div class="about-layout">
+-        <div class="about-visual reveal" data-reveal="left">
+-          <div class="about-img-placeholder">
+-            <i class="fas fa-school"></i>
+-            <span>HSS Mundur Campus</span>
+-          </div>
+-          <img src="images/c1.jpg" alt="HSS Mundur School Building" class="about-img-main"
+-               style="position:absolute;top:0;left:0;"
+-               onload="this.style.position='relative';this.previousElementSibling.style.display='none';"
+-               onerror="this.style.display='none'">
+-          <div class="about-badge-float">
+-            <div class="badge-year">1933</div>
+-            <div class="badge-text">Founded</div>
+-          </div>
+-        </div>
+-        <div class="about-text reveal" data-reveal="right">
+-          <div class="section-label">Welcome to HSS Mundur</div>
+-          <h3>A Legacy of Excellence in Education</h3>
+-          <p>Higher Secondary School Mundur has been a cornerstone of education in Palakkad, Kerala for over nine decades. We are committed to providing quality education that empowers students to excel academically and develop into responsible, compassionate citizens.</p>
+-          <p>Our curriculum nurtures critical thinking, creativity, and character development — preparing students for the challenges of higher education and the opportunities of tomorrow.</p>
+-          <a href="about.html" class="btn btn-outline-dark" style="margin-top:8px;">
+-            <i class="fas fa-arrow-right"></i> Read Our Story
+-          </a>
+-        </div>
+-      </div>
+-    </div>
+-  </section>
+-
+-  <!-- ── Features ───────────────────────────────────── -->
+-  <section class="features-section">
+-    <div class="container">
+-      <div class="section-title centered fade-in">
+-        <div class="section-label">What Sets Us Apart</div>
+-        <h2>A Complete Learning Environment</h2>
+-        <p>From state-of-the-art laboratories to vibrant cultural programmes, we offer every student the tools to thrive.</p>
+-      </div>
+-      <div class="features-grid">
+-        <div class="feature-card reveal" data-tilt data-reveal="up">
+-          <div class="feature-icon"><i class="fas fa-flask"></i></div>
+-          <h3>Modern Laboratories</h3>
+-          <p>Fully equipped science and computer labs enabling hands-on learning and experimentation for every student.</p>
+-        </div>
+-        <div class="feature-card reveal" data-tilt data-reveal="up">
+-          <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+-          <h3>Rich Library</h3>
+-          <p>A well-stocked library with thousands of volumes, digital resources, and quiet study spaces for focused learning.</p>
+-        </div>
+-        <div class="feature-card reveal" data-tilt data-reveal="up">
+-          <div class="feature-icon"><i class="fas fa-running"></i></div>
+-          <h3>Sports & Athletics</h3>
+-          <p>Extensive sports facilities fostering physical fitness, teamwork, and competitive spirit at district and state levels.</p>
+-        </div>
+-        <div class="feature-card reveal" data-tilt data-reveal="up">
+-          <div class="feature-icon"><i class="fas fa-palette"></i></div>
+-          <h3>Arts & Culture</h3>
+-          <p>Vibrant arts, music, and cultural programmes that celebrate creativity and Kerala's rich heritage.</p>
+-        </div>
+-        <div class="feature-card reveal" data-tilt data-reveal="up">
+-          <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+-          <h3>IT Education</h3>
+-          <p>Little Kites IT Club and smart classrooms ensure students are prepared for a digital-first world.</p>
+-        </div>
+-        <div class="feature-card reveal" data-tilt data-reveal="up">
+-          <div class="feature-icon"><i class="fas fa-users"></i></div>
+-          <h3>Student Clubs</h3>
+-          <p>Eco Club, Science Club, and various student bodies developing leadership, teamwork, and social responsibility.</p>
+-        </div>
+-      </div>
+-    </div>
+-  </section>
+-
+-  <!-- ── Gallery Preview ────────────────────────────── -->
+-  <section class="gallery-preview">
+-    <div class="container">
+-      <div class="section-title fade-in" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;">
+-        <div>
+-          <div class="section-label">Campus Life</div>
+-          <h2 style="color:white;">A Glimpse of<br>School Life</h2>
+-        </div>
+-      </div>
+-      <div class="gallery-masonry fade-in">
+-        <div class="g-item">
+-          <img src="images/c1.jpg" alt="School Building" onerror="this.style.display='none'">
+-          <div class="g-overlay">Main Building</div>
+-        </div>
+-        <div class="g-item">
+-          <img src="images/lb1.jpg" alt="Computer Lab" onerror="this.style.display='none'">
+-          <div class="g-overlay">Computer Lab</div>
+-        </div>
+-        <div class="g-item">
+-          <img src="images/sb.jpg" alt="Science Lab" onerror="this.style.display='none'">
+-          <div class="g-overlay">Science Lab</div>
+-        </div>
+-        <div class="g-item">
+-          <img src="images/sd.jpg" alt="Sports Day" onerror="this.style.display='none'">
+-          <div class="g-overlay">Sports Day</div>
+-        </div>
+-        <div class="g-item">
+-          <img src="images/lib.jpg" alt="Library" onerror="this.style.display='none'">
+-          <div class="g-overlay">Library</div>
+-        </div>
+-      </div>
+-    </div>
+-  </section>
+-
+-  <!-- ── CTA ────────────────────────────────────────── -->
+-  <section class="cta-section">
+-    <div class="container fade-in">
+-      <div class="section-label" style="justify-content:center;color:rgba(255,255,255,.8);">
+-        <span style="background:rgba(255,255,255,.3);height:2px;"></span>Get In Touch
+-      </div>
+-      <h2>Ready to Be Part of Our Story?</h2>
+-      <p>Have questions about admissions, programmes, or events? We'd love to hear from you.</p>
+-      <a href="contact.html" class="btn btn-primary">Contact Us <i class="fas fa-arrow-right"></i></a>
+-    </div>
+-  </section>
+-
+-  <!-- ── Footer ─────────────────────────────────────── -->
+-  <footer>
+-    <div class="container">
+-      <div class="footer-grid">
+-        <div class="footer-brand">
+-          <a href="index.html" class="logo" style="margin-bottom:0;">
+-            <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+-            <div class="logo-text">
+-              <h1>HSS MUNDUR</h1>
+-              <p>Higher Secondary School, Palakkad</p>
+-            </div>
+-          </a>
+-          <p class="desc">Dedicated to academic excellence and the holistic development of every student since 1933. Shaping the future of Mundur, one student at a time.</p>
+-          <div class="social-row">
+-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+-            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+-          </div>
+-        </div>
+-        <div class="footer-col">
+-          <h4>Quick Links</h4>
+-          <ul>
+-            <li><a href="index.html">Home</a></li>
+-            <li><a href="about.html">About Us</a></li>
+-            <li><a href="contact.html">Contact</a></li>
+-            <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
+-          </ul>
+-        </div>
+-        <div class="footer-col">
+-          <h4>Contact</h4>
+-          <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>HSS Mundur, Palakkad, Kerala 678592</span></div>
+-          <div class="contact-item"><i class="fas fa-phone"></i><span>+91 491 2832454</span></div>
+-          <div class="contact-item"><i class="fas fa-envelope"></i><span>hssmundur@gmail.com</span></div>
+-          <div class="contact-item"><i class="fas fa-clock"></i><span>Mon – Fri: 8:30 AM – 4:00 PM</span></div>
+-        </div>
+-      </div>
+-      <div class="footer-bottom">
+-        <span>© 2026 Higher Secondary School Mundur, Palakkad. All Rights Reserved.</span>
+-        <span>Made with <i class="fas fa-heart" style="color: #ff2a2a;"></i> by <strong>Ras Devs</strong></span>
+-      </div>
+-    </div>
+-  </footer>
+-
+-  <script src="script.js"></script>
+-  <script src="3d-effects.js"></script>
+-</body>
+-</html>
+diff --git a/next.config.mjs b/next.config.mjs
+new file mode 100644
+index 0000000..d665b94
+--- /dev/null
++++ b/next.config.mjs
+@@ -0,0 +1,10 @@
++/** @type {import('next').NextConfig} */
++const nextConfig = {
++  output: 'export',
++  images: {
++    unoptimized: true,
++  },
++  trailingSlash: true,
++};
++
++export default nextConfig;
+diff --git a/package-lock.json b/package-lock.json
+index cee1077..fdad15f 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -1,6 +1,953 @@
+ {
+-  "name": "web v8",
++  "name": "hss-mundur-web",
++  "version": "1.0.0",
+   "lockfileVersion": 3,
+   "requires": true,
+-  "packages": {}
++  "packages": {
++    "": {
++      "name": "hss-mundur-web",
++      "version": "1.0.0",
++      "license": "MIT",
++      "dependencies": {
++        "next": "16.3.3",
++        "react": "19.2.0",
++        "react-dom": "19.2.0"
++      }
++    },
++    "node_modules/@emnapi/runtime": {
++      "version": "1.11.3",
++      "resolved": "https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.11.3.tgz",
++      "integrity": "sha512-Xz4Tpyki7XyrpbUK1jR1AhdAdaXyhhY4lZ3neLodmhpuWfy2PAQN5B46sAiU4liOXGLkHypn/qU+jvfWSCYYLA==",
++      "license": "MIT",
++      "optional": true,
++      "dependencies": {
++        "tslib": "^2.4.0"
++      }
++    },
++    "node_modules/@img/colour": {
++      "version": "1.1.0",
++      "resolved": "https://registry.npmjs.org/@img/colour/-/colour-1.1.0.tgz",
++      "integrity": "sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==",
++      "license": "MIT",
++      "optional": true,
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@img/sharp-darwin-arm64": {
++      "version": "0.35.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-darwin-arm64/-/sharp-darwin-arm64-0.35.4.tgz",
++      "integrity": "sha512-Uhfl4V4lhP2nbUVF9+hyH1+luj86f1gUFeo8ALYxFoULoU+G87D43BfeMP8XHsk9boxAnCY/bf2EHwhA7MuGsA==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "Apache-2.0",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">=20.9.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-libvips-darwin-arm64": "1.3.3"
++      }
++    },
++    "node_modules/@img/sharp-darwin-x64": {
++      "version": "0.35.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-darwin-x64/-/sharp-darwin-x64-0.35.4.tgz",
++      "integrity": "sha512-hWniXY3bG5qKpkKrAwPe4y+VTPmf086YQAnkxWh7uA1YrlRouWGa0M0Mxj3ZjnXFkv7/TD1bTy9lGUK26vRvWw==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "Apache-2.0",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">=20.9.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-libvips-darwin-x64": "1.3.3"
++      }
++    },
++    "node_modules/@img/sharp-freebsd-wasm32": {
++      "version": "0.35.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-freebsd-wasm32/-/sharp-freebsd-wasm32-0.35.4.tgz",
++      "integrity": "sha512-lIsKw/BU+kjB4eZjxrYrZmwOJYi3Ajrv66iAlBmUPyKc3HpnloevB1g3wxGD9P/5BbQ1brBGl65VRRrCvQDEqA==",
++      "license": "Apache-2.0",
++      "optional": true,
++      "os": [
++        "freebsd"
++      ],
++      "dependencies": {
++        "@img/sharp-wasm32": "0.35.4"
++      },
++      "engines": {
++        "node": ">=20.9.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-libvips-darwin-arm64": {
++      "version": "1.3.3",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-darwin-arm64/-/sharp-libvips-darwin-arm64-1.3.3.tgz",
++      "integrity": "sha512-suTBPTDGrI9WodccaDdwZItTSaBYASlBk1NSfElSHrUfzu3szG6lvIF58+WiFvnfzuK8ZBFS5zE00PxqxnRiPg==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "LGPL-3.0-or-later",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-libvips-darwin-x64": {
++      "version": "1.3.3",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-darwin-x64/-/sharp-libvips-darwin-x64-1.3.3.tgz",
++      "integrity": "sha512-FVJZ5mITMobmXIz/hPDTw0EintTW5H3WfrxwLqEqjiIihlu+hVRyGrFQ60xl0Lxn7Bt3zdpevPaQi0HEzqz9fw==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "LGPL-3.0-or-later",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-libvips-linux-arm": {
++      "version": "1.3.3",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-arm/-/sharp-libvips-linux-arm-1.3.3.tgz",
++      "integrity": "sha512-3rbU4vqXXc3hY/OiXdl52xZvT0F1yEngWfvqudtPJg/KkyiaQw2DRsFrNzpmLvfavbwOq3qXn36GP8obHRULQA==",
++      "cpu": [
++        "arm"
++      ],
++      "license": "LGPL-3.0-or-later",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-libvips-linux-arm64": {
++      "version": "1.3.3",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-arm64/-/sharp-libvips-linux-arm64-1.3.3.tgz",
++      "integrity": "sha512-0DaL0A6Xu6sQSQFwe4iVCrKWU2cCTItnRsYsCdxAMm9NF6twAA9BKnoqy4hqz4+azQ0JHuA26qiUKsf1XJ/v5A==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "LGPL-3.0-or-later",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-libvips-linux-ppc64": {
++      "version": "1.3.3",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-ppc64/-/sharp-libvips-linux-ppc64-1.3.3.tgz",
++      "integrity": "sha512-cdn1OvUBwsXhbC0zSzJnNzf5MZ/mTrobawDvNXBTxe8VtqKAm0sRuEY2Evzovb/w9JMk4TvRxqt1mekSuJz64w==",
++      "cpu": [
++        "ppc64"
++      ],
++      "license": "LGPL-3.0-or-later",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-libvips-linux-riscv64": {
++      "version": "1.3.3",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-riscv64/-/sharp-libvips-linux-riscv64-1.3.3.tgz",
++      "integrity": "sha512-HjPVx7yKz+0lqdhDlTw1tt90wamBoxhiXpvl1XZpJLiHH4RCJ5yDTqH+VlYPv2fwFs89JFw4c1IexYOcQUi4IQ==",
++      "cpu": [
++        "riscv64"
++      ],
++      "license": "LGPL-3.0-or-later",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-libvips-linux-s390x": {
++      "version": "1.3.3",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-s390x/-/sharp-libvips-linux-s390x-1.3.3.tgz",
++      "integrity": "sha512-neWLh+3yCNThxnfy3c4BbVBeGgt9aftno+XbT56iK28RgeDs3UOFWviLWlUu0bArYVYJaFDK+RRohbicUNCm8Q==",
++      "cpu": [
++        "s390x"
++      ],
++      "license": "LGPL-3.0-or-later",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-libvips-linux-x64": {
++      "version": "1.3.3",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-x64/-/sharp-libvips-linux-x64-1.3.3.tgz",
++      "integrity": "sha512-4vKmvAst9nrowcqquKFAyZJUDolUaIp8uRiN0mWFguJ1IplC9/pitXtlnnlU4aa/eJw3J7i67V+pwUL+wZGdsA==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "LGPL-3.0-or-later",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-libvips-linuxmusl-arm64": {
++      "version": "1.3.3",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linuxmusl-arm64/-/sharp-libvips-linuxmusl-arm64-1.3.3.tgz",
++      "integrity": "sha512-Y9kQaLMuNoB0bPYOOdcZMaseNrFpPodIWWMrx+CZyydf2xn68j9WYc6sWWRrDwNkzCQjKYfc68L7jKjGlHMibw==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "LGPL-3.0-or-later",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-libvips-linuxmusl-x64": {
++      "version": "1.3.3",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linuxmusl-x64/-/sharp-libvips-linuxmusl-x64-1.3.3.tgz",
++      "integrity": "sha512-fj8Mv0HHfD1Rr+4I68+3agJynxDWtBFgicTbSOb9Bke6pIwzGcJ+RX/yHjmiEGFMCavY/dxvem7MyNaJF+wDiw==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "LGPL-3.0-or-later",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-linux-arm": {
++      "version": "0.35.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linux-arm/-/sharp-linux-arm-0.35.4.tgz",
++      "integrity": "sha512-7OAS8gI0EReKGVN2HssHlM6umJgxF5VI3xN0p9FA91p/YO+ou5hiNghLdZ5BEHztwaaK5+bLKRf8x/o2L2nk9A==",
++      "cpu": [
++        "arm"
++      ],
++      "license": "Apache-2.0",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=20.9.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-libvips-linux-arm": "1.3.3"
++      }
++    },
++    "node_modules/@img/sharp-linux-arm64": {
++      "version": "0.35.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linux-arm64/-/sharp-linux-arm64-0.35.4.tgz",
++      "integrity": "sha512-De4jpEnAU8Hd5oT0j1G3uL4ZvTuipVMn7YC6vPaJhy6/7EwEae0SVAoBrUMYQbkLGDm85taVWwuPc1a44LTzCQ==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "Apache-2.0",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=20.9.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-libvips-linux-arm64": "1.3.3"
++      }
++    },
++    "node_modules/@img/sharp-linux-ppc64": {
++      "version": "0.35.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linux-ppc64/-/sharp-linux-ppc64-0.35.4.tgz",
++      "integrity": "sha512-2oYZJeIl4kCcMGk4ouZVjnkCtFrpQFlNEtJ6GbxzhHQchwH0NH/qEb9ykmOl29dqwMq+JhFdZn+1ak2FKhI9fQ==",
++      "cpu": [
++        "ppc64"
++      ],
++      "license": "Apache-2.0",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=20.9.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-libvips-linux-ppc64": "1.3.3"
++      }
++    },
++    "node_modules/@img/sharp-linux-riscv64": {
++      "version": "0.35.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linux-riscv64/-/sharp-linux-riscv64-0.35.4.tgz",
++      "integrity": "sha512-cPbNChoRURAWdebDIHSenxRpgEdy7JkPydSnUxRm9VvKD7m0/xVaR/8Fzlu81pk5nHEvHH87UZUA7cTtwnbJSA==",
++      "cpu": [
++        "riscv64"
++      ],
++      "license": "Apache-2.0",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=20.9.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-libvips-linux-riscv64": "1.3.3"
++      }
++    },
++    "node_modules/@img/sharp-linux-s390x": {
++      "version": "0.35.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linux-s390x/-/sharp-linux-s390x-0.35.4.tgz",
++      "integrity": "sha512-RY0JFY8Fd6RonCBtHz+DvadaPkXDSI1AUn6yWL9TipqkZ1vY8w8evqdgyDFnkm4/K1ve1TvZiaePP5oSd4+WVQ==",
++      "cpu": [
++        "s390x"
++      ],
++      "license": "Apache-2.0",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=20.9.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-libvips-linux-s390x": "1.3.3"
++      }
++    },
++    "node_modules/@img/sharp-linux-x64": {
++      "version": "0.35.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linux-x64/-/sharp-linux-x64-0.35.4.tgz",
++      "integrity": "sha512-9qvvEAuk8k89TfWUoX2htWjbAMX8p+NxCppjpcg5k6xMsjhBQPTsoIh36h9Qde4WRuGpJeYnOjdosDn/cnv+OA==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "Apache-2.0",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=20.9.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-libvips-linux-x64": "1.3.3"
++      }
++    },
++    "node_modules/@img/sharp-linuxmusl-arm64": {
++      "version": "0.35.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linuxmusl-arm64/-/sharp-linuxmusl-arm64-0.35.4.tgz",
++      "integrity": "sha512-KB5jxpfWQTr0nc3xdHtWChdbifHrBGsd2SM62Eyxrl8afikm+f5qGBU75SJIZBT/S1MC8XyacdlXBMSWq6OURA==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "Apache-2.0",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=20.9.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-libvips-linuxmusl-arm64": "1.3.3"
++      }
++    },
++    "node_modules/@img/sharp-linuxmusl-x64": {
++      "version": "0.35.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linuxmusl-x64/-/sharp-linuxmusl-x64-0.35.4.tgz",
++      "integrity": "sha512-f+eZJZIQNEEd26RPSW+76chwOf1XtA2Y/O+5ocVyLliHkeih3e+jhLVBdNTd2rS3IbNXK8+ug93Vf5ZXtF5Lxg==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "Apache-2.0",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=20.9.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-libvips-linuxmusl-x64": "1.3.3"
++      }
++    },
++    "node_modules/@img/sharp-wasm32": {
++      "version": "0.35.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-wasm32/-/sharp-wasm32-0.35.4.tgz",
++      "integrity": "sha512-zQnl4Kwp7Q6NHsENtU2T/00Zi+w3AQNwz3+UaTyVBy2FpXrzXzGjndpK61onhZjRtRpQXxCTeqw19bVyXOh7jA==",
++      "license": "Apache-2.0 AND LGPL-3.0-or-later AND MIT",
++      "optional": true,
++      "dependencies": {
++        "@emnapi/runtime": "^1.11.3"
++      },
++      "engines": {
++        "node": ">=20.9.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-webcontainers-wasm32": {
++      "version": "0.35.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-webcontainers-wasm32/-/sharp-webcontainers-wasm32-0.35.4.tgz",
++      "integrity": "sha512-ESfNkywmCfPNyaZjxooddJQiQ+l/nTpGEOGthxiLnIHXC/CmcBixnfwUleX9mCz9ovrUUvKMap/pm8RYbzfwaA==",
++      "cpu": [
++        "wasm32"
++      ],
++      "license": "Apache-2.0",
++      "optional": true,
++      "dependencies": {
++        "@img/sharp-wasm32": "0.35.4"
++      },
++      "engines": {
++        "node": ">=20.9.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-win32-arm64": {
++      "version": "0.35.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-win32-arm64/-/sharp-win32-arm64-0.35.4.tgz",
++      "integrity": "sha512-iNdlBX9gLVvqe2I3uIJSIKTq6wckP/DYxZtcqxm09x5Gi24DnFBmPAWZmr60ZyYMG0xlzo6goG3670ar+RXvRw==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "Apache-2.0 AND LGPL-3.0-or-later",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">=20.9.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-win32-ia32": {
++      "version": "0.35.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-win32-ia32/-/sharp-win32-ia32-0.35.4.tgz",
++      "integrity": "sha512-kqRsbaa5CS6KHlpxnN7WhE6vAAugXyZButpRdvDWetlv6Qv4N9WTcrWzF7tXfB9T7MsoadqdI8hmwLq6UlLvtw==",
++      "cpu": [
++        "ia32"
++      ],
++      "license": "Apache-2.0 AND LGPL-3.0-or-later",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": "^20.9.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@img/sharp-win32-x64": {
++      "version": "0.35.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-win32-x64/-/sharp-win32-x64-0.35.4.tgz",
++      "integrity": "sha512-XtmnYhBcrORsJ4XJngyzr/EWP0hRZLAZRFaApdKuviyqF78+ylxh2y06ZmtULAMOnObJ3ucpN0AcwSWnMowTRg==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "Apache-2.0 AND LGPL-3.0-or-later",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">=20.9.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      }
++    },
++    "node_modules/@next/env": {
++      "version": "16.3.3",
++      "resolved": "https://registry.npmjs.org/@next/env/-/env-16.3.3.tgz",
++      "integrity": "sha512-U2eYQRwXj+dsqxV79zFqExDdatnNY/ZWc2nsJU1p/OgT7fd3dXwlF6OjYaFQCfMoeTA19PWq+wVmYgimVA+V+g==",
++      "license": "MIT"
++    },
++    "node_modules/@next/swc-darwin-arm64": {
++      "version": "16.3.3",
++      "resolved": "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-16.3.3.tgz",
++      "integrity": "sha512-8Hiv32QJPwdV6KYJ8meR9SBA061tQqnIKTJDocvOXlEQqib0xMFpzArosuffFUUc0sslbh7QQ8a3Yey1QV8EIw==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-darwin-x64": {
++      "version": "16.3.3",
++      "resolved": "https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-16.3.3.tgz",
++      "integrity": "sha512-A1lgKgwVchRYmSe467zdwhxT9040dd8lH+o65sL5Jet8fjB4kegw/rDyPIpYVRb6jAqwXFOJpjIXJLxQKLiE3A==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-linux-arm64-gnu": {
++      "version": "16.3.3",
++      "resolved": "https://registry.npmjs.org/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-16.3.3.tgz",
++      "integrity": "sha512-bf0FIssMFueU2dm7vQEWWxk0c8UjKTdW0yzuh0sQsD8pf1+KCLDdaqhYZNMYGmXwEOiHAUzgBKudovIlcvvBjg==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-linux-arm64-musl": {
++      "version": "16.3.3",
++      "resolved": "https://registry.npmjs.org/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-16.3.3.tgz",
++      "integrity": "sha512-W7viwCk9JY/cAkdz/A273rd5bb3RgT/IHwR7Upv90tunjBWNtAAhGhoecHh+teRNRSinuAFmE+l7fwZ4YKkrXg==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-linux-x64-gnu": {
++      "version": "16.3.3",
++      "resolved": "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-16.3.3.tgz",
++      "integrity": "sha512-0W46zw1N3ODpI6n0GeivHvvob1pooozgZVqy65k0mh4/7vr+FbY9+WpHzNVXjHipJf/A3FDheBG19H1s5A25rA==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-linux-x64-musl": {
++      "version": "16.3.3",
++      "resolved": "https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-16.3.3.tgz",
++      "integrity": "sha512-H4mBso8ZTMBPtdT0PN0pBx2ayTvQuTuvS6qT13d77yVFJXAPCxkyIhLTmdMaGTJs0krQYI/qpzdHijCeihXhbg==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-win32-arm64-msvc": {
++      "version": "16.3.3",
++      "resolved": "https://registry.npmjs.org/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-16.3.3.tgz",
++      "integrity": "sha512-cTMUJpcEGmeywofCUfhR+rSsoE33+rVPnPEYNTNdLNlsOeEg/vktOsKUSTb28vUGqD2jkm4Zaskcwn7OCI6FQg==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-win32-x64-msvc": {
++      "version": "16.3.3",
++      "resolved": "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-16.3.3.tgz",
++      "integrity": "sha512-2VR4cTBzHXaBjnGsuH6GyJjENzQOmHeAh11uY1iUhjm3j5dEUrVJuUj+VL78jaGi/Dik8xS76zEj18BsFhlVZQ==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@swc/helpers": {
++      "version": "0.5.23",
++      "resolved": "https://registry.npmjs.org/@swc/helpers/-/helpers-0.5.23.tgz",
++      "integrity": "sha512-5lSsMOTXURePglDfvuAQUqkGek9Hg2kksOYay2m0+XR++b2NWYL/4sWyuvVBIs8oKnJaxkdi9whaL/sqN13afw==",
++      "license": "Apache-2.0",
++      "dependencies": {
++        "tslib": "^2.8.0"
++      }
++    },
++    "node_modules/baseline-browser-mapping": {
++      "version": "2.11.25",
++      "resolved": "https://registry.npmjs.org/baseline-browser-mapping/-/baseline-browser-mapping-2.11.25.tgz",
++      "integrity": "sha512-gMmEShwwq7FJqMwvfRwvCl00v4kN+KOfJqXn+f4nrufak5gNHJOksd/60Dvjuz7sI8Y5WiSFBa8FEYr+zoyqCw==",
++      "license": "Apache-2.0",
++      "bin": {
++        "baseline-browser-mapping": "dist/cli.cjs"
++      },
++      "engines": {
++        "node": ">=6.0.0"
++      }
++    },
++    "node_modules/caniuse-lite": {
++      "version": "1.0.30001810",
++      "resolved": "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001810.tgz",
++      "integrity": "sha512-TITQPUkaz+aVk5GL6NhOdwk1aEaNTSDPsGFWrTuhKGtjTF70jL/Oht2W4c6rXUe5fu7Ie19VIahAXHIIiWWNeg==",
++      "funding": [
++        {
++          "type": "opencollective",
++          "url": "https://opencollective.com/browserslist"
++        },
++        {
++          "type": "tidelift",
++          "url": "https://tidelift.com/funding/github/npm/caniuse-lite"
++        },
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ],
++      "license": "CC-BY-4.0"
++    },
++    "node_modules/client-only": {
++      "version": "0.0.1",
++      "resolved": "https://registry.npmjs.org/client-only/-/client-only-0.0.1.tgz",
++      "integrity": "sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==",
++      "license": "MIT"
++    },
++    "node_modules/detect-libc": {
++      "version": "2.1.2",
++      "resolved": "https://registry.npmjs.org/detect-libc/-/detect-libc-2.1.2.tgz",
++      "integrity": "sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==",
++      "license": "Apache-2.0",
++      "optional": true,
++      "engines": {
++        "node": ">=8"
++      }
++    },
++    "node_modules/nanoid": {
++      "version": "3.3.19",
++      "resolved": "https://registry.npmjs.org/nanoid/-/nanoid-3.3.19.tgz",
++      "integrity": "sha512-Y2tUNy4ouw6tq5oDSKeQYGOyhkUBhNOcGV/02KC+6kd9eDGqdZd++mjMiIDilrBYvjEnCYvVtsuHCuP+okSfug==",
++      "funding": [
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ],
++      "license": "MIT",
++      "bin": {
++        "nanoid": "bin/nanoid.cjs"
++      },
++      "engines": {
++        "node": "^10 || ^12 || ^13.7 || ^14 || >=15.0.1"
++      }
++    },
++    "node_modules/next": {
++      "version": "16.3.3",
++      "resolved": "https://registry.npmjs.org/next/-/next-16.3.3.tgz",
++      "integrity": "sha512-tuRTx1nQ/yVw83cwJBo9F+njGUgMn3UHQycreWHB8XsStvvAh1AthbI8/4IpKnFaF58F+iSiHejYOlMQ/eq83g==",
++      "license": "MIT",
++      "dependencies": {
++        "@next/env": "16.3.3",
++        "@swc/helpers": "0.5.23",
++        "baseline-browser-mapping": "^2.9.19",
++        "caniuse-lite": "^1.0.30001579",
++        "postcss": "8.5.23",
++        "styled-jsx": "5.1.6"
++      },
++      "bin": {
++        "next": "dist/bin/next"
++      },
++      "engines": {
++        "node": ">=20.9.0"
++      },
++      "optionalDependencies": {
++        "@next/swc-darwin-arm64": "16.3.3",
++        "@next/swc-darwin-x64": "16.3.3",
++        "@next/swc-linux-arm64-gnu": "16.3.3",
++        "@next/swc-linux-arm64-musl": "16.3.3",
++        "@next/swc-linux-x64-gnu": "16.3.3",
++        "@next/swc-linux-x64-musl": "16.3.3",
++        "@next/swc-win32-arm64-msvc": "16.3.3",
++        "@next/swc-win32-x64-msvc": "16.3.3",
++        "sharp": "^0.35.3"
++      },
++      "peerDependencies": {
++        "@opentelemetry/api": "^1.1.0",
++        "@playwright/test": "^1.51.1",
++        "babel-plugin-react-compiler": "*",
++        "react": "^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0",
++        "react-dom": "^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0",
++        "sass": "^1.3.0"
++      },
++      "peerDependenciesMeta": {
++        "@opentelemetry/api": {
++          "optional": true
++        },
++        "@playwright/test": {
++          "optional": true
++        },
++        "babel-plugin-react-compiler": {
++          "optional": true
++        },
++        "sass": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/picocolors": {
++      "version": "1.1.1",
++      "resolved": "https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz",
++      "integrity": "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==",
++      "license": "ISC"
++    },
++    "node_modules/postcss": {
++      "version": "8.5.23",
++      "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.5.23.tgz",
++      "integrity": "sha512-g50586zr4bZmwFiTlflMu8E0bDTb5I5gertgwAKmsdUlTQIhZtunzUlD1WSzwcVWPoAVpsrA6vlfCD7oXvRwgg==",
++      "funding": [
++        {
++          "type": "opencollective",
++          "url": "https://opencollective.com/postcss/"
++        },
++        {
++          "type": "tidelift",
++          "url": "https://tidelift.com/funding/github/npm/postcss"
++        },
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ],
++      "license": "MIT",
++      "dependencies": {
++        "nanoid": "^3.3.16",
++        "picocolors": "^1.1.1",
++        "source-map-js": "^1.2.1"
++      },
++      "engines": {
++        "node": "^10 || ^12 || >=14"
++      }
++    },
++    "node_modules/react": {
++      "version": "19.2.0",
++      "resolved": "https://registry.npmjs.org/react/-/react-19.2.0.tgz",
++      "integrity": "sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ==",
++      "license": "MIT",
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
++    "node_modules/react-dom": {
++      "version": "19.2.0",
++      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-19.2.0.tgz",
++      "integrity": "sha512-UlbRu4cAiGaIewkPyiRGJk0imDN2T3JjieT6spoL2UeSf5od4n5LB/mQ4ejmxhCFT1tYe8IvaFulzynWovsEFQ==",
++      "license": "MIT",
++      "dependencies": {
++        "scheduler": "^0.27.0"
++      },
++      "peerDependencies": {
++        "react": "^19.2.0"
++      }
++    },
++    "node_modules/scheduler": {
++      "version": "0.27.0",
++      "resolved": "https://registry.npmjs.org/scheduler/-/scheduler-0.27.0.tgz",
++      "integrity": "sha512-eNv+WrVbKu1f3vbYJT/xtiF5syA5HPIMtf9IgY/nKg0sWqzAUEvqY/xm7OcZc/qafLx/iO9FgOmeSAp4v5ti/Q==",
++      "license": "MIT"
++    },
++    "node_modules/semver": {
++      "version": "7.8.5",
++      "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.5.tgz",
++      "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==",
++      "license": "ISC",
++      "optional": true,
++      "bin": {
++        "semver": "bin/semver.js"
++      },
++      "engines": {
++        "node": ">=10"
++      }
++    },
++    "node_modules/sharp": {
++      "version": "0.35.4",
++      "resolved": "https://registry.npmjs.org/sharp/-/sharp-0.35.4.tgz",
++      "integrity": "sha512-n++8XWcj+jCOr2IOl7h8LbKnGBDY4aPbmprMONBNFdn0ImXqpGVv5zliDs0V9HbmbCQLpbuo2ej9rAoOQTvMDA==",
++      "license": "Apache-2.0",
++      "optional": true,
++      "dependencies": {
++        "@img/colour": "^1.1.0",
++        "detect-libc": "^2.1.2",
++        "semver": "^7.8.5"
++      },
++      "engines": {
++        "node": ">=20.9.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/libvips"
++      },
++      "optionalDependencies": {
++        "@img/sharp-darwin-arm64": "0.35.4",
++        "@img/sharp-darwin-x64": "0.35.4",
++        "@img/sharp-freebsd-wasm32": "0.35.4",
++        "@img/sharp-libvips-darwin-arm64": "1.3.3",
++        "@img/sharp-libvips-darwin-x64": "1.3.3",
++        "@img/sharp-libvips-linux-arm": "1.3.3",
++        "@img/sharp-libvips-linux-arm64": "1.3.3",
++        "@img/sharp-libvips-linux-ppc64": "1.3.3",
++        "@img/sharp-libvips-linux-riscv64": "1.3.3",
++        "@img/sharp-libvips-linux-s390x": "1.3.3",
++        "@img/sharp-libvips-linux-x64": "1.3.3",
++        "@img/sharp-libvips-linuxmusl-arm64": "1.3.3",
++        "@img/sharp-libvips-linuxmusl-x64": "1.3.3",
++        "@img/sharp-linux-arm": "0.35.4",
++        "@img/sharp-linux-arm64": "0.35.4",
++        "@img/sharp-linux-ppc64": "0.35.4",
++        "@img/sharp-linux-riscv64": "0.35.4",
++        "@img/sharp-linux-s390x": "0.35.4",
++        "@img/sharp-linux-x64": "0.35.4",
++        "@img/sharp-linuxmusl-arm64": "0.35.4",
++        "@img/sharp-linuxmusl-x64": "0.35.4",
++        "@img/sharp-webcontainers-wasm32": "0.35.4",
++        "@img/sharp-win32-arm64": "0.35.4",
++        "@img/sharp-win32-ia32": "0.35.4",
++        "@img/sharp-win32-x64": "0.35.4"
++      },
++      "peerDependenciesMeta": {
++        "@types/node": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/source-map-js": {
++      "version": "1.2.1",
++      "resolved": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz",
++      "integrity": "sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==",
++      "license": "BSD-3-Clause",
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
++    "node_modules/styled-jsx": {
++      "version": "5.1.6",
++      "resolved": "https://registry.npmjs.org/styled-jsx/-/styled-jsx-5.1.6.tgz",
++      "integrity": "sha512-qSVyDTeMotdvQYoHWLNGwRFJHC+i+ZvdBRYosOFgC+Wg1vx4frN2/RG/NA7SYqqvKNLf39P2LSRA2pu6n0XYZA==",
++      "license": "MIT",
++      "dependencies": {
++        "client-only": "0.0.1"
++      },
++      "engines": {
++        "node": ">= 12.0.0"
++      },
++      "peerDependencies": {
++        "react": ">= 16.8.0 || 17.x.x || ^18.0.0-0 || ^19.0.0-0"
++      },
++      "peerDependenciesMeta": {
++        "@babel/core": {
++          "optional": true
++        },
++        "babel-plugin-macros": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/tslib": {
++      "version": "2.8.1",
++      "resolved": "https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz",
++      "integrity": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==",
++      "license": "0BSD"
++    }
++  }
+ }
+diff --git a/package.json b/package.json
+new file mode 100644
+index 0000000..1fa52df
+--- /dev/null
++++ b/package.json
+@@ -0,0 +1,17 @@
++{
++  "name": "hss-mundur-web",
++  "version": "1.0.0",
++  "private": true,
++  "license": "MIT",
++  "scripts": {
++    "dev": "next dev",
++    "build": "next build",
++    "start": "next start",
++    "lint": "next lint"
++  },
++  "dependencies": {
++    "next": "16.3.3",
++    "react": "19.2.0",
++    "react-dom": "19.2.0"
++  }
++}
+diff --git a/3d-effects.css b/public/3d-effects.css
+similarity index 100%
+rename from 3d-effects.css
+rename to public/3d-effects.css
+diff --git a/images/about-hero.jpg b/public/images/about-hero.jpg
+similarity index 100%
+rename from images/about-hero.jpg
+rename to public/images/about-hero.jpg
+diff --git a/images/c1.jpg b/public/images/c1.jpg
+similarity index 100%
+rename from images/c1.jpg
+rename to public/images/c1.jpg
+diff --git a/images/c2.jpg b/public/images/c2.jpg
+similarity index 100%
+rename from images/c2.jpg
+rename to public/images/c2.jpg
+diff --git a/images/lb1.jpg b/public/images/lb1.jpg
+similarity index 100%
+rename from images/lb1.jpg
+rename to public/images/lb1.jpg
+diff --git a/images/lb2.jpg b/public/images/lb2.jpg
+similarity index 100%
+rename from images/lb2.jpg
+rename to public/images/lb2.jpg
+diff --git a/main.css b/public/main.css
+similarity index 100%
+rename from main.css
+rename to public/main.css
+diff --git a/remove-gallery-page.patch b/remove-gallery-page.patch
+deleted file mode 100644
+index 8be79e3..0000000
+--- a/remove-gallery-page.patch
++++ /dev/null
+@@ -1,467 +0,0 @@
+-diff --git a/about.html b/about.html
+-index 43c2982..0a8240b 100644
+---- a/about.html
+-+++ b/about.html
+-@@ -47,7 +47,6 @@
+-         <ul>
+-           <li><a href="index.html">Home</a></li>
+-           <li><a href="about.html" class="active">About</a></li>
+--          <li><a href="gallery.html">Gallery</a></li>
+-           <li><a href="contact.html">Contact</a></li>
+-           <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog <i class="fas fa-external-link-alt" style="font-size: 0.7em; margin-left: 3px;"></i></a></li>
+-         </ul>
+-@@ -192,7 +191,6 @@
+-           <ul>
+-             <li><a href="index.html">Home</a></li>
+-             <li><a href="about.html">About Us</a></li>
+--            <li><a href="gallery.html">Gallery</a></li>
+-             <li><a href="contact.html">Contact</a></li>
+-             <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
+-           </ul>
+-diff --git a/contact.html b/contact.html
+-index 2c20923..8464442 100644
+---- a/contact.html
+-+++ b/contact.html
+-@@ -46,7 +46,6 @@
+-         <ul>
+-           <li><a href="index.html">Home</a></li>
+-           <li><a href="about.html">About</a></li>
+--          <li><a href="gallery.html">Gallery</a></li>
+-           <li><a href="contact.html" class="active">Contact</a></li>
+-           <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog <i class="fas fa-external-link-alt" style="font-size: 0.7em; margin-left: 3px;"></i></a></li>
+-         </ul>
+-@@ -167,7 +166,6 @@
+-           <ul>
+-             <li><a href="index.html">Home</a></li>
+-             <li><a href="about.html">About Us</a></li>
+--            <li><a href="gallery.html">Gallery</a></li>
+-             <li><a href="contact.html">Contact</a></li>
+-             <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
+-           </ul>
+-diff --git a/gallery.html b/gallery.html
+-deleted file mode 100644
+-index f5a04c8..0000000
+---- a/gallery.html
+-+++ /dev/null
+-@@ -1,217 +0,0 @@
+--<!DOCTYPE html>
+--<html lang="en">
+--<head>
+--  <meta charset="UTF-8">
+--  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+--  <title>Gallery — HSS Mundur</title>
+--  <meta name="description" content="Photo gallery of Higher Secondary School Mundur — classrooms, labs, sports, and events.">
+--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+--  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+--  <link rel="stylesheet" href="main.css">
+--  <link rel="stylesheet" href="3d-effects.css">
+--</head>
+--<body>
+--
+--  <!-- ── Loader ── -->
+--  <div id="loader">
+--    <div class="loader-glow"></div>
+--    <div class="loader-lamp">
+--      <div class="loader-flame">
+--        <svg viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg">
+--          <defs><linearGradient id="fg1" x1="0" y1="0" x2="0" y2="1">
+--            <stop offset="0%" stop-color="#ffe9b0"/><stop offset="45%" stop-color="#ffb870"/><stop offset="100%" stop-color="#ff6b35"/>
+--          </linearGradient></defs>
+--          <path d="M12 0C12 0 3 11 3 20a9 9 0 0018 0C21 11 12 0 12 0z" fill="url(#fg1)"/>
+--        </svg>
+--      </div>
+--      <div class="loader-stand"></div>
+--      <div class="loader-base"></div>
+--    </div>
+--    <div class="loader-text">HSS <span>MUNDUR</span></div>
+--  </div>
+--
+--  <!-- ── Header ─────────────────────────────────────── -->
+--  <header id="mainHeader">
+--    <div class="container header-container">
+--      <a href="index.html" class="logo">
+--        <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+--        <div class="logo-text">
+--          <h1>HSS MUNDUR</h1>
+--          <p>Higher Secondary School, Palakkad</p>
+--        </div>
+--      </a>
+--      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+--        <i class="fas fa-bars"></i>
+--      </button>
+--      <nav class="nav-menu" id="navMenu">
+--        <ul>
+--          <li><a href="index.html">Home</a></li>
+--          <li><a href="about.html">About</a></li>
+--          <li><a href="gallery.html" class="active">Gallery</a></li>
+--          <li><a href="contact.html">Contact</a></li>
+--          <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog <i class="fas fa-external-link-alt" style="font-size: 0.7em; margin-left: 3px;"></i></a></li>
+--        </ul>
+--      </nav>
+--    </div>
+--  </header>
+--
+--  <!-- ── Page Hero ──────────────────────────────────── -->
+--  <section class="page-hero">
+--    <div class="container">
+--      <div class="breadcrumb">
+--        <a href="index.html">Home</a>
+--        <i class="fas fa-chevron-right" style="font-size:.65rem;"></i>
+--        <span>Gallery</span>
+--      </div>
+--      <div class="section-label" style="margin-bottom:14px;">Campus Life</div>
+--      <h1>School Gallery</h1>
+--      <p>Explore photos of school life, facilities, and activities at HSS Mundur.</p>
+--    </div>
+--  </section>
+--
+--  <!-- ── Gallery Section ────────────────────────────── -->
+--  <section class="gallery-section">
+--    <div class="container">
+--
+--      <div class="gallery-filters fade-in">
+--        <button class="filter-btn active" data-filter="all">All Photos</button>
+--        <button class="filter-btn" data-filter="classroom">Classrooms</button>
+--        <button class="filter-btn" data-filter="lab">Laboratories</button>
+--        <button class="filter-btn" data-filter="sports">Sports</button>
+--        <button class="filter-btn" data-filter="lk">Little Kites</button>
+--        <button class="filter-btn" data-filter="clubs">Clubs</button>
+--        <button class="filter-btn" data-filter="event">Events</button>
+--      </div>
+--
+--      <div class="gallery-grid fade-in" id="galleryContainer">
+--        <div class="gallery-item" data-category="classroom" data-label="Main Building">
+--          <img src="images/c1.jpg" alt="Main School Building" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+--          <div class="overlay">Main School Building</div>
+--        </div>
+--        <div class="gallery-item" data-category="classroom" data-label="HS Building">
+--          <img src="images/c2.jpg" alt="HS Building And Ground" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+--          <div class="overlay">HS Building &amp; Ground</div>
+--        </div>
+--        <div class="gallery-item" data-category="classroom" data-label="Smart Classroom">
+--          <img src="images/c3.jpg" alt="Smart Classroom" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+--          <div class="overlay">Smart Classroom</div>
+--        </div>
+--        <div class="gallery-item" data-category="lab" data-label="HS Computer Lab 1">
+--          <img src="images/lb1.jpg" alt="HS Computer Lab 1" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+--          <div class="overlay">HS Computer Lab 1</div>
+--        </div>
+--        <div class="gallery-item" data-category="lab" data-label="HS Computer Lab 2">
+--          <img src="images/lb2.jpg" alt="HS Computer Lab 2" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+--          <div class="overlay">HS Computer Lab 2</div>
+--        </div>
+--        <div class="gallery-item" data-category="lab" data-label="UP Computer Lab">
+--          <img src="images/lb3.jpg" alt="UP Computer Lab" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+--          <div class="overlay">UP Computer Lab</div>
+--        </div>
+--        <div class="gallery-item" data-category="lab" data-label="Science Lab">
+--          <img src="images/sb.jpg" alt="Science Laboratory" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+--          <div class="overlay">Science Laboratory</div>
+--        </div>
+--        <div class="gallery-item" data-category="classroom" data-label="School Library">
+--          <img src="images/lib.jpg" alt="School Library" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+--          <div class="overlay">School Library</div>
+--        </div>
+--        <div class="gallery-item" data-category="sports" data-label="Sports Day">
+--          <img src="images/sd.jpg" alt="Annual Sports Day" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+--          <div class="overlay">Annual Sports Day</div>
+--        </div>
+--        <div class="gallery-item" data-category="event" data-label="Annual Day">
+--          <img src="images/gallery8.jpg" alt="Annual Day Celebration" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+--          <div class="overlay">Annual Day Celebration</div>
+--        </div>
+--        <div class="gallery-item" data-category="event" data-label="Cultural Event">
+--          <img src="images/gallery9.jpg" alt="Cultural Event" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+--          <div class="overlay">Cultural Event</div>
+--        </div>
+--        <div class="gallery-item" data-category="sports" data-label="Basketball Court">
+--          <img src="images/gallery10.jpg" alt="Basketball Court" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+--          <div class="overlay">Basketball Court</div>
+--        </div>
+--        <div class="gallery-item" data-category="clubs" data-label="School Garden">
+--          <img src="images/gallery11.jpg" alt="School Garden" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+--          <div class="overlay">School Garden</div>
+--        </div>
+--        <div class="gallery-item" data-category="classroom" data-label="Art &amp; Craft Room">
+--          <img src="images/gallery12.jpg" alt="Art and Craft Room" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+--          <div class="overlay">Art &amp; Craft Room</div>
+--        </div>
+--        <div class="gallery-item" data-category="lk" data-label="Little Kites">
+--          <img src="images/lk1.jpg" alt="Little Kites IT Club" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+--          <div class="overlay">Little Kites IT Club</div>
+--        </div>
+--      </div>
+--
+--      <div style="text-align:center;margin-top:36px;" class="fade-in">
+--        <p style="font-size:.88rem;color:var(--text-light);display:inline-flex;align-items:center;gap:8px;">
+--          <i class="fas fa-hand-pointer" style="color:var(--teal);"></i>
+--          Click any photo to view full size &nbsp;·&nbsp; Use arrow keys to navigate
+--        </p>
+--      </div>
+--    </div>
+--  </section>
+--
+--  <!-- ── Lightbox ───────────────────────────────────── -->
+--  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true">
+--    <div class="lightbox-content">
+--      <button class="lightbox-close" id="lightboxClose" aria-label="Close"><i class="fas fa-times"></i></button>
+--      <button class="lightbox-nav-btn" id="lightboxPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+--      <button class="lightbox-nav-btn" id="lightboxNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+--      <img class="lightbox-img" id="lightboxImg" src="" alt="">
+--      <div class="lightbox-caption" id="lightboxCaption"></div>
+--    </div>
+--  </div>
+--
+--  <!-- ── Footer ─────────────────────────────────────── -->
+--  <footer>
+--    <div class="container">
+--      <div class="footer-grid">
+--        <div class="footer-brand">
+--          <a href="index.html" class="logo">
+--            <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+--            <div class="logo-text">
+--              <h1>HSS MUNDUR</h1>
+--              <p>Higher Secondary School, Palakkad</p>
+--            </div>
+--          </a>
+--          <p class="desc">Dedicated to academic excellence and the holistic development of every student since 1933.</p>
+--          <div class="social-row">
+--            <a href="#"><i class="fab fa-facebook-f"></i></a>
+--            <a href="#"><i class="fab fa-twitter"></i></a>
+--            <a href="#"><i class="fab fa-instagram"></i></a>
+--            <a href="#"><i class="fab fa-youtube"></i></a>
+--          </div>
+--        </div>
+--        <div class="footer-col">
+--          <h4>Quick Links</h4>
+--          <ul>
+--            <li><a href="index.html">Home</a></li>
+--            <li><a href="about.html">About Us</a></li>
+--            <li><a href="gallery.html">Gallery</a></li>
+--            <li><a href="contact.html">Contact</a></li>
+--            <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
+--          </ul>
+--        </div>
+--        <div class="footer-col">
+--          <h4>Contact</h4>
+--          <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>HSS Mundur, Palakkad, Kerala 678592</span></div>
+--          <div class="contact-item"><i class="fas fa-phone"></i><span>+91 491 2832454</span></div>
+--          <div class="contact-item"><i class="fas fa-envelope"></i><span>hssmundur@gmail.com</span></div>
+--          <div class="contact-item"><i class="fas fa-clock"></i><span>Mon – Fri: 8:30 AM – 4:00 PM</span></div>
+--        </div>
+--      </div>
+--      <div class="footer-bottom">
+--        <span>© 2026 Higher Secondary School Mundur, Palakkad. All Rights Reserved.</span>
+--        <span>Made with <i class="fas fa-heart" style="color: #ff2a2a;"></i> by <strong>Ras Devs</strong></span>
+--      </div>
+--    </div>
+--  </footer>
+--
+--  <script src="script.js"></script>
+--  <script src="3d-effects.js"></script>
+--</body>
+--</html>
+-diff --git a/index.html b/index.html
+-index 1e2f666..a527cc2 100644
+---- a/index.html
+-+++ b/index.html
+-@@ -47,7 +47,6 @@
+-         <ul>
+-           <li><a href="index.html" class="active">Home</a></li>
+-           <li><a href="about.html">About</a></li>
+--          <li><a href="gallery.html">Gallery</a></li>
+-           <li><a href="contact.html">Contact</a></li>
+-           <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog <i class="fas fa-external-link-alt" style="font-size: 0.7em; margin-left: 3px;"></i></a></li>
+-         </ul>
+-@@ -67,7 +66,6 @@
+-         <p>Higher Secondary School Mundur — a century of academic excellence, character, and community in the heart of Palakkad.</p>
+-         <div class="hero-btns">
+-           <a href="about.html" class="btn btn-primary"><i class="fas fa-compass"></i> Explore Our School</a>
+--          <a href="gallery.html" class="btn btn-outline"><i class="fas fa-images"></i> View Gallery</a>
+-         </div>
+-         <div class="hero-stats">
+-           <div class="stat-item">
+-@@ -186,7 +184,6 @@
+-           <div class="section-label">Campus Life</div>
+-           <h2 style="color:white;">A Glimpse of<br>School Life</h2>
+-         </div>
+--        <a href="gallery.html" class="btn btn-outline" style="flex-shrink:0;">View All Photos</a>
+-       </div>
+-       <div class="gallery-masonry fade-in">
+-         <div class="g-item">
+-@@ -250,7 +247,6 @@
+-           <ul>
+-             <li><a href="index.html">Home</a></li>
+-             <li><a href="about.html">About Us</a></li>
+--            <li><a href="gallery.html">Gallery</a></li>
+-             <li><a href="contact.html">Contact</a></li>
+-             <li><a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
+-           </ul>
+-diff --git a/main.css b/main.css
+-index dbf38fd..898c469 100644
+---- a/main.css
+-+++ b/main.css
+-@@ -429,52 +429,6 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
+- .mv-card h3 { font-size: 1.32rem; margin-bottom: 14px; }
+- .mv-card p { font-size: .92rem; line-height: 1.7; }
+- 
+--/* ══════════════ GALLERY PAGE ══════════════ */
+--.gallery-section { padding: 80px 0; background: var(--cream); }
+--.gallery-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 44px; }
+--.filter-btn {
+--  background: var(--white); border: 1.5px solid #ddd; color: var(--text-mid); padding: 9px 24px;
+--  border-radius: 100px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: .85rem; font-weight: 500; transition: var(--transition);
+--}
+--.filter-btn.active, .filter-btn:hover { background: var(--navy); border-color: var(--navy); color: var(--white); transform: translateY(-2px); }
+--
+--.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 22px; }
+--.gallery-item { border-radius: var(--radius-sm); overflow: hidden; position: relative; height: 240px; background: var(--cream-dark); cursor: pointer; transition: transform .45s var(--ease), box-shadow .45s var(--ease), opacity .4s ease; }
+--.gallery-item:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+--.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+--.gallery-item:hover img { transform: scale(1.08); }
+--.gallery-item .overlay {
+--  position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(10,21,38,.86));
+--  color: white; padding: 26px 16px 14px; font-size: .85rem; font-weight: 500; transform: translateY(100%); transition: var(--transition);
+--}
+--.gallery-item:hover .overlay { transform: translateY(0); }
+--.gallery-item::before {
+--  content: attr(data-label); position: absolute; inset: 0; display: flex; align-items: center;
+--  justify-content: center; color: var(--text-light); font-size: .85rem; background: var(--cream-dark); text-align: center; padding: 12px;
+--}
+--.gallery-item img.loaded { position: relative; z-index: 1; }
+--
+--.lightbox-modal { display: none; position: fixed; inset: 0; background: rgba(6,13,24,.94); z-index: 2000; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(6px); }
+--.lightbox-modal.open { animation: fadeInModal .3s ease; }
+--@keyframes fadeInModal { from { opacity: 0; } to { opacity: 1; } }
+--.lightbox-content { max-width: 90vw; max-height: 90vh; position: relative; text-align: center; animation: zoomInModal .35s var(--ease); }
+--@keyframes zoomInModal { from { transform: scale(.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+--.lightbox-img { max-width: 100%; max-height: 78vh; border-radius: 10px; display: block; margin: 0 auto; box-shadow: var(--shadow-lg); }
+--.lightbox-close {
+--  position: absolute; top: -48px; right: 0; background: rgba(255,255,255,.15); color: white;
+--  border: 1px solid rgba(255,255,255,.3); width: 40px; height: 40px; border-radius: 50%;
+--  font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition);
+--}
+--.lightbox-close:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); transform: rotate(90deg); }
+--.lightbox-nav-btn {
+--  position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+--  color: white; width: 48px; height: 48px; border-radius: 50%; font-size: 1.1rem; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center;
+--}
+--.lightbox-nav-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+--#lightboxPrev { left: -64px; }
+--#lightboxNext { right: -64px; }
+--.lightbox-caption { color: rgba(255,255,255,.7); margin-top: 16px; font-size: .9rem; letter-spacing: .03em; }
+--
+- /* ══════════════ CONTACT PAGE ══════════════ */
+- .contact-section { padding: 96px 0; background: var(--white); }
+- .contact-layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px; }
+-@@ -547,16 +501,12 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
+-   .contact-form-panel { padding: 28px 20px; }
+-   .map-embed iframe { height: 300px; }
+- 
+--  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+--  #lightboxPrev { left: -8px; }
+--  #lightboxNext { right: -8px; }
+- }
+- 
+- @media (max-width: 480px) {
+-   .about-badge-float { width: 92px; height: 92px; }
+-   .about-badge-float .badge-year { font-size: 1.6rem; }
+-   .hero-stats { grid-template-columns: 1fr 1fr; gap: 20px; }
+--  .gallery-grid { grid-template-columns: 1fr; }
+- }
+- 
+- /* ── Reduced Motion ── */
+-diff --git a/script.js b/script.js
+-index aa33e50..e6545d0 100644
+---- a/script.js
+-+++ b/script.js
+-@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
+-       requestAnimationFrame(animateRing);
+-     }
+-     animateRing();
+--    const hoverables = 'a, button, .btn, .gallery-item, .g-item, .feature-card, .mv-card, .filter-btn';
+-+    const hoverables = 'a, button, .btn, .g-item, .feature-card, .mv-card';
+-     document.querySelectorAll(hoverables).forEach(el => {
+-       el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+-       el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+-@@ -151,80 +151,6 @@ document.addEventListener('DOMContentLoaded', function () {
+-     });
+-   });
+- 
+--  /* ── Gallery filtering + lightbox (gallery.html only) ── */
+--  const filterBtns = document.querySelectorAll('.filter-btn');
+--  const galleryItems = document.querySelectorAll('.gallery-item');
+--  if (filterBtns.length && galleryItems.length) {
+--    filterBtns.forEach(fbtn => {
+--      fbtn.addEventListener('click', function () {
+--        filterBtns.forEach(b => b.classList.remove('active'));
+--        this.classList.add('active');
+--        const filter = this.dataset.filter;
+--        galleryItems.forEach(item => {
+--          const show = filter === 'all' || item.dataset.category === filter;
+--          item.style.opacity = show ? '1' : '0';
+--          item.style.transform = show ? 'scale(1)' : 'scale(0.9)';
+--          item.style.pointerEvents = show ? 'auto' : 'none';
+--          setTimeout(() => { item.style.display = show ? 'block' : 'none'; }, show ? 0 : 300);
+--          if (show) setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 10);
+--        });
+--      });
+--    });
+--
+--    const modal = document.getElementById('lightboxModal');
+--    const lbImg = document.getElementById('lightboxImg');
+--    const lbCap = document.getElementById('lightboxCaption');
+--    const lbClose = document.getElementById('lightboxClose');
+--    const lbPrev = document.getElementById('lightboxPrev');
+--    const lbNext = document.getElementById('lightboxNext');
+--    let currentIdx = 0;
+--    let visibleItems = [];
+--
+--    function updateVisibleItems() {
+--      visibleItems = Array.from(document.querySelectorAll('.gallery-item')).filter(el => el.style.display !== 'none');
+--    }
+--    function openLightbox(idx) {
+--      updateVisibleItems();
+--      currentIdx = idx;
+--      const item = visibleItems[currentIdx];
+--      if (!item) return;
+--      const imgEl = item.querySelector('img');
+--      const overlayEl = item.querySelector('.overlay');
+--      if (!imgEl || !overlayEl) return;
+--      lbImg.src = imgEl.src;
+--      lbCap.textContent = overlayEl.textContent.trim();
+--      modal.style.display = 'flex';
+--      modal.classList.add('open');
+--      document.body.style.overflow = 'hidden';
+--    }
+--    function closeLightbox() {
+--      modal.style.display = 'none';
+--      modal.classList.remove('open');
+--      document.body.style.overflow = '';
+--    }
+--    galleryItems.forEach((item) => {
+--      item.addEventListener('click', () => {
+--        updateVisibleItems();
+--        const visIdx = visibleItems.indexOf(item);
+--        openLightbox(visIdx >= 0 ? visIdx : 0);
+--      });
+--    });
+--    if (lbClose) lbClose.addEventListener('click', closeLightbox);
+--    if (modal) modal.addEventListener('click', e => { if (e.target === modal) closeLightbox(); });
+--    if (lbPrev) lbPrev.addEventListener('click', () => {
+--      if (visibleItems.length > 0) openLightbox((currentIdx - 1 + visibleItems.length) % visibleItems.length);
+--    });
+--    if (lbNext) lbNext.addEventListener('click', () => {
+--      if (visibleItems.length > 0) openLightbox((currentIdx + 1) % visibleItems.length);
+--    });
+--    document.addEventListener('keydown', e => {
+--      if (!modal || modal.style.display !== 'flex') return;
+--      if (e.key === 'Escape') closeLightbox();
+--      if (e.key === 'ArrowLeft' && lbPrev) lbPrev.click();
+--      if (e.key === 'ArrowRight' && lbNext) lbNext.click();
+--    });
+--  }
+--
+-   /* ── Marquee: duplicate content for seamless loop ── */
+-   document.querySelectorAll('.marquee-track').forEach(track => {
+-     if (track.children.length === 1) {
+diff --git a/script.js b/script.js
+deleted file mode 100644
+index e6545d0..0000000
+--- a/script.js
++++ /dev/null
+@@ -1,193 +0,0 @@
+-/* =========================================================
+-   HSS MUNDUR — SHARED SITE SCRIPT
+-   ========================================================= */
+-document.addEventListener('DOMContentLoaded', function () {
+-
+-  /* ── Loader ── */
+-  const loader = document.getElementById('loader');
+-  window.addEventListener('load', () => {
+-    setTimeout(() => {
+-      if (loader) loader.classList.add('hidden');
+-    }, 400);
+-  });
+-  // Safety net in case 'load' already fired
+-  if (document.readyState === 'complete' && loader) {
+-    setTimeout(() => loader.classList.add('hidden'), 400);
+-  }
+-
+-  /* ── Page-load wipe reveal ── */
+-  const wipe = document.createElement('div');
+-  wipe.className = 'page-wipe out';
+-  document.body.appendChild(wipe);
+-  setTimeout(() => wipe.remove(), 700);
+-
+-  /* ── Header scroll ── */
+-  const header = document.getElementById('mainHeader');
+-  if (header) {
+-    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+-    window.addEventListener('scroll', onScroll, { passive: true });
+-    onScroll();
+-  }
+-
+-  /* ── Mobile menu ── */
+-  const btn = document.getElementById('mobileMenuBtn');
+-  const nav = document.getElementById('navMenu');
+-  if (btn && nav) {
+-    btn.addEventListener('click', () => {
+-      nav.classList.toggle('active');
+-      const icon = btn.querySelector('i');
+-      if (icon) {
+-        icon.classList.toggle('fa-bars');
+-        icon.classList.toggle('fa-times');
+-      }
+-    });
+-    nav.querySelectorAll('a').forEach(a => {
+-      a.addEventListener('click', () => {
+-        nav.classList.remove('active');
+-        const icon = btn.querySelector('i');
+-        if (icon) {
+-          icon.classList.add('fa-bars');
+-          icon.classList.remove('fa-times');
+-        }
+-      });
+-    });
+-  }
+-
+-  /* ── Custom cursor (fine pointer only) ── */
+-  if (window.matchMedia('(pointer: fine)').matches) {
+-    const dot = document.createElement('div');
+-    dot.className = 'cursor-dot';
+-    const ring = document.createElement('div');
+-    ring.className = 'cursor-ring';
+-    document.body.appendChild(dot);
+-    document.body.appendChild(ring);
+-    let mx = 0, my = 0, rx = 0, ry = 0;
+-    window.addEventListener('mousemove', e => {
+-      mx = e.clientX; my = e.clientY;
+-      dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+-    });
+-    function animateRing() {
+-      rx += (mx - rx) * 0.18;
+-      ry += (my - ry) * 0.18;
+-      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+-      requestAnimationFrame(animateRing);
+-    }
+-    animateRing();
+-    const hoverables = 'a, button, .btn, .g-item, .feature-card, .mv-card';
+-    document.querySelectorAll(hoverables).forEach(el => {
+-      el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+-      el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+-    });
+-  }
+-
+-  /* ── Scroll reveal (fade-in + reveal) ── */
+-  const observer = new IntersectionObserver((entries) => {
+-    entries.forEach((entry, i) => {
+-      if (entry.isIntersecting) {
+-        setTimeout(() => entry.target.classList.add('visible', 'in-view'), i * 70);
+-        observer.unobserve(entry.target);
+-      }
+-    });
+-  }, { threshold: 0.12 });
+-  document.querySelectorAll('.fade-in, .reveal, .timeline, .timeline-item').forEach(el => observer.observe(el));
+-
+-  /* ── Magnetic buttons ── */
+-  document.querySelectorAll('.btn').forEach(el => {
+-    el.addEventListener('mousemove', e => {
+-      const r = el.getBoundingClientRect();
+-      const x = e.clientX - r.left - r.width / 2;
+-      const y = e.clientY - r.top - r.height / 2;
+-      el.style.transform = `translate(${x * 0.14}px, ${y * 0.28 - 3}px)`;
+-    });
+-    el.addEventListener('mouseleave', () => { 
+-      if (el) el.style.transform = ''; 
+-    });
+-  });
+-
+-  /* ── Animated stat counters ── */
+-  const counters = document.querySelectorAll('.stat-number[data-count]');
+-  if (counters.length) {
+-    const countObserver = new IntersectionObserver((entries) => {
+-      entries.forEach(entry => {
+-        if (!entry.isIntersecting) return;
+-        const el = entry.target;
+-        const target = parseInt(el.dataset.count, 10);
+-        const suffix = el.dataset.suffix || '';
+-        const duration = 1600;
+-        const start = performance.now();
+-        function tick(now) {
+-          const p = Math.min((now - start) / duration, 1);
+-          const eased = 1 - Math.pow(1 - p, 3);
+-          el.textContent = Math.round(eased * target) + suffix;
+-          if (p < 1) requestAnimationFrame(tick);
+-        }
+-        requestAnimationFrame(tick);
+-        countObserver.unobserve(el);
+-      });
+-    }, { threshold: 0.5 });
+-    counters.forEach(c => countObserver.observe(c));
+-  }
+-
+-  /* ── Smooth scroll for in-page anchors ── */
+-  document.querySelectorAll('a[href^="#"]').forEach(a => {
+-    a.addEventListener('click', e => {
+-      const href = a.getAttribute('href');
+-      if (href.length < 2) return;
+-      const target = document.querySelector(href);
+-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+-    });
+-  });
+-
+-  /* ── Page transition wipe on internal navigation ── */
+-  document.querySelectorAll('a[href]').forEach(a => {
+-    const href = a.getAttribute('href');
+-    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:') || a.target === '_blank') return;
+-    a.addEventListener('click', e => {
+-      e.preventDefault();
+-      const overlay = document.createElement('div');
+-      overlay.className = 'page-wipe active';
+-      document.body.appendChild(overlay);
+-      setTimeout(() => { window.location.href = href; }, 480);
+-    });
+-  });
+-
+-  /* ── Marquee: duplicate content for seamless loop ── */
+-  document.querySelectorAll('.marquee-track').forEach(track => {
+-    if (track.children.length === 1) {
+-      track.innerHTML += track.innerHTML;
+-    }
+-  });
+-
+-  /* ── Scroll Progress Bar ── */
+-  const progressBar = document.createElement('div');
+-  progressBar.style.cssText = `
+-    position: fixed;
+-    top: 0;
+-    left: 0;
+-    height: 3px;
+-    background: linear-gradient(90deg, #1b7a78, #2aada9, #c9a84c, #ff8a3d);
+-    background-size: 200% 100%;
+-    animation: progressGradient 3s ease infinite;
+-    z-index: 9999;
+-    box-shadow: 0 0 15px rgba(27, 122, 120, 0.5);
+-    width: 0%;
+-    transition: width 0.1s linear;
+-  `;
+-  document.body.appendChild(progressBar);
+-
+-  const progressStyle = document.createElement('style');
+-  progressStyle.textContent = `
+-    @keyframes progressGradient {
+-      0% { background-position: 0% 0%; }
+-      100% { background-position: 100% 0%; }
+-    }
+-  `;
+-  document.head.appendChild(progressStyle);
+-
+-  window.addEventListener('scroll', () => {
+-    const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+-    const scrolled = (window.scrollY / windowHeight) * 100;
+-    progressBar.style.width = scrolled + '%';
+-  }, { passive: true });
+-
+-});

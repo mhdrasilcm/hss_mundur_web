@@ -1,0 +1,4 @@
+/* Base styles are loaded from /public/main.css and /public/3d-effects.css
+   via <link> tags in app/layout.js so their raw CSS (custom properties,
+   @import for fonts, etc.) works unmodified. This file only needs to
+   exist so Next's App Router has a global stylesheet entry point. */
