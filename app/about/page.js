@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import Icon from '../../components/Icons';
+import Cta from '../../components/Cta';
 
 export const metadata = {
-  title: 'About — HSS Mundur',
+  title: 'About',
   description:
     'Learn about the history, mission, and vision of Higher Secondary School Mundur, Palakkad.',
 };
@@ -36,20 +38,27 @@ const TIMELINE = [
 
 const MISSION_VISION = [
   {
-    icon: 'fa-bullseye',
+    icon: 'target',
     title: 'Our Mission',
     text: 'To provide quality education that fosters intellectual growth, character development, and social responsibility — preparing students to excel in a dynamic global society.',
   },
   {
-    icon: 'fa-eye',
+    icon: 'eye',
     title: 'Our Vision',
     text: 'To be a center of excellence that nurtures innovative thinkers, compassionate leaders, and responsible citizens who contribute positively to society.',
   },
   {
-    icon: 'fa-handshake',
+    icon: 'heart',
     title: 'Our Values',
     text: 'Integrity, excellence, respect, compassion, and lifelong learning form the foundation of everything we do at HSS Mundur.',
   },
+];
+
+const GLANCE = [
+  { label: 'Founded', value: '1933' },
+  { label: 'High School', value: '1957' },
+  { label: 'Higher Secondary', value: '2010' },
+  { label: 'Location', value: 'Mundur, Palakkad' },
 ];
 
 export default function About() {
@@ -57,23 +66,23 @@ export default function About() {
     <>
       <section className="page-hero">
         <div className="container">
-          <div className="breadcrumb">
+          <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link href="/">Home</Link>
-            <i className="fas fa-chevron-right" style={{ fontSize: '.65rem' }}></i>
-            <span>About Us</span>
-          </div>
-          <div className="section-label" style={{ marginBottom: 14 }}>
-            Our Story
-          </div>
+            <Icon name="chevron-right" size={14} />
+            <span aria-current="page">About us</span>
+          </nav>
+          <p className="eyebrow eyebrow--light">Our story</p>
           <h1>About HSS Mundur</h1>
-          <p>Discover the legacy, mission, and vision that have guided us for over nine decades.</p>
+          <p className="lead">
+            Discover the legacy, mission, and vision that have guided us for over nine decades.
+          </p>
         </div>
       </section>
 
-      <section className="about-content-section">
-        <div className="container">
-          <div className="about-text-block fade-in" style={{ maxWidth: 800 }}>
-            <h3>Our History</h3>
+      <section className="section">
+        <div className="container about-layout">
+          <div className="prose" data-reveal>
+            <h2>Our history</h2>
             <p>
               Higher Secondary School Mundur has long been at the forefront of educational
               excellence in the Palakkad district. The light of knowledge — <em>Aksharadeepam</em>{' '}
@@ -81,29 +90,51 @@ export default function About() {
             </p>
             <p>
               In 1933, the Mundoor Higher Elementary School was founded by the Mundoor
-              Kizhakkewariyat family, with Sri Sivadasawaryar serving as the first manager. In
-              the 1940s, following the retirement of the previous administrator K.V.
-              Achuthawaryar, the administration passed to Sri Sivadasawaryar, during which
-              Sriman Sundarawaryar took over management and dedicated himself to the school's
-              development.
+              Kizhakkewariyat family, with Sri Sivadasawaryar serving as the first manager. In the
+              1940s, following the retirement of the previous administrator K.V. Achuthawaryar,
+              the administration passed to Sri Sivadasawaryar, during which Sriman Sundarawaryar
+              took over management and dedicated himself to the school&apos;s development.
             </p>
-            <h3>Key Milestones</h3>
           </div>
+          <aside className="glance" data-reveal aria-label="School at a glance">
+            <h3>At a glance</h3>
+            <dl>
+              {GLANCE.map((g) => (
+                <div key={g.label}>
+                  <dt>{g.label}</dt>
+                  <dd>{g.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </aside>
+        </div>
+      </section>
 
-          <div className="timeline fade-in" style={{ maxWidth: 720 }}>
+      <section className="section section--tint">
+        <div className="container split-sticky">
+          <div className="section-head" data-reveal>
+            <p className="eyebrow">Key milestones</p>
+            <h2>Ninety years, one flame</h2>
+            <p>From a higher elementary school to a higher secondary school for Palakkad.</p>
+          </div>
+          <ol className="timeline">
             {TIMELINE.map((t) => (
-              <div className="timeline-item" key={t.year}>
-                <div className="timeline-dot">{t.year}</div>
-                <div className="timeline-body">
-                  <h4>{t.title}</h4>
+              <li className="timeline-item" data-reveal key={t.year}>
+                <span className="timeline-year">{t.year}</span>
+                <div className="timeline-card">
+                  <h3>{t.title}</h3>
                   <p>{t.text}</p>
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
+        </div>
+      </section>
 
-          <div className="about-text-block fade-in" style={{ maxWidth: 800, marginTop: 24 }}>
-            <h3>Our Achievements</h3>
+      <section className="section">
+        <div className="container two-col">
+          <div className="prose" data-reveal>
+            <h2>Our achievements</h2>
             <p>
               Over the decades, we have consistently produced outstanding results in academics,
               with our students securing top ranks in state board examinations and gaining
@@ -114,7 +145,9 @@ export default function About() {
               activities at state and national levels. Our alumni have become successful
               professionals in engineering, medicine, arts, civil services, and entrepreneurship.
             </p>
-            <h3>Our Philosophy</h3>
+          </div>
+          <div className="prose" data-reveal>
+            <h2>Our philosophy</h2>
             <p>
               At HSS Mundur, we believe education is not just about imparting knowledge but about
               shaping character. Our values of integrity, respect, perseverance, and community
@@ -129,40 +162,27 @@ export default function About() {
         </div>
       </section>
 
-      <div className="flame-divider" style={{ paddingBottom: 8 }}>
-        <span className="line"></span>
-        <svg viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="fgd" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#ffe9b0" />
-              <stop offset="45%" stopColor="#ffb870" />
-              <stop offset="100%" stopColor="#ff6b35" />
-            </linearGradient>
-          </defs>
-          <path d="M12 0C12 0 3 11 3 20a9 9 0 0018 0C21 11 12 0 12 0z" fill="url(#fgd)" />
-        </svg>
-        <span className="line right"></span>
-      </div>
-
-      <section className="mission-vision">
+      <section className="section section--tint">
         <div className="container">
-          <div className="section-title centered fade-in">
-            <div className="section-label">What We Stand For</div>
-            <h2>Mission, Vision &amp; Values</h2>
+          <div className="section-head section-head--center" data-reveal>
+            <p className="eyebrow eyebrow--center">What we stand for</p>
+            <h2>Mission, vision &amp; values</h2>
           </div>
-          <div className="mv-grid">
+          <div className="grid-cards">
             {MISSION_VISION.map((m) => (
-              <div className="mv-card reveal" data-reveal="up" key={m.title}>
-                <div className="mv-icon">
-                  <i className={`fas ${m.icon}`}></i>
+              <article className="card" data-reveal key={m.title}>
+                <div className="card-icon">
+                  <Icon name={m.icon} size={26} />
                 </div>
                 <h3>{m.title}</h3>
                 <p>{m.text}</p>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
+
+      <Cta />
     </>
   );
 }

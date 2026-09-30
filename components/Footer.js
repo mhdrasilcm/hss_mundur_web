@@ -1,83 +1,84 @@
 import Link from 'next/link';
+import Flame from './Flame';
+import Icon from './Icons';
+import { SITE } from '../lib/site';
 
 export default function Footer() {
+  const socials = SITE.socials.filter((s) => s.href);
   return (
-    <footer>
+    <footer className="site-footer">
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <Link href="/" className="logo" style={{ marginBottom: 0 }}>
-              <div className="logo-icon">
-                <i className="fas fa-graduation-cap"></i>
-              </div>
-              <div className="logo-text">
-                <h1>HSS MUNDUR</h1>
-                <p>Higher Secondary School, Palakkad</p>
-              </div>
+            <Link href="/" className="brand brand--light">
+              <span className="brand-mark">
+                <Flame />
+              </span>
+              <span className="brand-text">
+                <span className="brand-name">{SITE.name}</span>
+                <span className="brand-sub">{SITE.tagline}</span>
+              </span>
             </Link>
-            <p className="desc">
-              Dedicated to academic excellence and the holistic development of every student
-              since 1933. Shaping the future of Mundur, one student at a time.
+            <p>
+              Dedicated to academic excellence and the holistic development of every student since
+              1933. Shaping the future of Mundur, one student at a time.
             </p>
-            <div className="social-row">
-              <a href="#" aria-label="Facebook">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" aria-label="Twitter">
-                <i className="fab fa-twitter"></i>
-              </a>
-              <a href="#" aria-label="Instagram">
-                <i className="fab fa-instagram"></i>
-              </a>
-              <a href="#" aria-label="YouTube">
-                <i className="fab fa-youtube"></i>
-              </a>
-            </div>
+            {socials.length > 0 && (
+              <ul className="social-row">
+                {socials.map((s) => (
+                  <li key={s.name}>
+                    <a href={s.href} aria-label={s.name} target="_blank" rel="noopener noreferrer">
+                      <Icon name={s.icon} size={20} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
-          <div className="footer-col">
-            <h4>Quick Links</h4>
+
+          <nav className="footer-col" aria-label="Quick links">
+            <h2>Quick links</h2>
             <ul>
+              {SITE.nav.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href}>{l.label}</Link>
+                </li>
+              ))}
               <li>
-                <Link href="/">Home</Link>
-              </li>
-              <li>
-                <Link href="/about/">About Us</Link>
-              </li>
-              <li>
-                <Link href="/contact/">Contact</Link>
-              </li>
-              <li>
-                <a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">
+                <a href={SITE.blog} target="_blank" rel="noopener noreferrer">
                   Blog
                 </a>
               </li>
             </ul>
-          </div>
+          </nav>
+
           <div className="footer-col">
-            <h4>Contact</h4>
-            <div className="contact-item">
-              <i className="fas fa-map-marker-alt"></i>
-              <span>HSS Mundur, Palakkad, Kerala 678592</span>
-            </div>
-            <div className="contact-item">
-              <i className="fas fa-phone"></i>
-              <span>+91 491 2832454</span>
-            </div>
-            <div className="contact-item">
-              <i className="fas fa-envelope"></i>
-              <span>hssmundur@gmail.com</span>
-            </div>
-            <div className="contact-item">
-              <i className="fas fa-clock"></i>
-              <span>Mon – Fri: 8:30 AM – 4:00 PM</span>
-            </div>
+            <h2>Contact</h2>
+            <ul className="footer-contact">
+              <li>
+                <Icon name="pin" size={18} />
+                <span>{SITE.addressShort}</span>
+              </li>
+              <li>
+                <Icon name="phone" size={18} />
+                <a href={SITE.phoneHref}>{SITE.phone}</a>
+              </li>
+              <li>
+                <Icon name="mail" size={18} />
+                <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+              </li>
+              <li>
+                <Icon name="clock" size={18} />
+                <span>{SITE.hoursShort}</span>
+              </li>
+            </ul>
           </div>
         </div>
+
         <div className="footer-bottom">
-          <span>© 2026 Higher Secondary School Mundur, Palakkad. All Rights Reserved.</span>
-          <span>
-            Made with <i className="fas fa-heart" style={{ color: '#ff2a2a' }}></i> by{' '}
-            <strong>Ras Devs</strong>
+          <span>© 2026 Higher Secondary School Mundur, Palakkad. All rights reserved.</span>
+          <span className="made-by">
+            Made with <Icon name="heart" size={14} className="heart" /> by <strong>Ras Devs</strong>
           </span>
         </div>
       </div>

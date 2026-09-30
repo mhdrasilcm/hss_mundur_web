@@ -3,65 +3,89 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-
-const NAV_LINKS = [
-  { href: '/', label: 'Home' },
-  { href: '/about/', label: 'About' },
-  { href: '/contact/', label: 'Contact' },
-];
+import Flame from './Flame';
+import Icon from './Icons';
+import { SITE } from '../lib/site';
 
 export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
+  // Header shadow — one passive, rAF-throttled listener.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      setScrolled(window.scrollY > 8);
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+    update();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close the mobile menu on route change so it doesn't stay open
-  // after navigating — the original site reloaded the page on every
-  // link click, which reset this for free; a client-side router does not.
+  // Mobile menu: lock page scroll, close on Esc, and close if the viewport
+  // grows into the desktop layout (e.g. device rotation).
   useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
+    if (!open) return undefined;
+    const root = document.documentElement;
+    root.classList.add('nav-open');
+    const onKey = (e) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    const mq = window.matchMedia('(min-width: 900px)');
+    const onMq = () => mq.matches && setOpen(false);
+    window.addEventListener('keydown', onKey);
+    mq.addEventListener('change', onMq);
+    return () => {
+      root.classList.remove('nav-open');
+      window.removeEventListener('keydown', onKey);
+      mq.removeEventListener('change', onMq);
+    };
+  }, [open]);
 
   return (
-    <header id="mainHeader" className={scrolled ? 'scrolled' : ''}>
-      <div className="container header-container">
-        <Link href="/" className="logo">
-          <div className="logo-icon">
-            <i className="fas fa-graduation-cap"></i>
-          </div>
-          <div className="logo-text">
-            <h1>HSS MUNDUR</h1>
-            <p>Higher Secondary School, Palakkad</p>
-          </div>
+    <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
+      <div className="container header-inner">
+        <Link href="/" className="brand" onClick={() => setOpen(false)}>
+          <span className="brand-mark">
+            <Flame />
+          </span>
+          <span className="brand-text">
+            <span className="brand-name">{SITE.name}</span>
+            <span className="brand-sub">{SITE.tagline}</span>
+          </span>
         </Link>
+
         <button
-          className="mobile-menu-btn"
-          id="mobileMenuBtn"
-          aria-label="Toggle menu"
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((v) => !v)}
+          type="button"
+          className="nav-toggle"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          aria-controls="site-nav"
+          onClick={() => setOpen((v) => !v)}
         >
-          <i className={menuOpen ? 'fas fa-times' : 'fas fa-bars'}></i>
+          <Icon name={open ? 'close' : 'menu'} size={26} />
         </button>
-        <nav className={`nav-menu${menuOpen ? ' active' : ''}`} id="navMenu">
-          <ul>
-            {NAV_LINKS.map((link) => (
+
+        <nav id="site-nav" className={`nav${open ? ' is-open' : ''}`} aria-label="Main">
+          <ul onClick={() => setOpen(false)}>
+            {SITE.nav.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className={pathname === link.href ? 'active' : ''}>
+                <Link href={link.href} aria-current={pathname === link.href ? 'page' : undefined}>
                   {link.label}
                 </Link>
               </li>
             ))}
             <li>
-              <a href="https://lkmundur.pages.dev/blog" target="_blank" rel="noopener noreferrer">
-                Blog <i className="fas fa-external-link-alt" style={{ fontSize: '0.7em', marginLeft: '3px' }}></i>
+              <a href={SITE.blog} target="_blank" rel="noopener noreferrer">
+                Blog <Icon name="external" size={15} />
               </a>
             </li>
           </ul>

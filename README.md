@@ -12,6 +12,15 @@ npm run dev
 
 Open http://localhost:3000.
 
+## Project layout
+
+- `app/` — pages (`/`, `/about`, `/contact`, 404) and the global design system in `app/globals.css`.
+- `components/` — `Header`, `Footer`, `SiteEffects` (scroll progress + reveal), `Counter`, `Photo`, `Icons`.
+- `lib/site.js` — contact details, navigation and social links. Add real profile URLs to
+  `socials` and they appear in the footer and contact page automatically.
+- `public/images/` — full-size originals plus responsive `*-480/960/1600.webp` variants. After
+  adding or changing a photo, run `python3 scripts/optimize-images.py` (needs Pillow).
+
 ## Build
 
 ```bash

@@ -1,250 +1,227 @@
-'use client';
-
 import Link from 'next/link';
+import Icon from '../components/Icons';
+import Flame from '../components/Flame';
+import Photo from '../components/Photo';
+import Counter from '../components/Counter';
+import Cta from '../components/Cta';
 
 const STATS = [
-  { count: 90, suffix: '+', label: 'Years of Legacy' },
+  { count: 90, suffix: '+', label: 'Years of legacy' },
   { count: 1500, suffix: '+', label: 'Students' },
-  { count: 80, suffix: '+', label: 'Dedicated Staff' },
-  { count: 100, suffix: '%', label: 'Pass Rate' },
+  { count: 80, suffix: '+', label: 'Dedicated staff' },
+  { count: 100, suffix: '%', label: 'Pass rate' },
+];
+
+const VALUES = [
+  'Excellence',
+  'Integrity',
+  'Community',
+  'Aksharadeepam — The Light of Knowledge',
+  'Since 1933',
+  'Palakkad, Kerala',
 ];
 
 const FEATURES = [
   {
-    icon: 'fa-flask',
+    icon: 'flask',
     title: 'Modern Laboratories',
     text: 'Fully equipped science and computer labs enabling hands-on learning and experimentation for every student.',
   },
   {
-    icon: 'fa-book-open',
+    icon: 'book',
     title: 'Rich Library',
     text: 'A well-stocked library with thousands of volumes, digital resources, and quiet study spaces for focused learning.',
   },
   {
-    icon: 'fa-running',
+    icon: 'activity',
     title: 'Sports & Athletics',
     text: 'Extensive sports facilities fostering physical fitness, teamwork, and competitive spirit at district and state levels.',
   },
   {
-    icon: 'fa-palette',
+    icon: 'palette',
     title: 'Arts & Culture',
     text: "Vibrant arts, music, and cultural programmes that celebrate creativity and Kerala's rich heritage.",
   },
   {
-    icon: 'fa-laptop-code',
+    icon: 'code',
     title: 'IT Education',
     text: 'Little Kites IT Club and smart classrooms ensure students are prepared for a digital-first world.',
   },
   {
-    icon: 'fa-users',
+    icon: 'users',
     title: 'Student Clubs',
     text: 'Eco Club, Science Club, and various student bodies developing leadership, teamwork, and social responsibility.',
   },
-];
-
-// The original site referenced five gallery images but only ever shipped
-// two of them (c1.jpg, lb1.jpg) — the other three (sb.jpg, sd.jpg, lib.jpg)
-// don't exist in the repo and rendered as broken images. This swaps in the
-// two extra photos that *were* in the repo but unused (c2.jpg, lb2.jpg,
-// about-hero.jpg) so every tile shows a real photo.
-const GALLERY = [
-  { src: '/images/c1.jpg', alt: 'School Building', caption: 'Main Building' },
-  { src: '/images/lb1.jpg', alt: 'Computer Lab', caption: 'Computer Lab' },
-  { src: '/images/c2.jpg', alt: 'Campus', caption: 'Campus' },
-  { src: '/images/lb2.jpg', alt: 'Classroom', caption: 'Classroom' },
-  { src: '/images/about-hero.jpg', alt: 'School Grounds', caption: 'School Grounds' },
 ];
 
 export default function Home() {
   return (
     <>
       <section className="hero">
-        <div className="hero-pattern"></div>
-        <div className="hero-orb o1"></div>
-        <div className="hero-orb o2"></div>
+        <div className="hero-glow" aria-hidden="true" />
         <div className="container">
-          <div className="hero-content">
-            <div className="hero-badge">
-              <i className="fas fa-fire"></i> Est. 1933 — Aksharadeepam, Palakkad
+          <div className="hero-grid">
+            <div className="hero-copy">
+              <p className="eyebrow eyebrow--light">
+                <Flame className="flame-sm flame--lit" /> Est. 1933 · Aksharadeepam, Palakkad
+              </p>
+              <h1>
+                Shaping minds, <em>building futures.</em>
+              </h1>
+              <p className="lead">
+                Higher Secondary School Mundur — a century of academic excellence, character, and
+                community in the heart of Palakkad.
+              </p>
+              <div className="btn-row">
+                <Link href="/about/" className="btn btn-gold">
+                  Explore our school <Icon name="arrow-right" size={18} />
+                </Link>
+                <Link href="/contact/" className="btn btn-ghost">
+                  Contact us
+                </Link>
+              </div>
             </div>
-            <h2>
-              Shaping Minds,
-              <br />
-              <em className="text-gradient">Building Futures</em>
-            </h2>
-            <p>
-              Higher Secondary School Mundur — a century of academic excellence, character, and
-              community in the heart of Palakkad.
-            </p>
-            <div className="hero-btns">
-              <Link href="/about/" className="btn btn-primary">
-                <i className="fas fa-compass"></i> Explore Our School
-              </Link>
-            </div>
-            <div className="hero-stats">
-              {STATS.map((s) => (
-                <div className="stat-item" key={s.label}>
-                  <div className="stat-number" data-count={s.count} data-suffix={s.suffix}>
-                    0
-                  </div>
-                  <div className="stat-label">{s.label}</div>
-                </div>
-              ))}
-            </div>
+
+            <figure className="hero-figure">
+              <div className="arch">
+                <Photo
+                  name="c1"
+                  alt="The main building of HSS Mundur"
+                  sizes="(min-width: 960px) 440px, 300px"
+                  priority
+                />
+              </div>
+              <figcaption className="hero-chip">
+                <Flame className="flame-sm" /> The light of knowledge
+              </figcaption>
+            </figure>
           </div>
-        </div>
-        <div className="hero-scroll">
-          <span>Scroll</span>
-          <i className="fas fa-chevron-down"></i>
+
+          <div className="stats">
+            {STATS.map((s) => (
+              <div className="stat" key={s.label}>
+                <div className="stat-num">
+                  <Counter to={s.count} suffix={s.suffix} />
+                </div>
+                <div className="stat-label">{s.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <div className="marquee">
-        <div className="marquee-track">
-          <span>
-            <i className="fas fa-circle"></i> Excellence <i className="fas fa-circle"></i>{' '}
-            Integrity <i className="fas fa-circle"></i> Community{' '}
-            <i className="fas fa-circle"></i> Aksharadeepam — The Light of Knowledge{' '}
-            <i className="fas fa-circle"></i> Since 1933 <i className="fas fa-circle"></i>{' '}
-            Palakkad, Kerala
-          </span>
-          <span aria-hidden="true">
-            <i className="fas fa-circle"></i> Excellence <i className="fas fa-circle"></i>{' '}
-            Integrity <i className="fas fa-circle"></i> Community{' '}
-            <i className="fas fa-circle"></i> Aksharadeepam — The Light of Knowledge{' '}
-            <i className="fas fa-circle"></i> Since 1933 <i className="fas fa-circle"></i>{' '}
-            Palakkad, Kerala
-          </span>
-        </div>
+      <div className="values">
+        <ul className="container">
+          {VALUES.map((v) => (
+            <li key={v}>{v}</li>
+          ))}
+        </ul>
       </div>
 
-      <section className="about-preview" id="about">
-        <div className="container">
-          <div className="about-layout">
-            <div className="about-visual reveal" data-reveal="left">
-              <div className="about-img-placeholder">
-                <i className="fas fa-school"></i>
-                <span>HSS Mundur Campus</span>
-              </div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/c1.jpg"
-                alt="HSS Mundur School Building"
-                className="about-img-main"
-                style={{ position: 'absolute', top: 0, left: 0 }}
-                onLoad={(e) => {
-                  e.currentTarget.style.position = 'relative';
-                  const placeholder = e.currentTarget.previousElementSibling;
-                  if (placeholder) placeholder.style.display = 'none';
-                }}
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                }}
+      <section className="section" id="about">
+        <div className="container split">
+          <div className="split-media" data-reveal>
+            <div className="frame">
+              <Photo
+                name="c2"
+                alt="Students on the school grounds in front of the campus buildings"
+                sizes="(min-width: 900px) 540px, 92vw"
               />
-              <div className="about-badge-float">
-                <div className="badge-year">1933</div>
-                <div className="badge-text">Founded</div>
-              </div>
             </div>
-            <div className="about-text reveal" data-reveal="right">
-              <div className="section-label">Welcome to HSS Mundur</div>
-              <h3>A Legacy of Excellence in Education</h3>
-              <p>
-                Higher Secondary School Mundur has been a cornerstone of education in Palakkad,
-                Kerala for over nine decades. We are committed to providing quality education
-                that empowers students to excel academically and develop into responsible,
-                compassionate citizens.
-              </p>
-              <p>
-                Our curriculum nurtures critical thinking, creativity, and character development
-                — preparing students for the challenges of higher education and the opportunities
-                of tomorrow.
-              </p>
-              <Link href="/about/" className="btn btn-outline-dark" style={{ marginTop: 8 }}>
-                <i className="fas fa-arrow-right"></i> Read Our Story
-              </Link>
+            <div className="badge-float">
+              <strong>1933</strong>
+              <span>Founded</span>
             </div>
+          </div>
+          <div className="split-copy" data-reveal>
+            <p className="eyebrow">Welcome to HSS Mundur</p>
+            <h2>A legacy of excellence in education</h2>
+            <p>
+              Higher Secondary School Mundur has been a cornerstone of education in Palakkad,
+              Kerala for over nine decades. We are committed to providing quality education that
+              empowers students to excel academically and develop into responsible, compassionate
+              citizens.
+            </p>
+            <p>
+              Our curriculum nurtures critical thinking, creativity, and character development —
+              preparing students for the challenges of higher education and the opportunities of
+              tomorrow.
+            </p>
+            <Link href="/about/" className="btn btn-outline">
+              Read our story <Icon name="arrow-right" size={18} />
+            </Link>
           </div>
         </div>
       </section>
 
-      <section className="features-section">
+      <section className="section section--tint">
         <div className="container">
-          <div className="section-title centered fade-in">
-            <div className="section-label">What Sets Us Apart</div>
-            <h2>A Complete Learning Environment</h2>
+          <div className="section-head section-head--center" data-reveal>
+            <p className="eyebrow eyebrow--center">What sets us apart</p>
+            <h2>A complete learning environment</h2>
             <p>
               From state-of-the-art laboratories to vibrant cultural programmes, we offer every
               student the tools to thrive.
             </p>
           </div>
-          <div className="features-grid">
+          <div className="grid-cards">
             {FEATURES.map((f) => (
-              <div className="feature-card reveal" data-tilt="true" data-reveal="up" key={f.title}>
-                <div className="feature-icon">
-                  <i className={`fas ${f.icon}`}></i>
+              <article className="card" data-reveal key={f.title}>
+                <div className="card-icon">
+                  <Icon name={f.icon} size={26} />
                 </div>
                 <h3>{f.title}</h3>
                 <p>{f.text}</p>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="gallery-preview">
+      <section className="section section--dark">
         <div className="container">
-          <div
-            className="section-title fade-in"
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-end',
-              marginBottom: 40,
-            }}
-          >
-            <div>
-              <div className="section-label">Campus Life</div>
-              <h2 style={{ color: 'white' }}>
-                A Glimpse of
-                <br />
-                School Life
-              </h2>
-            </div>
+          <div className="section-head" data-reveal>
+            <p className="eyebrow eyebrow--light">Campus life</p>
+            <h2>A glimpse of school life</h2>
           </div>
-          <div className="gallery-masonry fade-in">
-            {GALLERY.map((g) => (
-              <div className="g-item" key={g.src}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={g.src}
-                  alt={g.alt}
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                  }}
-                />
-                <div className="g-overlay">{g.caption}</div>
-              </div>
-            ))}
+          <div className="bento">
+            <figure className="tile tile--wide" data-reveal>
+              <Photo
+                name="lb1"
+                alt="Students working on laptops in the computer lab"
+                sizes="(min-width: 900px) 760px, 92vw"
+              />
+              <figcaption>Computer Lab</figcaption>
+            </figure>
+            <figure className="tile tile--tall" data-reveal>
+              <Photo
+                name="lb2"
+                alt="A classroom with rows of benches and desks"
+                sizes="(min-width: 900px) 380px, 46vw"
+              />
+              <figcaption>Classroom</figcaption>
+            </figure>
+            <figure className="tile" data-reveal>
+              <Photo
+                name="c1"
+                alt="The main building of HSS Mundur"
+                sizes="(min-width: 900px) 380px, 46vw"
+              />
+              <figcaption>Main Building</figcaption>
+            </figure>
+            <figure className="tile tile--wide-sm" data-reveal>
+              <Photo
+                name="c2"
+                alt="The school campus and playground"
+                sizes="(min-width: 900px) 380px, 92vw"
+              />
+              <figcaption>Campus</figcaption>
+            </figure>
           </div>
         </div>
       </section>
 
-      <section className="cta-section">
-        <div className="container fade-in">
-          <div
-            className="section-label"
-            style={{ justifyContent: 'center', color: 'rgba(255,255,255,.8)' }}
-          >
-            <span style={{ background: 'rgba(255,255,255,.3)', height: 2 }}></span>Get In Touch
-          </div>
-          <h2>Ready to Be Part of Our Story?</h2>
-          <p>Have questions about admissions, programmes, or events? We'd love to hear from you.</p>
-          <Link href="/contact/" className="btn btn-primary">
-            Contact Us <i className="fas fa-arrow-right"></i>
-          </Link>
-        </div>
-      </section>
+      <Cta />
     </>
   );
 }
