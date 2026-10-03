@@ -1,0 +1,847 @@
+From 60964fa8450409f9c748883904e294468fd6cca3 Mon Sep 17 00:00:00 2001
+From: HSS Mundur Polish <polish@example.com>
+Date: Sat, 3 Oct 2026 05:09:09 +0000
+Subject: [PATCH] Polish pass: lightbox, entrance motion, mobile hero,
+ robustness
+
+UX
+- Gallery: tiles open an accessible full-size lightbox (native <dialog>):
+  prev/next buttons, arrow keys, swipe, Esc / backdrop to close, scroll lock,
+  safe-area aware, fits portrait and landscape phones.
+- Soft page fade between routes (app/template.js) and a short staggered hero
+  entrance (CSS only; fully disabled for prefers-reduced-motion).
+- Back-to-top button, "Get directions" button under the map, and the Little
+  Kites link stays visible on desktop as a fallback for the iframe.
+
+Layout
+- Phone hero: eyebrow wraps cleanly, CTA buttons are full-width and stacked.
+- Desktop hero: arch photo is sized from viewport height so the stats row is
+  above the fold on common laptop screens (1366x768, 1440x900).
+
+Robustness / SEO
+- If the app bundle hasn't started within 5 s, scroll-reveal content is shown
+  anyway (fx-fail failsafe) so nothing can stay invisible.
+- schema.org School JSON-LD, apple-touch-icon, color-scheme: light so Android
+  force-dark can't invert the design, branded tap highlight.
+---
+ app/apple-icon.png        | Bin 0 -> 3543 bytes
+ app/contact/page.js       |   8 +-
+ app/globals.css           | 219 +++++++++++++++++++++++++++++++++++++-
+ app/layout.js             |  33 +++++-
+ app/page.js               |  79 ++++++++------
+ app/template.js           |   5 +
+ components/Gallery.js     |  94 ++++++++++++++++
+ components/Icons.js       |   7 ++
+ components/SiteEffects.js |  29 ++++-
+ lib/site.js               |   1 +
+ 10 files changed, 431 insertions(+), 44 deletions(-)
+ create mode 100644 app/apple-icon.png
+ create mode 100644 app/template.js
+ create mode 100644 components/Gallery.js
+
+diff --git a/app/apple-icon.png b/app/apple-icon.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..e512dcd2b5ce3f0f7937a889bdd0fab592c70038
+GIT binary patch
+literal 3543
+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
+G<^KS-$<Ay5
+
+literal 0
+HcmV?d00001
+
+diff --git a/app/contact/page.js b/app/contact/page.js
+index 84b1494..6d1bb1d 100644
+--- a/app/contact/page.js
++++ b/app/contact/page.js
+@@ -111,7 +111,8 @@ export default function Contact() {
+             <p className="muted">
+               Get a sneak peek at our upcoming dedicated portal for the Little Kites IT Club.
+             </p>
+-            {/* Embedded only on wide screens: on phones the iframe is heavy and traps scrolling. */}
++            {/* Embedded only on wide screens: on phones the iframe is heavy and traps scrolling.
++                The link stays visible everywhere as a fallback. */}
+             <iframe
+               className="lk-frame"
+               src={SITE.littleKites}
+@@ -148,6 +149,11 @@ export default function Contact() {
+               referrerPolicy="no-referrer-when-downgrade"
+             />
+           </div>
++          <div className="map-actions" data-reveal>
++            <a className="btn btn-gold" href={SITE.directions} target="_blank" rel="noopener noreferrer">
++              <Icon name="pin" size={18} /> Get directions
++            </a>
++          </div>
+         </div>
+       </section>
+     </>
+diff --git a/app/globals.css b/app/globals.css
+index c514e49..f6495f2 100644
+--- a/app/globals.css
++++ b/app/globals.css
+@@ -40,6 +40,7 @@
+   --section: clamp(56px, 8vw, 104px);
+   --header-h: 64px;
+   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
++  color-scheme: light;
+ }
+ 
+ @media (min-width: 900px) {
+@@ -58,6 +59,7 @@
+   margin: 0;
+ }
+ html {
++  -webkit-tap-highlight-color: rgba(232, 169, 53, 0.22);
+   -webkit-text-size-adjust: 100%;
+   text-size-adjust: 100%;
+   scroll-padding-top: calc(var(--header-h) + 16px);
+@@ -200,6 +202,24 @@ h3 {
+ .js .counter:not(.is-ready) {
+   visibility: hidden;
+ }
++/* Failsafe: set by an inline script if the app bundle never starts */
++.fx-fail [data-reveal] {
++  opacity: 1;
++  translate: none;
++}
++.fx-fail .counter {
++  visibility: visible;
++}
++
++/* Soft fade between pages (app/template.js) */
++.page {
++  animation: page-in 0.3s var(--ease) backwards;
++}
++@keyframes page-in {
++  from {
++    opacity: 0;
++  }
++}
+ 
+ /* ── Buttons ────────────────────────────────────────────── */
+ .btn {
+@@ -262,6 +282,21 @@ h3 {
+   gap: 12px;
+   margin-top: 32px;
+ }
++@media (max-width: 479px) {
++  .btn-row {
++    flex-direction: column;
++  }
++  .btn-row .btn {
++    width: 100%;
++  }
++  .eyebrow {
++    font-size: 0.72rem;
++    letter-spacing: 0.1em;
++  }
++  .hero .eyebrow {
++    text-wrap: balance;
++  }
++}
+ 
+ /* ── Type helpers ───────────────────────────────────────── */
+ .eyebrow {
+@@ -284,6 +319,21 @@ h3 {
+ .eyebrow--light {
+   color: var(--gold);
+ }
++.eyebrow-text > span {
++  display: inline-block;
++  white-space: nowrap;
++}
++.eyebrow-text .sep {
++  margin-inline: 0.55em;
++}
++@media (max-width: 479px) {
++  .eyebrow-text .sep {
++    display: none;
++  }
++  .eyebrow-text > span:first-child {
++    margin-right: 0.6em;
++  }
++}
+ .eyebrow--center {
+   justify-content: center;
+ }
+@@ -544,7 +594,7 @@ h3 {
+   position: relative;
+   overflow: hidden;
+   color: var(--paper);
+-  padding-top: clamp(36px, 7vw, 88px);
++  padding-top: clamp(36px, 5vw, 64px);
+   padding-bottom: clamp(36px, 5vw, 64px);
+   background-color: var(--teal-900);
+   background-image: radial-gradient(60% 55% at 85% 18%, rgba(232, 169, 53, 0.16), transparent 70%),
+@@ -585,6 +635,27 @@ h3 {
+   color: var(--paper);
+   margin-top: 18px;
+ }
++.hero-copy > * {
++  animation: rise 0.55s var(--ease) backwards;
++}
++.hero-copy > :nth-child(2) {
++  animation-delay: 0.05s;
++}
++.hero-copy > :nth-child(3) {
++  animation-delay: 0.1s;
++}
++.hero-copy > :nth-child(4) {
++  animation-delay: 0.15s;
++}
++.hero-figure {
++  animation: rise 0.6s var(--ease) 0.08s backwards;
++}
++@keyframes rise {
++  from {
++    opacity: 0;
++    transform: translateY(16px);
++  }
++}
+ .hero h1 em {
+   font-style: italic;
+   font-weight: 500;
+@@ -682,6 +753,8 @@ h3 {
+   }
+   .hero-figure {
+     width: min(100%, 440px);
++    width: min(100%, clamp(300px, calc((100vh - var(--header-h) - 330px) * 0.8), 440px));
++    width: min(100%, clamp(300px, calc((100dvh - var(--header-h) - 330px) * 0.8), 440px));
+     margin: 0 0 24px auto;
+   }
+ }
+@@ -842,6 +915,21 @@ h3 {
+   grid-column: 1 / -1;
+   aspect-ratio: 16 / 10;
+ }
++.tile-btn {
++  position: absolute;
++  inset: 0;
++  display: block;
++  padding: 0;
++  border: 0;
++  background: none;
++  color: inherit;
++  cursor: zoom-in;
++  touch-action: manipulation;
++}
++.tile-btn:focus-visible {
++  outline-offset: -4px;
++  border-radius: 18px;
++}
+ .tile img {
+   width: 100%;
+   height: 100%;
+@@ -851,6 +939,7 @@ h3 {
+ .tile figcaption {
+   position: absolute;
+   inset: auto 0 0 0;
++  pointer-events: none;
+   padding: 40px 16px 14px;
+   background: linear-gradient(to top, rgba(6, 28, 30, 0.8), transparent);
+   color: #fff;
+@@ -886,6 +975,127 @@ h3 {
+   }
+ }
+ 
++/* ── Lightbox ───────────────────────────────────────────── */
++.lightbox {
++  width: 100%;
++  max-width: none;
++  height: 100%;
++  max-height: none;
++  padding: 0;
++  border: 0;
++  background: transparent;
++  color: #fff;
++  overflow: hidden;
++}
++.lightbox[open] {
++  display: grid;
++  animation: page-in 0.25s var(--ease);
++}
++.lightbox::backdrop {
++  background: rgba(5, 24, 26, 0.96);
++}
++html:has(dialog[open]) {
++  overflow: hidden;
++}
++.lightbox-inner {
++  position: relative;
++  display: grid;
++  align-content: center;
++  justify-items: center;
++  gap: 14px;
++  width: 100%;
++  height: 100%;
++  padding: max(56px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right))
++    max(14px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
++}
++.lightbox-inner img {
++  width: auto;
++  height: auto;
++  max-width: 100%;
++  max-height: calc(100vh - 150px);
++  max-height: calc(100dvh - 150px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
++  object-fit: contain;
++  border-radius: 12px;
++  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
++}
++.lightbox-close,
++.lightbox-bar button {
++  display: grid;
++  place-items: center;
++  width: 48px;
++  height: 48px;
++  border: 1px solid rgba(251, 247, 239, 0.3);
++  border-radius: 50%;
++  background: rgba(251, 247, 239, 0.08);
++  color: #fff;
++  touch-action: manipulation;
++  transition: background-color 0.2s, color 0.2s;
++}
++.lightbox-close {
++  position: absolute;
++  top: max(10px, env(safe-area-inset-top));
++  right: max(10px, env(safe-area-inset-right));
++}
++.lightbox-bar {
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++  gap: 16px;
++  width: min(100%, 560px);
++}
++.lightbox-bar p {
++  text-align: center;
++  font-weight: 600;
++}
++.lightbox-bar p span {
++  display: block;
++  font-size: 0.8rem;
++  font-weight: 500;
++  color: rgba(251, 247, 239, 0.7);
++}
++@media (hover: hover) {
++  .lightbox-close:hover,
++  .lightbox-bar button:hover {
++    background: var(--gold);
++    border-color: var(--gold);
++    color: var(--teal-950);
++  }
++}
++
++/* ── Back to top ────────────────────────────────────────── */
++.to-top {
++  position: fixed;
++  right: max(16px, env(safe-area-inset-right));
++  bottom: max(16px, env(safe-area-inset-bottom));
++  z-index: 55;
++  display: grid;
++  place-items: center;
++  width: 48px;
++  height: 48px;
++  border: 0;
++  border-radius: 50%;
++  background: var(--teal-900);
++  color: var(--gold);
++  box-shadow: var(--shadow-md);
++  opacity: 0;
++  visibility: hidden;
++  transform: translateY(12px);
++  transition: opacity 0.25s, transform 0.25s var(--ease), visibility 0s linear 0.25s,
++    background-color 0.2s;
++  touch-action: manipulation;
++}
++.to-top.is-shown {
++  opacity: 1;
++  visibility: visible;
++  transform: none;
++  transition-delay: 0s;
++}
++@media (hover: hover) {
++  .to-top:hover {
++    background: var(--teal-700);
++  }
++}
++
+ /* ── CTA band ───────────────────────────────────────────── */
+ .cta {
+   position: relative;
+@@ -1166,9 +1376,12 @@ h3 {
+     display: block;
+   }
+   .lk-link {
+-    display: none;
++    margin-top: 16px;
+   }
+ }
++.map-actions {
++  margin-top: 20px;
++}
+ .map {
+   aspect-ratio: 4 / 3;
+   overflow: hidden;
+@@ -1342,6 +1555,7 @@ h3 {
+   *::after {
+     animation-duration: 0.01ms !important;
+     animation-iteration-count: 1 !important;
++    animation-delay: 0s !important;
+     transition-duration: 0.01ms !important;
+     scroll-behavior: auto !important;
+   }
+@@ -1351,6 +1565,7 @@ h3 {
+   }
+ }
+ @media print {
++  .to-top,
+   .site-header,
+   .progress,
+   .skip-link,
+diff --git a/app/layout.js b/app/layout.js
+index 845b104..0c297f3 100644
+--- a/app/layout.js
++++ b/app/layout.js
+@@ -2,6 +2,7 @@ import './globals.css';
+ import Header from '../components/Header';
+ import Footer from '../components/Footer';
+ import SiteEffects from '../components/SiteEffects';
++import { SITE } from '../lib/site';
+ 
+ const DESCRIPTION =
+   'Higher Secondary School Mundur — a century of academic excellence in Palakkad, Kerala.';
+@@ -29,8 +30,32 @@ export const viewport = {
+ };
+ 
+ // Marks the document as JS-enabled *before* first paint so the reveal-on-scroll
+-// styles only apply when the script that reveals them will actually run.
+-const JS_FLAG = "document.documentElement.classList.add('js')";
++// styles only apply when the script that reveals them will actually run. If the
++// app bundle hasn't started within 5 s (flaky network), reveal everything anyway
++// so content can never stay invisible.
++const JS_FLAG =
++  "var d=document.documentElement;d.classList.add('js');" +
++  "setTimeout(function(){if(!d.dataset.fx)d.classList.add('fx-fail')},5000)";
++
++const JSON_LD = {
++  '@context': 'https://schema.org',
++  '@type': 'School',
++  name: SITE.fullName,
++  alternateName: SITE.name,
++  description: DESCRIPTION,
++  foundingDate: '1933',
++  telephone: SITE.phone,
++  email: SITE.email,
++  address: {
++    '@type': 'PostalAddress',
++    streetAddress: 'Mundur',
++    addressLocality: 'Palakkad',
++    addressRegion: 'Kerala',
++    postalCode: '678592',
++    addressCountry: 'IN',
++  },
++  sameAs: SITE.socials.filter((x) => x.href).map((x) => x.href),
++};
+ 
+ export default function RootLayout({ children }) {
+   return (
+@@ -52,6 +77,10 @@ export default function RootLayout({ children }) {
+         <main id="main">{children}</main>
+         <Footer />
+         <SiteEffects />
++        <script
++          type="application/ld+json"
++          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
++        />
+       </body>
+     </html>
+   );
+diff --git a/app/page.js b/app/page.js
+index 616d250..b3121eb 100644
+--- a/app/page.js
++++ b/app/page.js
+@@ -4,6 +4,7 @@ import Flame from '../components/Flame';
+ import Photo from '../components/Photo';
+ import Counter from '../components/Counter';
+ import Cta from '../components/Cta';
++import Gallery from '../components/Gallery';
+ 
+ const STATS = [
+   { count: 90, suffix: '+', label: 'Years of legacy' },
+@@ -54,6 +55,40 @@ const FEATURES = [
+   },
+ ];
+ 
++const GALLERY = [
++  {
++    id: 'lab',
++    name: 'lb1',
++    caption: 'Computer Lab',
++    alt: 'Students working on laptops in the computer lab',
++    sizes: '(min-width: 900px) 760px, 92vw',
++    className: 'tile--wide',
++  },
++  {
++    id: 'classroom',
++    name: 'lb2',
++    caption: 'Classroom',
++    alt: 'A classroom with rows of benches and desks',
++    sizes: '(min-width: 900px) 380px, 46vw',
++    className: 'tile--tall',
++  },
++  {
++    id: 'building',
++    name: 'c1',
++    caption: 'Main Building',
++    alt: 'The main building of HSS Mundur',
++    sizes: '(min-width: 900px) 380px, 46vw',
++  },
++  {
++    id: 'campus',
++    name: 'c2',
++    caption: 'Campus',
++    alt: 'The school campus and playground',
++    sizes: '(min-width: 900px) 380px, 92vw',
++    className: 'tile--wide-sm',
++  },
++];
++
+ export default function Home() {
+   return (
+     <>
+@@ -63,7 +98,14 @@ export default function Home() {
+           <div className="hero-grid">
+             <div className="hero-copy">
+               <p className="eyebrow eyebrow--light">
+-                <Flame className="flame-sm flame--lit" /> Est. 1933 · Aksharadeepam, Palakkad
++                <Flame className="flame-sm flame--lit" />
++                <span className="eyebrow-text">
++                  <span>Est. 1933</span>
++                  <span className="sep" aria-hidden="true">
++                    ·
++                  </span>
++                  <span>Aksharadeepam, Palakkad</span>
++                </span>
+               </p>
+               <h1>
+                 Shaping minds, <em>building futures.</em>
+@@ -184,40 +226,7 @@ export default function Home() {
+             <p className="eyebrow eyebrow--light">Campus life</p>
+             <h2>A glimpse of school life</h2>
+           </div>
+-          <div className="bento">
+-            <figure className="tile tile--wide" data-reveal>
+-              <Photo
+-                name="lb1"
+-                alt="Students working on laptops in the computer lab"
+-                sizes="(min-width: 900px) 760px, 92vw"
+-              />
+-              <figcaption>Computer Lab</figcaption>
+-            </figure>
+-            <figure className="tile tile--tall" data-reveal>
+-              <Photo
+-                name="lb2"
+-                alt="A classroom with rows of benches and desks"
+-                sizes="(min-width: 900px) 380px, 46vw"
+-              />
+-              <figcaption>Classroom</figcaption>
+-            </figure>
+-            <figure className="tile" data-reveal>
+-              <Photo
+-                name="c1"
+-                alt="The main building of HSS Mundur"
+-                sizes="(min-width: 900px) 380px, 46vw"
+-              />
+-              <figcaption>Main Building</figcaption>
+-            </figure>
+-            <figure className="tile tile--wide-sm" data-reveal>
+-              <Photo
+-                name="c2"
+-                alt="The school campus and playground"
+-                sizes="(min-width: 900px) 380px, 92vw"
+-              />
+-              <figcaption>Campus</figcaption>
+-            </figure>
+-          </div>
++          <Gallery items={GALLERY} />
+         </div>
+       </section>
+ 
+diff --git a/app/template.js b/app/template.js
+new file mode 100644
+index 0000000..7c5550c
+--- /dev/null
++++ b/app/template.js
+@@ -0,0 +1,5 @@
++// Re-mounts on every navigation, so each page gets a soft fade-in
++// (pure CSS — see .page in globals.css).
++export default function Template({ children }) {
++  return <div className="page">{children}</div>;
++}
+diff --git a/components/Gallery.js b/components/Gallery.js
+new file mode 100644
+index 0000000..35032d8
+--- /dev/null
++++ b/components/Gallery.js
+@@ -0,0 +1,94 @@
++'use client';
++
++import { useCallback, useEffect, useRef, useState } from 'react';
++import Photo from './Photo';
++import Icon from './Icons';
++
++// Bento gallery + accessible lightbox built on the native <dialog> element
++// (focus trapping, Esc to close and the backdrop come for free).
++export default function Gallery({ items }) {
++  const dialogRef = useRef(null);
++  const touchX = useRef(null);
++  const [index, setIndex] = useState(null);
++
++  const open = (i) => {
++    setIndex(i);
++    dialogRef.current?.showModal();
++  };
++  const close = () => dialogRef.current?.close();
++  const step = useCallback(
++    (d) => setIndex((i) => (i === null ? i : (i + d + items.length) % items.length)),
++    [items.length]
++  );
++
++  useEffect(() => {
++    if (index === null) return undefined;
++    const onKey = (e) => {
++      if (e.key === 'ArrowRight') step(1);
++      if (e.key === 'ArrowLeft') step(-1);
++    };
++    window.addEventListener('keydown', onKey);
++    return () => window.removeEventListener('keydown', onKey);
++  }, [index, step]);
++
++  const current = index === null ? null : items[index];
++
++  return (
++    <>
++      <div className="bento">
++        {items.map((it, i) => (
++          <figure className={`tile ${it.className || ''}`.trim()} data-reveal key={it.id}>
++            <button
++              type="button"
++              className="tile-btn"
++              onClick={() => open(i)}
++              aria-label={`View larger: ${it.caption}`}
++            >
++              <Photo name={it.name} alt={it.alt} sizes={it.sizes} />
++            </button>
++            <figcaption>{it.caption}</figcaption>
++          </figure>
++        ))}
++      </div>
++
++      <dialog
++        ref={dialogRef}
++        className="lightbox"
++        aria-label="Photo viewer"
++        onClose={() => setIndex(null)}
++        onClick={(e) => {
++          if (!e.target.closest('img, button, .lightbox-bar')) close();
++        }}
++        onTouchStart={(e) => {
++          touchX.current = e.touches[0].clientX;
++        }}
++        onTouchEnd={(e) => {
++          if (touchX.current === null) return;
++          const dx = e.changedTouches[0].clientX - touchX.current;
++          touchX.current = null;
++          if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
++        }}
++      >
++        {current && (
++          <div className="lightbox-inner">
++            <button type="button" className="lightbox-close" onClick={close} aria-label="Close">
++              <Icon name="close" size={22} />
++            </button>
++            <Photo name={current.name} alt={current.alt} sizes="(min-width: 1200px) 1200px, 94vw" />
++            <div className="lightbox-bar">
++              <button type="button" onClick={() => step(-1)} aria-label="Previous photo">
++                <Icon name="chevron-left" size={22} />
++              </button>
++              <p aria-live="polite">
++                {current.caption} <span>{index + 1} / {items.length}</span>
++              </p>
++              <button type="button" onClick={() => step(1)} aria-label="Next photo">
++                <Icon name="chevron-right" size={22} />
++              </button>
++            </div>
++          </div>
++        )}
++      </dialog>
++    </>
++  );
++}
+diff --git a/components/Icons.js b/components/Icons.js
+index 91e1623..ee55850 100644
+--- a/components/Icons.js
++++ b/components/Icons.js
+@@ -21,6 +21,13 @@ const PATHS = {
+     </>
+   ),
+   'chevron-right': <path d="M9 6l6 6-6 6" />,
++  'chevron-left': <path d="M15 6l-6 6 6 6" />,
++  'arrow-up': (
++    <>
++      <path d="M12 19V5" />
++      <path d="M5 12l7-7 7 7" />
++    </>
++  ),
+   external: (
+     <>
+       <path d="M15 3h6v6" />
+diff --git a/components/SiteEffects.js b/components/SiteEffects.js
+index 2b39f37..f90a144 100644
+--- a/components/SiteEffects.js
++++ b/components/SiteEffects.js
+@@ -1,16 +1,19 @@
+ 'use client';
+ 
+-import { useEffect, useRef } from 'react';
++import { useEffect, useRef, useState } from 'react';
+ import { usePathname } from 'next/navigation';
++import Icon from './Icons';
+ 
+ /* Lightweight, GPU-friendly page effects:
+    - scroll progress bar (transform only, rAF-throttled)
+    - reveal-on-scroll for any element carrying [data-reveal]
++   - back-to-top button
+    Nothing here touches layout on scroll, and there are no pointer-driven
+    effects, so touch devices and low-end phones stay smooth. */
+ export default function SiteEffects() {
+   const pathname = usePathname();
+   const barRef = useRef(null);
++  const [showTop, setShowTop] = useState(false);
+ 
+   useEffect(() => {
+     const bar = barRef.current;
+@@ -21,6 +24,7 @@ export default function SiteEffects() {
+       const max = document.documentElement.scrollHeight - window.innerHeight;
+       const p = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+       bar.style.transform = `scaleX(${p})`;
++      setShowTop(window.scrollY > 700);
+     };
+     const schedule = () => {
+       if (!raf) raf = requestAnimationFrame(update);
+@@ -37,6 +41,7 @@ export default function SiteEffects() {
+ 
+   // Re-runs on every client-side navigation so newly mounted pages animate.
+   useEffect(() => {
++    document.documentElement.dataset.fx = 'ready';
+     const targets = Array.from(document.querySelectorAll('[data-reveal]:not(.is-visible)'));
+     if (!('IntersectionObserver' in window)) {
+       targets.forEach((el) => el.classList.add('is-visible'));
+@@ -62,9 +67,25 @@ export default function SiteEffects() {
+     };
+   }, [pathname]);
+ 
++  const toTop = () => {
++    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
++    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
++  };
++
+   return (
+-    <div className="progress" aria-hidden="true">
+-      <span ref={barRef} />
+-    </div>
++    <>
++      <div className="progress" aria-hidden="true">
++        <span ref={barRef} />
++      </div>
++      <button
++        type="button"
++        className={`to-top${showTop ? ' is-shown' : ''}`}
++        onClick={toTop}
++        aria-label="Back to top"
++        tabIndex={showTop ? 0 : -1}
++      >
++        <Icon name="arrow-up" size={22} />
++      </button>
++    </>
+   );
+ }
+diff --git a/lib/site.js b/lib/site.js
+index 5e07985..8bc4780 100644
+--- a/lib/site.js
++++ b/lib/site.js
+@@ -12,6 +12,7 @@ export const SITE = {
+   email: 'hssmundur@gmail.com',
+   hours: ['Monday – Friday', '8:30 AM – 4:00 PM'],
+   hoursShort: 'Mon – Fri: 8:30 AM – 4:00 PM',
++  directions: 'https://www.google.com/maps/search/?api=1&query=10.8361564,76.5741568',
+   blog: 'https://lkmundur.pages.dev/blog',
+   littleKites: 'https://lkmundur.pages.dev',
+   nav: [
+-- 
+2.43.0
+
