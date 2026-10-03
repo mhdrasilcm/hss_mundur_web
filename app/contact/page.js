@@ -111,7 +111,8 @@ export default function Contact() {
             <p className="muted">
               Get a sneak peek at our upcoming dedicated portal for the Little Kites IT Club.
             </p>
-            {/* Embedded only on wide screens: on phones the iframe is heavy and traps scrolling. */}
+            {/* Embedded only on wide screens: on phones the iframe is heavy and traps scrolling.
+                The link stays visible everywhere as a fallback. */}
             <iframe
               className="lk-frame"
               src={SITE.littleKites}
@@ -147,6 +148,11 @@ export default function Contact() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
+          </div>
+          <div className="map-actions" data-reveal>
+            <a className="btn btn-gold" href={SITE.directions} target="_blank" rel="noopener noreferrer">
+              <Icon name="pin" size={18} /> Get directions
+            </a>
           </div>
         </div>
       </section>

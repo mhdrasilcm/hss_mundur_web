@@ -4,6 +4,7 @@ import Flame from '../components/Flame';
 import Photo from '../components/Photo';
 import Counter from '../components/Counter';
 import Cta from '../components/Cta';
+import Gallery from '../components/Gallery';
 
 const STATS = [
   { count: 90, suffix: '+', label: 'Years of legacy' },
@@ -54,6 +55,40 @@ const FEATURES = [
   },
 ];
 
+const GALLERY = [
+  {
+    id: 'lab',
+    name: 'lb1',
+    caption: 'Computer Lab',
+    alt: 'Students working on laptops in the computer lab',
+    sizes: '(min-width: 900px) 760px, 92vw',
+    className: 'tile--wide',
+  },
+  {
+    id: 'classroom',
+    name: 'lb2',
+    caption: 'Classroom',
+    alt: 'A classroom with rows of benches and desks',
+    sizes: '(min-width: 900px) 380px, 46vw',
+    className: 'tile--tall',
+  },
+  {
+    id: 'building',
+    name: 'c1',
+    caption: 'Main Building',
+    alt: 'The main building of HSS Mundur',
+    sizes: '(min-width: 900px) 380px, 46vw',
+  },
+  {
+    id: 'campus',
+    name: 'c2',
+    caption: 'Campus',
+    alt: 'The school campus and playground',
+    sizes: '(min-width: 900px) 380px, 92vw',
+    className: 'tile--wide-sm',
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -63,7 +98,14 @@ export default function Home() {
           <div className="hero-grid">
             <div className="hero-copy">
               <p className="eyebrow eyebrow--light">
-                <Flame className="flame-sm flame--lit" /> Est. 1933 · Aksharadeepam, Palakkad
+                <Flame className="flame-sm flame--lit" />
+                <span className="eyebrow-text">
+                  <span>Est. 1933</span>
+                  <span className="sep" aria-hidden="true">
+                    ·
+                  </span>
+                  <span>Aksharadeepam, Palakkad</span>
+                </span>
               </p>
               <h1>
                 Shaping minds, <em>building futures.</em>
@@ -184,40 +226,7 @@ export default function Home() {
             <p className="eyebrow eyebrow--light">Campus life</p>
             <h2>A glimpse of school life</h2>
           </div>
-          <div className="bento">
-            <figure className="tile tile--wide" data-reveal>
-              <Photo
-                name="lb1"
-                alt="Students working on laptops in the computer lab"
-                sizes="(min-width: 900px) 760px, 92vw"
-              />
-              <figcaption>Computer Lab</figcaption>
-            </figure>
-            <figure className="tile tile--tall" data-reveal>
-              <Photo
-                name="lb2"
-                alt="A classroom with rows of benches and desks"
-                sizes="(min-width: 900px) 380px, 46vw"
-              />
-              <figcaption>Classroom</figcaption>
-            </figure>
-            <figure className="tile" data-reveal>
-              <Photo
-                name="c1"
-                alt="The main building of HSS Mundur"
-                sizes="(min-width: 900px) 380px, 46vw"
-              />
-              <figcaption>Main Building</figcaption>
-            </figure>
-            <figure className="tile tile--wide-sm" data-reveal>
-              <Photo
-                name="c2"
-                alt="The school campus and playground"
-                sizes="(min-width: 900px) 380px, 92vw"
-              />
-              <figcaption>Campus</figcaption>
-            </figure>
-          </div>
+          <Gallery items={GALLERY} />
         </div>
       </section>
 

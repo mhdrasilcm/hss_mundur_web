@@ -21,6 +21,13 @@ const PATHS = {
     </>
   ),
   'chevron-right': <path d="M9 6l6 6-6 6" />,
+  'chevron-left': <path d="M15 6l-6 6 6 6" />,
+  'arrow-up': (
+    <>
+      <path d="M12 19V5" />
+      <path d="M5 12l7-7 7 7" />
+    </>
+  ),
   external: (
     <>
       <path d="M15 3h6v6" />

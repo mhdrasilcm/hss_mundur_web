@@ -40,6 +40,7 @@
   --section: clamp(56px, 8vw, 104px);
   --header-h: 64px;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  color-scheme: light;
 }
 
 @media (min-width: 900px) {
@@ -58,6 +59,7 @@
   margin: 0;
 }
 html {
+  -webkit-tap-highlight-color: rgba(232, 169, 53, 0.22);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-padding-top: calc(var(--header-h) + 16px);
@@ -200,6 +202,24 @@ h3 {
 .js .counter:not(.is-ready) {
   visibility: hidden;
 }
+/* Failsafe: set by an inline script if the app bundle never starts */
+.fx-fail [data-reveal] {
+  opacity: 1;
+  translate: none;
+}
+.fx-fail .counter {
+  visibility: visible;
+}
+
+/* Soft fade between pages (app/template.js) */
+.page {
+  animation: page-in 0.3s var(--ease) backwards;
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+  }
+}
 
 /* ── Buttons ────────────────────────────────────────────── */
 .btn {
@@ -262,6 +282,21 @@ h3 {
   gap: 12px;
   margin-top: 32px;
 }
+@media (max-width: 479px) {
+  .btn-row {
+    flex-direction: column;
+  }
+  .btn-row .btn {
+    width: 100%;
+  }
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+  }
+  .hero .eyebrow {
+    text-wrap: balance;
+  }
+}
 
 /* ── Type helpers ───────────────────────────────────────── */
 .eyebrow {
@@ -283,6 +318,21 @@ h3 {
 }
 .eyebrow--light {
   color: var(--gold);
+}
+.eyebrow-text > span {
+  display: inline-block;
+  white-space: nowrap;
+}
+.eyebrow-text .sep {
+  margin-inline: 0.55em;
+}
+@media (max-width: 479px) {
+  .eyebrow-text .sep {
+    display: none;
+  }
+  .eyebrow-text > span:first-child {
+    margin-right: 0.6em;
+  }
 }
 .eyebrow--center {
   justify-content: center;
@@ -544,7 +594,7 @@ h3 {
   position: relative;
   overflow: hidden;
   color: var(--paper);
-  padding-top: clamp(36px, 7vw, 88px);
+  padding-top: clamp(36px, 5vw, 64px);
   padding-bottom: clamp(36px, 5vw, 64px);
   background-color: var(--teal-900);
   background-image: radial-gradient(60% 55% at 85% 18%, rgba(232, 169, 53, 0.16), transparent 70%),
@@ -584,6 +634,27 @@ h3 {
 .hero h1 {
   color: var(--paper);
   margin-top: 18px;
+}
+.hero-copy > * {
+  animation: rise 0.55s var(--ease) backwards;
+}
+.hero-copy > :nth-child(2) {
+  animation-delay: 0.05s;
+}
+.hero-copy > :nth-child(3) {
+  animation-delay: 0.1s;
+}
+.hero-copy > :nth-child(4) {
+  animation-delay: 0.15s;
+}
+.hero-figure {
+  animation: rise 0.6s var(--ease) 0.08s backwards;
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
 }
 .hero h1 em {
   font-style: italic;
@@ -682,6 +753,8 @@ h3 {
   }
   .hero-figure {
     width: min(100%, 440px);
+    width: min(100%, clamp(300px, calc((100vh - var(--header-h) - 330px) * 0.8), 440px));
+    width: min(100%, clamp(300px, calc((100dvh - var(--header-h) - 330px) * 0.8), 440px));
     margin: 0 0 24px auto;
   }
 }
@@ -842,6 +915,21 @@ h3 {
   grid-column: 1 / -1;
   aspect-ratio: 16 / 10;
 }
+.tile-btn {
+  position: absolute;
+  inset: 0;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: zoom-in;
+  touch-action: manipulation;
+}
+.tile-btn:focus-visible {
+  outline-offset: -4px;
+  border-radius: 18px;
+}
 .tile img {
   width: 100%;
   height: 100%;
@@ -851,6 +939,7 @@ h3 {
 .tile figcaption {
   position: absolute;
   inset: auto 0 0 0;
+  pointer-events: none;
   padding: 40px 16px 14px;
   background: linear-gradient(to top, rgba(6, 28, 30, 0.8), transparent);
   color: #fff;
@@ -883,6 +972,127 @@ h3 {
   }
   .tile figcaption {
     padding: 48px 20px 18px;
+  }
+}
+
+/* ── Lightbox ───────────────────────────────────────────── */
+.lightbox {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  overflow: hidden;
+}
+.lightbox[open] {
+  display: grid;
+  animation: page-in 0.25s var(--ease);
+}
+.lightbox::backdrop {
+  background: rgba(5, 24, 26, 0.96);
+}
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+.lightbox-inner {
+  position: relative;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 14px;
+  width: 100%;
+  height: 100%;
+  padding: max(56px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right))
+    max(14px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+}
+.lightbox-inner img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(100vh - 150px);
+  max-height: calc(100dvh - 150px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+}
+.lightbox-close,
+.lightbox-bar button {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(251, 247, 239, 0.3);
+  border-radius: 50%;
+  background: rgba(251, 247, 239, 0.08);
+  color: #fff;
+  touch-action: manipulation;
+  transition: background-color 0.2s, color 0.2s;
+}
+.lightbox-close {
+  position: absolute;
+  top: max(10px, env(safe-area-inset-top));
+  right: max(10px, env(safe-area-inset-right));
+}
+.lightbox-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: min(100%, 560px);
+}
+.lightbox-bar p {
+  text-align: center;
+  font-weight: 600;
+}
+.lightbox-bar p span {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(251, 247, 239, 0.7);
+}
+@media (hover: hover) {
+  .lightbox-close:hover,
+  .lightbox-bar button:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--teal-950);
+  }
+}
+
+/* ── Back to top ────────────────────────────────────────── */
+.to-top {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 55;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--teal-900);
+  color: var(--gold);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.25s, transform 0.25s var(--ease), visibility 0s linear 0.25s,
+    background-color 0.2s;
+  touch-action: manipulation;
+}
+.to-top.is-shown {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+@media (hover: hover) {
+  .to-top:hover {
+    background: var(--teal-700);
   }
 }
 
@@ -1166,8 +1376,11 @@ h3 {
     display: block;
   }
   .lk-link {
-    display: none;
+    margin-top: 16px;
   }
+}
+.map-actions {
+  margin-top: 20px;
 }
 .map {
   aspect-ratio: 4 / 3;
@@ -1342,6 +1555,7 @@ h3 {
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
@@ -1351,6 +1565,7 @@ h3 {
   }
 }
 @media print {
+  .to-top,
   .site-header,
   .progress,
   .skip-link,
