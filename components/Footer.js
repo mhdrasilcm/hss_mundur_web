@@ -78,7 +78,7 @@ export default function Footer() {
         <div className="footer-bottom">
           <span>© 2026 Higher Secondary School Mundur, Palakkad. All rights reserved.</span>
           <span className="made-by">
-            Made with <Icon name="heart" size={14} className="heart" /> by <strong>Ras Devs</strong>
+            Made with <Icon name="heart" size={14} className="heart" /> by <strong>DiforNet</strong>
           </span>
         </div>
       </div>
